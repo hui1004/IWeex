@@ -1,7 +1,10 @@
 <template>
   <div class="wrapper">
     <image :src="logo" class="logo"  @click="turn"/>
-    <text class="greeting">The environment is ready!</text>
+    <div style="height: 90px;width: 200px;background-color: #00B4FF" @click="toVideo">
+      <text>videoDemo</text>
+    </div>
+    <text class="greeting">The environment is ready!!!!</text>
     <HelloWorld/>
   </div>
 </template>
@@ -23,12 +26,25 @@ export default {
     methods:{
         turn(){
             navigator.push({
-                url: 'http://192.168.1.103:8081/dist/twoPage.web.js',
+                url: 'http://192.168.1.103:8081/dist/twoPage.js?a=liuxinye&b=123456',
                 animated: "true"
             }, event => {
-                modal.alert({ message: 'callback: ' + event })
+                modal.toast({ message: 'callback: ' + event })
+            })
+        },
+        toVideo(){
+            navigator.push({
+                url: 'http://192.168.1.103:8081/dist/demo/video.js',
+                animated: "true"
+            }, event => {
+                modal.toast({ message: 'callback: ' + event })
             })
         }
+    },
+    created(){
+        var modal=weex.requireModule('modal');
+        modal.alert({message: weex.config.env});
+
     }
 }
 </script>

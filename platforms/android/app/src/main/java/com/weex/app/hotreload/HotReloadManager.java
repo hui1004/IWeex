@@ -52,22 +52,15 @@ public class HotReloadManager {
         if (payloadType == WebSocket.PayloadType.TEXT) {
           String message = bufferedSource.readUtf8();
           bufferedSource.close();
-          try {
-            JSONObject rpcMessage = new JSONObject(message);
-            String method = rpcMessage.optString("method", null);
-            if (!TextUtils.isEmpty(method)) {
-              if ("WXReload".equals(method)) {
+//          JSONObject rpcMessage = new JSONObject(message);
+//            String method = rpcMessage.optString("method", null);
+            if (!TextUtils.isEmpty(message)) {
+              if ("refresh".equals(message)) {
                 listener.reload();
-              } else if ("WXReloadBundle".equals(method)) {
-                String bundleUrl = rpcMessage.optString("params", null);
-                if (!TextUtils.isEmpty(bundleUrl)) {
-                  listener.render(bundleUrl);
-                }
+              } else if ("WXReloadBundle".equals(message)) {
+                  listener.render("");
               }
             }
-          } catch (JSONException e) {
-            e.printStackTrace();
-          }
         }
       }
 

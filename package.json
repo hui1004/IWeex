@@ -5,24 +5,14 @@
   "author": "",
   "private": true,
   "scripts": {
+    "native_dev": "weex-builder src nativedist -w",
+    "install": "weex-builder src platforms/android/app/src/main/assets/dist -w --min",
     "start": "npm run serve",
-    "build": "webpack --env.NODE_ENV=common",
-    "build:prod": "webpack --env.NODE_ENV=production",
     "build:prod:web": "webpack --env.NODE_ENV=release",
-    "build:plugin": "webpack --env.NODE_ENV=plugin",
     "clean:web": "rimraf ./release/web",
-    "clean:ios": "rimraf ./release/ios",
-    "clean:android": "rimraf ./release/android",
     "dev": "webpack --env.NODE_ENV=common --progress --watch",
-    "unit": "karma start test/unit/karma.conf.js --single-run",
-    "test": "npm run unit",
-    "lint": "eslint --ext .js,.vue src  test/unit --fix",
     "serve": "webpack-dev-server --env.NODE_ENV=development --progress",
-    "ios": "weex run ios",
     "web": "npm run serve",
-    "android": "weex run android",
-    "pack:ios": "npm run clean:ios && weex build ios",
-    "pack:android": "npm run clean:android && weex build android",
     "pack:web": "npm run clean:web && npm run build:prod:web"
   },
   "keywords": [
@@ -33,7 +23,6 @@
     "android": "0.0.8",
     "phantom-limb": "0.0.1",
     "vue": "^2.5.11",
-    "weex-builder": "^0.4.1",
     "weex-vue-render": "^1.0.17"
   },
   "devDependencies": {
@@ -89,6 +78,7 @@
     "webpack-uglify-parallel": "^0.1.4",
     "weex-loader": "^0.7.2",
     "weex-vue-precompiler": "^0.1.17",
+    "weex-builder": "0.4.1",
     "ws": "^1.1.0"
   }
 }

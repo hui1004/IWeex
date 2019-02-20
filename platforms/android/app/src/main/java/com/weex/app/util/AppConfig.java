@@ -18,13 +18,17 @@ public class AppConfig {
     if (isLaunchLocally()) {
       return sPreferences.getString("local_url", "file://assets/index.js");
     }
-    return sPreferences.getString("launch_url", "http://127.0.0.1:8080/dist/index.js");
-  }
-
+    return sPreferences.getString("launch_url", "http://192.168.1.103:8081/dist/index.js");
+   }
+    public static String getDebugId() {
+        return sPreferences.getString("debugId", "http://192.168.1.103:8082");
+    }
   public static Boolean isLaunchLocally() {
     return sPreferences.getBoolean("launch_locally", false);
   }
-
+  public static Boolean isDebug() {
+    return sPreferences.getBoolean("debug", false);
+  }
   private static void loadAppSetting(Context context) {
     AppConfigXmlParser parser = new AppConfigXmlParser();
     parser.parse(context);
