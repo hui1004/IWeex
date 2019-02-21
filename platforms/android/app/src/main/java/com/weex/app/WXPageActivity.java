@@ -15,13 +15,15 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.taobao.weex.common.WXErrorCode;
+import com.taobao.weex.common.WXException;
+import com.taobao.weex.utils.WXExceptionUtils;
 import com.weex.app.hotreload.HotReloadManager;
 import com.weex.app.util.AppConfig;
 import com.weex.app.util.Constants;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.taobao.weex.WXEnvironment;
-import com.taobao.weex.WXRenderErrorCode;
 import com.taobao.weex.WXSDKEngine;
 import com.taobao.weex.WXSDKInstance;
 import com.taobao.weex.ui.component.NestedContainer;
@@ -140,7 +142,7 @@ public class WXPageActivity extends AbsWeexActivity implements
   public void onException(WXSDKInstance instance, String errCode, String msg) {
     mProgressBar.setVisibility(View.GONE);
     mTipView.setVisibility(View.VISIBLE);
-    if (TextUtils.equals(errCode, WXRenderErrorCode.DegradPassivityCode.WX_DEGRAD_ERR_NETWORK_BUNDLE_DOWNLOAD_FAILED.getDegradErrorCode())) {
+    if (TextUtils.equals(errCode, WXErrorCode.WX_DEGRAD_ERR_NETWORK_BUNDLE_DOWNLOAD_FAILED.getErrorCode())) {
       mTipView.setText(R.string.index_tip);
     } else {
       mTipView.setText("render error:" + errCode);
