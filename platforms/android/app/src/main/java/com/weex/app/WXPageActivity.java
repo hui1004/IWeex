@@ -1,6 +1,7 @@
 package com.weex.app;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -29,6 +30,7 @@ import com.taobao.weex.WXSDKInstance;
 import com.taobao.weex.ui.component.NestedContainer;
 import com.taobao.weex.utils.WXLogUtils;
 import com.taobao.weex.utils.WXSoInstallMgrSdk;
+import com.weex.app.util.UrlParse;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -55,25 +57,34 @@ public class WXPageActivity extends AbsWeexActivity implements
     mContainer = (ViewGroup) findViewById(R.id.container);
     mProgressBar = (ProgressBar) findViewById(R.id.progress);
     mTipView = (TextView) findViewById(R.id.index_tip);
-
+    mTipView.setBackgroundColor(Color.parseColor("#FF6600"));
+    mTipView.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            mTipView.setVisibility(View.GONE);
+        }
+    });
     Intent intent = getIntent();
     Uri uri = intent.getData();
     String from = intent.getStringExtra("from");
     mFromSplash = "splash".equals(from);
-    if (mUri == null) {
-      mUri = Uri.parse(AppConfig.getLaunchUrl());
+    /*是否是启动页过来的，决定要赋值的uri*/
+    if(mFromSplash){
+        mUri = Uri.parse(AppConfig.getLaunchUrl());
+    }else{
+        mUri = uri;
     }
     if (!WXSoInstallMgrSdk.isCPUSupport()) {
       mProgressBar.setVisibility(View.INVISIBLE);
       mTipView.setText(R.string.cpu_not_support_tip);
       return;
     }
-
-    String url = getUrl(mUri);
     if (getSupportActionBar() != null) {
       getSupportActionBar().hide();
     }
+    String url;
     if(AppConfig.isDebug()){
+      url = UrlParse.getDebugUrl(mUri);
       mHotReloadManager = new HotReloadManager(AppConfig.getDebugId(), new HotReloadManager.ActionListener() {
         @Override
         public void reload() {
@@ -99,22 +110,10 @@ public class WXPageActivity extends AbsWeexActivity implements
           });
         }
       });
+    }else{
+      url = UrlParse.getUrl(mUri);
     }
     loadUrl(url);
-  }
-
-  private String getUrl(Uri uri) {
-    String url = uri.toString();
-    String scheme = uri.getScheme();
-    if (uri.isHierarchical()) {
-      if (TextUtils.equals(scheme, "http") || TextUtils.equals(scheme, "https")) {
-        String weexTpl = uri.getQueryParameter(Constants.WEEX_TPL_KEY);
-        if (!TextUtils.isEmpty(weexTpl)) {
-          url = weexTpl;
-        }
-      }
-    }
-    return url;
   }
 
   protected void preRenderPage() {
@@ -145,7 +144,7 @@ public class WXPageActivity extends AbsWeexActivity implements
     if (TextUtils.equals(errCode, WXErrorCode.WX_DEGRAD_ERR_NETWORK_BUNDLE_DOWNLOAD_FAILED.getErrorCode())) {
       mTipView.setText(R.string.index_tip);
     } else {
-      mTipView.setText("render error:" + errCode);
+      mTipView.setText("render error:" + errCode+msg);
     }
   }
 

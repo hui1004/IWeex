@@ -62,15 +62,15 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 2:
+/***/ 3:
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed: Error: \n\nVue packages version mismatch:\n\n- vue@2.5.22\n- vue-template-compiler@2.5.13\n\nThis may cause things to work incorrectly. Make sure to use the same version for both.\nIf you are using vue-loader@>=10.0, simply update vue-template-compiler.\nIf you are using vue-loader@<10.0 or vueify, re-installing vue-loader/vueify should bump vue-template-compiler to the latest.\n\n    at Object.<anonymous> (D:\\Myproject\\YoloVideoAppByWeex\\weexPro\\node_modules\\weex-builder\\node_modules\\vue-template-compiler\\index.js:8:9)\n    at Module._compile (module.js:643:30)\n    at Object.Module._extensions..js (module.js:654:10)\n    at Module.load (module.js:556:32)\n    at tryModuleLoad (module.js:499:12)\n    at Function.Module._load (module.js:491:3)\n    at Module.require (module.js:587:17)\n    at require (internal/module.js:11:18)\n    at Object.<anonymous> (D:\\Myproject\\YoloVideoAppByWeex\\weexPro\\node_modules\\weex-builder\\node_modules\\weex-vue-loader\\lib\\parser.js:2:16)\n    at Module._compile (module.js:643:30)");
+throw new Error("Module build failed: Error: \n\nVue packages version mismatch:\n\n- vue@2.5.2\n- vue-template-compiler@2.5.13\n\nThis may cause things to work incorrectly. Make sure to use the same version for both.\nIf you are using vue-loader@>=10.0, simply update vue-template-compiler.\nIf you are using vue-loader@<10.0 or vueify, re-installing vue-loader/vueify should bump vue-template-compiler to the latest.\n\n    at Object.<anonymous> (D:\\MyPricticePro\\myWeexProject\\weexproject_test\\YoloVideoApp\\node_modules\\weex-builder\\node_modules\\vue-template-compiler\\index.js:8:9)\n    at Module._compile (module.js:635:30)\n    at Object.Module._extensions..js (module.js:646:10)\n    at Module.load (module.js:554:32)\n    at tryModuleLoad (module.js:497:12)\n    at Function.Module._load (module.js:489:3)\n    at Module.require (module.js:579:17)\n    at require (internal/module.js:11:18)\n    at Object.<anonymous> (D:\\MyPricticePro\\myWeexProject\\weexproject_test\\YoloVideoApp\\node_modules\\weex-builder\\node_modules\\weex-vue-loader\\lib\\parser.js:2:16)\n    at Module._compile (module.js:635:30)");
 
 /***/ })
 

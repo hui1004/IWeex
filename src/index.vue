@@ -29,7 +29,7 @@ export default {
                 url: 'http://192.168.1.103:8081/dist/twoPage.js?a=liuxinye&b=123456',
                 animated: "true"
             }, event => {
-                modal.toast({ message: 'callback: ' + event })
+                // modal.toast({ message: 'callback: ' + event })
             })
         },
         toVideo(){
@@ -43,7 +43,7 @@ export default {
     },
     created(){
         var modal=weex.requireModule('modal');
-        modal.alert({message: weex.config.env});
+        // modal.alert({message: weex.config.env});
 
     }
 }
