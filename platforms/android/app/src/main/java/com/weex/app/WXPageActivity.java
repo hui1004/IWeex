@@ -64,6 +64,7 @@ public class WXPageActivity extends AbsWeexActivity implements
             mTipView.setVisibility(View.GONE);
         }
     });
+
     Intent intent = getIntent();
     Uri uri = intent.getData();
     String from = intent.getStringExtra("from");
@@ -74,6 +75,7 @@ public class WXPageActivity extends AbsWeexActivity implements
     }else{
         mUri = uri;
     }
+
     if (!WXSoInstallMgrSdk.isCPUSupport()) {
       mProgressBar.setVisibility(View.INVISIBLE);
       mTipView.setText(R.string.cpu_not_support_tip);
@@ -84,7 +86,7 @@ public class WXPageActivity extends AbsWeexActivity implements
     }
     String url;
     if(AppConfig.isDebug()){
-      url = UrlParse.getDebugUrl(mUri);
+      /*调试模式*/
       mHotReloadManager = new HotReloadManager(AppConfig.getDebugId(), new HotReloadManager.ActionListener() {
         @Override
         public void reload() {
@@ -110,9 +112,8 @@ public class WXPageActivity extends AbsWeexActivity implements
           });
         }
       });
-    }else{
-      url = UrlParse.getUrl(mUri);
     }
+    url =mUri.toString();
     loadUrl(url);
   }
 

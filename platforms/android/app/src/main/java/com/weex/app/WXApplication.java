@@ -8,6 +8,7 @@ import com.weex.app.util.AppConfig;
 import com.taobao.weex.InitConfig;
 import com.taobao.weex.WXSDKEngine;
 import com.taobao.weex.common.WXException;
+import com.weex.app.weexAdapter.WXNavigator;
 
 public class WXApplication extends Application {
 
@@ -16,6 +17,7 @@ public class WXApplication extends Application {
     super.onCreate();
     WXSDKEngine.addCustomOptions("appName", "WXSample");
     WXSDKEngine.addCustomOptions("appGroup", "WXApp");
+    WXSDKEngine.setNavigator(new WXNavigator());
     WXSDKEngine.initialize(this,
         new InitConfig.Builder().setImgAdapter(new ImageAdapter()).build()
     );

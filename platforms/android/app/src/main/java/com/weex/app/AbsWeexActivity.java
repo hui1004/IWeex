@@ -274,7 +274,6 @@ public abstract class AbsWeexActivity extends AppCompatActivity implements IWXRe
   protected void renderPageByURL(String url) {
     renderPageByURL(url, null);
   }
-
   protected void renderPageByURL(String url, String jsonInitData) {
     CommonUtils.throwIfNull(mContainer, new RuntimeException("Can't render page, container is null"));
     Map<String, Object> options = new HashMap<>();
@@ -284,8 +283,6 @@ public abstract class AbsWeexActivity extends AppCompatActivity implements IWXRe
         url,
         options,
         jsonInitData,
-        CommonUtils.getDisplayWidth(this),
-        CommonUtils.getDisplayHeight(this),
         WXRenderStrategy.APPEND_ASYNC);
   }
 
