@@ -1,2 +1,4 @@
 include ':app'
 include ':sdk'
+
+include ':commons'

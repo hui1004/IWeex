@@ -1,6 +1,5 @@
 package com.weex.app.util;
 
-import android.app.Activity;
 import android.content.Context;
 import android.net.Uri;
 import android.text.TextUtils;
@@ -12,6 +11,7 @@ import static com.weex.app.weexAdapter.WXNavigator.schema;
 public class UrlParse {
     /*调试包url解析*/
     public static String getDebugUrl(Context context,String url){
+        /*这个是weex调试默认的url获取方式*/
         Uri uri=Uri.parse(url);
         String scheme = uri.getScheme();
         if (uri.isHierarchical()) {

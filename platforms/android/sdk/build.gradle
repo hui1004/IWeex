@@ -73,7 +73,6 @@ android {
 //    delete 'libs/x86/libweexjss.so'
 
     compileSdkVersion project.compileSdkVersion
-    buildToolsVersion project.buildToolsVersion
     resourcePrefix "weex"
     useLibrary 'org.apache.http.legacy'
 //    copy {
@@ -214,6 +213,7 @@ android {
             jvmArgs += ['-XX:-UseSplitVerifier', '-noverify','-Xverify:none']/* fix VerifyError  */
         }
     }
+    buildToolsVersion '28.0.2'
 }
 
 dependencies {
