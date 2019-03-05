@@ -41,18 +41,18 @@ public class UrlParse {
             String [] p1=preUrl.split("/");
             String p1Str="";
             for (int i=0;i<p1.length-2;i++){
-                p1Str+=p1[i];
+                p1Str+=p1[i]+"/";
             }
-            String p2Str=p1Str+url.split("../")[1];
+            String p2Str=p1Str+url.split("\\.\\.\\/")[1];
             return p2Str;
         }else if(url.startsWith("./")){//in same fold use ./
             // ./index.js with work fold to  file://assets/work/index.js
             String [] p1=preUrl.split("/");
             String p1Str="";
             for (int i=0;i<p1.length-1;i++){
-                p1Str+=p1[i];
+                p1Str+=p1[i]+"/";
             }
-            String p2Str=p1Str+url.split("./")[1];
+            String p2Str=p1Str+url.split("\\.\\/")[1];
             return p2Str;
         }else{ //user complete path like file://assets/work/index.js or http://xxx.xxx.xx/app/index.js
             return url;

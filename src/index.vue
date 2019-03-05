@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import HelloWorld from '@/components/HelloWorld'
+import HelloWorld from './components/HelloWorld.vue'
 var navigator = weex.requireModule('navigator')
 var modal = weex.requireModule('modal')
 export default {
@@ -26,7 +26,7 @@ export default {
     methods:{
         turn(){
             navigator.push({
-                url: 'http://192.168.1.103:8081/dist/twoPage.js?a=liuxinye&b=123456',
+                url: './twoPage.js',
                 animated: "true"
             }, event => {
                 // modal.toast({ message: 'callback: ' + event })
@@ -34,7 +34,7 @@ export default {
         },
         toVideo(){
             navigator.push({
-                url: 'http://192.168.1.103:8081/dist/demo/video.js',
+                url: './demo/video.js',
                 animated: "true"
             }, event => {
                 modal.toast({ message: 'callback: ' + event })
