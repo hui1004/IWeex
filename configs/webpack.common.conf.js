@@ -48,7 +48,7 @@ const getNativeEntryFileContent = (entryPath, vueFilePath) => {
 App.el = '#root'
 new Vue(App)
 `;
-  
+
   return contents;
 }
 
@@ -72,17 +72,6 @@ const getEntryFile = (dir) => {
 getEntryFile();
 
 
-const createLintingRule = () => ({
-  test: /\.(js|vue)$/,
-  loader: 'eslint-loader',
-  enforce: 'pre',
-  include: [helper.rootNode('src'), helper.rootNode('test')],
-  options: {
-    formatter: require('eslint-friendly-formatter'),
-    emitWarning: !config.dev.showEslintErrorsInOverlay
-  }
-})
-const useEslint = config.dev.useEslint ? [createLintingRule()] : []
 
 /**
  * Plugins for webpack configuration.
@@ -90,7 +79,7 @@ const useEslint = config.dev.useEslint ? [createLintingRule()] : []
 const plugins = [
   /**
    * Plugin: webpack.DefinePlugin
-   * Description: The DefinePlugin allows you to create global constants which can be configured at compile time. 
+   * Description: The DefinePlugin allows you to create global constants which can be configured at compile time.
    *
    * See: https://webpack.js.org/plugins/define-plugin/
    */
@@ -136,8 +125,8 @@ const webConfig = {
    * See: http://webpack.github.io/docs/configuration.html#module
    */
   module: {
-    // webpack 2.0 
-    rules: useEslint.concat([
+    // webpack 2.0
+    rules: [
       {
         test: /\.js$/,
         use: [{
@@ -155,33 +144,18 @@ const webConfig = {
              * inline style prefixing.
              */
             optimizeSSR: false,
-            postcss: [
-              // to convert weex exclusive styles.
-              require('postcss-plugin-weex')(),
-              require('autoprefixer')({
-                browsers: ['> 0.1%', 'ios >= 8', 'not ie < 12']
-              }),
-              require('postcss-plugin-px2rem')({
-                // base on 750px standard.
-                rootValue: 75,
-                // to leave 1px alone.
-                minPixelValue: 1.01
-              })
-            ],
-            compilerModules: [
-              {
-                postTransformNode: el => {
-                  // to convert vnode for weex components.
-                  require('weex-vue-precompiler')()(el)
-                }
+            compilerModules: [{
+              postTransformNode: el => {
+                el.staticStyle = `$processStyle(${el.staticStyle})`
+                el.styleBinding = `$processStyle(${el.styleBinding})`
               }
-            ]
-            
+            }]
+
           })
         }],
         exclude: config.excludeModuleReg
       }
-    ])
+    ]
   },
   /*
    * Add additional plugins to the compiler.
@@ -194,7 +168,7 @@ const webConfig = {
 const weexConfig = {
   entry: weexEntry,
   output: {
-    path: path.join(__dirname, '../dist'),
+    path: path.join(__dirname, '../nativedist'),
     filename: '[name].js'
   },
   /**

@@ -62,7 +62,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -99,8 +99,6 @@ if (typeof __register_static_styles__ === "function") {
 }
 
 module.exports = __vue_exports__
-module.exports.el = 'true'
-new Vue(module.exports)
 
 
 /***/ }),
@@ -113,6 +111,22 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("Now, let's use Vue.js to build your Weex appq.")])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _HelloWorld = __webpack_require__(0);
+
+var _HelloWorld2 = _interopRequireDefault(_HelloWorld);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_HelloWorld2.default.el = '#root';
+new Vue(_HelloWorld2.default);
 
 /***/ })
 /******/ ]);

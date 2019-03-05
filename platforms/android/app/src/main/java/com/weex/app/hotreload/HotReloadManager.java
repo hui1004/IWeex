@@ -85,7 +85,7 @@ public class HotReloadManager {
     if (session != null) {
       try {
         session.close(1001, "GOING_AWAY");
-      } catch (IOException e) {
+      } catch (Exception e) {
         e.printStackTrace();
       }
     }

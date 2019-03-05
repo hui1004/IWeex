@@ -4,10 +4,9 @@
         xmlns:android="http://schemas.android.com/apk/res/android">
     <name>Hello</name>
     <preference name="loglevel" value="DEBUG" />
-    <preference name="debug" value="false" />
-    <preference name="debugId" value="http://192.168.1.103:8082" />
-    <preference name="launch_locally" value="true" />
-    <preference name="launch_url" value="http://192.168.1.103:8081/dist/index.js"/>
+    <preference name="debug" value="true" />
+    <preference name="debugId" value="http://10.2.114.1:8082" />
+    <preference name="debug_url" value="http://10.2.114.1:8081/nativedist/index.js"/>
     <preference name="local_url" value="file://assets/app/index.js" />
 
 </widget>

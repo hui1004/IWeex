@@ -150,14 +150,13 @@ exports.default = {
     name: "two-page",
     methods: {
         popPage: function popPage() {
-            nav.pop({
+            navigator.pop({
                 url: '',
                 animated: "true"
             }, function (event) {});
         }
     },
     created: function created() {
-        var modal = weex.requireModule('modal');
         console.log("aaa");
     }
 };

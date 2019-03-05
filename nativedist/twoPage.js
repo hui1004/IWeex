@@ -62,7 +62,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 10);
+/******/ 	return __webpack_require__(__webpack_require__.s = 13);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -76,21 +76,40 @@
 /* 7 */,
 /* 8 */,
 /* 9 */,
-/* 10 */
+/* 10 */,
+/* 11 */,
+/* 12 */,
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _twoPage = __webpack_require__(14);
+
+var _twoPage2 = _interopRequireDefault(_twoPage);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_twoPage2.default.el = '#root';
+new Vue(_twoPage2.default);
+
+/***/ }),
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(11)
+__vue_styles__.push(__webpack_require__(15)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(12)
+__vue_exports__ = __webpack_require__(16)
 
 /* template */
-var __vue_template__ = __webpack_require__(13)
+var __vue_template__ = __webpack_require__(17)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -105,7 +124,7 @@ if (typeof __vue_options__ === "function") {
 __vue_options__.__file = "D:\\MyPricticePro\\myWeexProject\\weexproject_test\\YoloVideoApp\\src\\twoPage.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-581653b3"
+__vue_options__._scopeId = "data-v-32890f65"
 __vue_options__.style = __vue_options__.style || {}
 __vue_styles__.forEach(function (module) {
   for (var name in module) {
@@ -117,18 +136,16 @@ if (typeof __register_static_styles__ === "function") {
 }
 
 module.exports = __vue_exports__
-module.exports.el = 'true'
-new Vue(module.exports)
 
 
 /***/ }),
-/* 11 */
+/* 15 */
 /***/ (function(module, exports) {
 
 module.exports = {}
 
 /***/ }),
-/* 12 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -144,37 +161,44 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 
+var nav = weex.requireModule('navigator');
 exports.default = {
     name: "two-page",
+    methods: {
+        popPage: function popPage() {
+            navigator.pop({
+                url: '',
+                animated: "true"
+            }, function (event) {});
+        }
+    },
     created: function created() {
-        var modal = weex.requireModule('modal');
-        modal.alert({ message: weex.config.env });
-
         console.log("aaa");
     }
 };
 
 /***/ }),
-/* 13 */
+/* 17 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticStyle: {
       width: "750px",
       height: "700px",
       alignItems: "center",
       justifyContent: "center"
+    },
+    on: {
+      "click": _vm.popPage
     }
   }, [_c('text', {
     staticStyle: {
       fontSize: "35px",
       fontWeight: "bold"
     }
-  }, [_vm._v("Two11111a Page")])])
-}]}
+  }, [_vm._v("Two Page")])])
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 
 /***/ })

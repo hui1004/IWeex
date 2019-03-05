@@ -62,6 +62,8 @@ public class WXPageActivity extends AbsWeexActivity implements
         @Override
         public void onClick(View v) {
             mTipView.setVisibility(View.GONE);
+          createWeexInstance();
+          renderPage();
         }
     });
 
@@ -75,7 +77,6 @@ public class WXPageActivity extends AbsWeexActivity implements
     }else{
         mUri = uri;
     }
-
     if (!WXSoInstallMgrSdk.isCPUSupport()) {
       mProgressBar.setVisibility(View.INVISIBLE);
       mTipView.setText(R.string.cpu_not_support_tip);
