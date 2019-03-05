@@ -1,7 +1,8 @@
 # Introduction
 
+这是一个基于weex框架搭建的APP项目，会逐渐扩展android端和ios端的功能。
 
-
-## How to use less/sass/pug
+## 相关文档
+https://blog.csdn.net/qq_33718648/column/info/32906
 
 
