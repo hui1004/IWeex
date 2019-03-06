@@ -62,20 +62,190 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 8);
 /******/ })
 /************************************************************************/
 /******/ ([
-/* 0 */,
-/* 1 */,
-/* 2 */,
-/* 3 */
+/* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(1)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(2)
+
+/* template */
+var __vue_template__ = __webpack_require__(3)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "D:\\MyPricticePro\\myWeexProject\\weexproject_test\\YoloVideoApp\\src\\components\\head.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-573557d0"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports) {
+
+module.exports = {
+  "titleArea": {
+    "width": "450",
+    "height": "140",
+    "alignItems": "center",
+    "justifyContent": "center",
+    "marginTop": "55"
+  },
+  "right": {
+    "height": "140",
+    "width": "150",
+    "alignItems": "center",
+    "justifyContent": "center",
+    "position": "absolute",
+    "right": "0",
+    "top": "25"
+  },
+  "back": {
+    "height": "140",
+    "width": "150",
+    "alignItems": "center",
+    "justifyContent": "center",
+    "position": "absolute",
+    "left": "0",
+    "top": "25"
+  },
+  "header": {
+    "height": "140",
+    "width": "750",
+    "backgroundColor": "#17acf6",
+    "alignItems": "center",
+    "flexDirection": "row",
+    "justifyContent": "center"
+  },
+  "title": {
+    "fontSize": "35",
+    "color": "#FFFFFF"
+  }
+}
+
+/***/ }),
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _video = __webpack_require__(4);
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+exports.default = {
+    name: "head",
+    props: {
+        title: {
+            default: '标题2'
+        },
+        canBack: {
+            default: true
+        },
+        showRight: {
+            default: false
+        }
+    },
+    methods: {
+        back: function back() {
+            // var modal=weex.requireModule('modal');
+            // modal.alert({message:'pop'})
+            var nav = weex.requireModule('navigator');
+            nav.pop({}, function (res) {});
+        },
+        rightItemClick: function rightItemClick() {
+            this.$emit("rightItemClick", {});
+        }
+    }
+};
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["header"]
+  }, [(_vm.canBack) ? _c('div', {
+    staticClass: ["back"],
+    on: {
+      "click": _vm.back
+    }
+  }, [_c('text', {
+    staticStyle: {
+      fontSize: "28px",
+      color: "white"
+    }
+  }, [_vm._v("返回")])]) : _vm._e(), _c('div', {
+    staticClass: ["titleArea"]
+  }, [_c('text', {
+    staticClass: ["title"]
+  }, [_vm._v(_vm._s(_vm.title))])]), (_vm.showRight) ? _c('div', {
+    staticClass: ["right"],
+    on: {
+      "click": _vm.rightItemClick
+    }
+  }, [_vm._t("rightItem")], 2) : _vm._e()])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+/* 4 */,
+/* 5 */,
+/* 6 */,
+/* 7 */,
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _video = __webpack_require__(9);
 
 var _video2 = _interopRequireDefault(_video);
 
@@ -85,21 +255,21 @@ _video2.default.el = '#root';
 new Vue(_video2.default);
 
 /***/ }),
-/* 4 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(5)
+__vue_styles__.push(__webpack_require__(10)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(6)
+__vue_exports__ = __webpack_require__(11)
 
 /* template */
-var __vue_template__ = __webpack_require__(7)
+var __vue_template__ = __webpack_require__(12)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -129,7 +299,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 5 */
+/* 10 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -147,7 +317,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 6 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -156,30 +326,15 @@ module.exports = {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
+var _head = __webpack_require__(0);
+
+var _head2 = _interopRequireDefault(_head);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
+    components: { Head: _head2.default },
     data: function data() {
         return {
             state: '----',
@@ -201,14 +356,40 @@ exports.default = {
             this.state = 'onfinish';
         }
     }
-};
+}; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /***/ }),
-/* 7 */
+/* 12 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('video', {
+  return _c('div', [_c('head', {
+    attrs: {
+      "title": "videoDemo"
+    }
+  }), _c('video', {
     staticClass: ["video"],
     attrs: {
       "src": _vm.src,
@@ -223,7 +404,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _c('text', {
     staticClass: ["info"]
-  }, [_vm._v("state: " + _vm._s(_vm.state))])])
+  }, [_vm._v("state: " + _vm._s(_vm.state))])], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 

@@ -1,5 +1,6 @@
 <template>
     <div>
+        <head title="videoDemo" ></head>
         <video class="video" :src="src" autoplay controls
                @start="onstart" @pause="onpause" @finish="onfinish" @fail="onfail"></video>
         <text class="info">state: {{state}}</text>
@@ -21,7 +22,9 @@
 </style>
 
 <script>
+    import Head from "../components/head";
     export default {
+        components: {Head},
         data () {
             return {
                 state: '----',

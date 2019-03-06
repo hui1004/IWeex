@@ -1,22 +1,28 @@
 <template>
   <div class="wrapper">
-    <image :src="logo" class="logo"  @click="turn"/>
-    <div style="height: 90px;width: 200px;background-color: #00B4FF" @click="toVideo">
-      <text>videoDemo</text>
-    </div>
+    <head title="首页" :canBack="false"></head>
     <text class="greeting">The environment is ready!!!!</text>
     <HelloWorld/>
+    <div style="height: 90px;width: 200px;background-color: #00B4FF;align-items: center;justify-content: center;
+     border-radius: 10px" @click="turn">
+      <text style="font-weight: bold;font-size: 29px;color: #ffffff">PopDemo</text>
+    </div>
+    <div style="height: 90px;width: 200px;background-color: #00B4FF;align-items: center;justify-content: center;margin-top: 30px;
+      border-radius: 10px" @click="toVideo">
+      <text style="font-weight: bold;font-size: 29px;color: #ffffff">videoDemo</text>
+    </div>
   </div>
 </template>
-
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+import head from './components/head.vue'
 var navigator = weex.requireModule('navigator')
 var modal = weex.requireModule('modal')
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    HelloWorld,
+      head,
   },
   data () {
     return {
@@ -51,7 +57,7 @@ export default {
 
 <style scoped>
   .wrapper {
-    justify-content: center;
+    /*justify-content: center;*/
     align-items: center;
   }
   .logo {
@@ -60,7 +66,7 @@ export default {
   }
   .greeting {
     text-align: center;
-    margin-top: 70px;
+    /*margin-top: 20px;*/
     font-size: 50px;
     color: #41B883;
   }

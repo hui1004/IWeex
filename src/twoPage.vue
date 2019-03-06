@@ -1,21 +1,38 @@
 <template>
-    <div style="width: 750px;height: 700px;align-items: center;justify-content: center;" @click="popPage">
-        <text style="font-size: 35px;font-weight: bold">Two Page</text>
+    <div >
+        <head title="界面跳转" showRight="true" @rightItemClick="clickRight">
+            <div slot="rightItem">
+                <text>自定义右边</text>
+            </div>
+        </head>
+        <div style="width: 750px;height: 700px;align-items: center;justify-content: center;">
+            <div class="button" @click="popPage">
+                <text style="font-size: 35px;font-weight: bold">返回上一页</text>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
+    import head from './components/head.vue'
     var nav=weex.requireModule('navigator')
     export default {
         name: "two-page",
+        components:{
+            head
+        },
         methods:{
           popPage(){
-              navigator.pop({
+              nav.pop({
                   url: '',
                   animated: "true"
               }, event => {
               })
-          }
+          },
+            clickRight(){
+              let modal=weex.requireModule('modal');
+              modal.toast({message:'点击顶部导航右部按钮'})
+            }
         },
         created(){
             console.log("aaa");
