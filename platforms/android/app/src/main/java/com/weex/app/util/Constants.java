@@ -8,7 +8,7 @@ public class Constants {
   public static final String WEEX_SAMPLES_KEY = "?weex-samples";
   public static final String WEEX_TPL_KEY = "_wx_tpl";
   public static final String PARAM_BUNDLE_URL = "bundleUrl";
-
+  public static final String URL = "url";
 
   //hot refresh
   public static final int HOT_REFRESH_CONNECT = 0x111;

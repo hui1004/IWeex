@@ -23,6 +23,9 @@
 
 <script>
     import Head from "../components/head";
+    let modal=weex.requireModule('modal');
+    var nav=weex.requireModule('navigator');
+    var params=weex.requireModule('params');
     export default {
         components: {Head},
         data () {
@@ -44,6 +47,11 @@
             onfail (event) {
                 this.state = 'onfinish'
             }
+        },
+        created(){
+            params.getParam(function (res) {
+                modal.alert({message:res});
+            });
         }
     }
 </script>

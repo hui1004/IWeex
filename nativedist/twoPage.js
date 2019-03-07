@@ -62,7 +62,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 18);
+/******/ 	return __webpack_require__(__webpack_require__.s = 23);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -249,13 +249,18 @@ module.exports.render._withStripped = true
 /* 15 */,
 /* 16 */,
 /* 17 */,
-/* 18 */
+/* 18 */,
+/* 19 */,
+/* 20 */,
+/* 21 */,
+/* 22 */,
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _twoPage = __webpack_require__(19);
+var _twoPage = __webpack_require__(24);
 
 var _twoPage2 = _interopRequireDefault(_twoPage);
 
@@ -265,21 +270,21 @@ _twoPage2.default.el = '#root';
 new Vue(_twoPage2.default);
 
 /***/ }),
-/* 19 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(20)
+__vue_styles__.push(__webpack_require__(25)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(21)
+__vue_exports__ = __webpack_require__(26)
 
 /* template */
-var __vue_template__ = __webpack_require__(22)
+var __vue_template__ = __webpack_require__(27)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -309,13 +314,13 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 20 */
+/* 25 */
 /***/ (function(module, exports) {
 
 module.exports = {}
 
 /***/ }),
-/* 21 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -331,7 +336,7 @@ var _head2 = _interopRequireDefault(_head);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var nav = weex.requireModule('navigator'); //
+var modal = weex.requireModule('modal'); //
 //
 //
 //
@@ -347,6 +352,8 @@ var nav = weex.requireModule('navigator'); //
 //
 //
 
+var nav = weex.requireModule('navigator');
+var params = weex.requireModule('params');
 exports.default = {
     name: "two-page",
     components: {
@@ -360,17 +367,19 @@ exports.default = {
             }, function (event) {});
         },
         clickRight: function clickRight() {
-            var modal = weex.requireModule('modal');
             modal.toast({ message: '点击顶部导航右部按钮' });
         }
     },
     created: function created() {
+        params.getParam(function (res) {
+            modal.alert({ message: res });
+        });
         console.log("aaa");
     }
 };
 
 /***/ }),
-/* 22 */
+/* 27 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;

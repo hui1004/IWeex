@@ -11,6 +11,10 @@
       border-radius: 10px" @click="toVideo">
       <text style="font-weight: bold;font-size: 29px;color: #ffffff">videoDemo</text>
     </div>
+    <div style="height: 90px;width: 200px;background-color: #00B4FF;align-items: center;justify-content: center;margin-top: 30px;
+      border-radius: 10px" @click="toImage">
+      <text style="font-weight: bold;font-size: 29px;color: #ffffff">Image</text>
+    </div>
   </div>
 </template>
 <script>
@@ -33,6 +37,7 @@ export default {
         turn(){
             navigator.push({
                 url: './twoPage.js',
+                param:{a:11111},
                 animated: "true"
             }, event => {
                 // modal.toast({ message: 'callback: ' + event })
@@ -41,9 +46,16 @@ export default {
         toVideo(){
             navigator.push({
                 url: './demo/video.js',
+                param:{b:22222},
                 animated: "true"
             }, event => {
-                modal.toast({ message: 'callback: ' + event })
+            })
+        },
+        toImage(){
+            navigator.push({
+                url: './demo/Image.js',
+                animated: "true"
+            }, event => {
             })
         }
     },

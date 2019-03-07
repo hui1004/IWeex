@@ -303,6 +303,7 @@ public abstract class AbsWeexActivity extends AppCompatActivity implements IWXRe
     super.onResume();
     if (mInstance != null) {
       mInstance.onActivityResume();
+      mInstance.fireGlobalEventCallback("backParam",null);
     }
   }
 

@@ -62,7 +62,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 13);
+/******/ 	return __webpack_require__(__webpack_require__.s = 18);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -287,13 +287,18 @@ module.exports.render._withStripped = true
 /* 10 */,
 /* 11 */,
 /* 12 */,
-/* 13 */
+/* 13 */,
+/* 14 */,
+/* 15 */,
+/* 16 */,
+/* 17 */,
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _index = __webpack_require__(14);
+var _index = __webpack_require__(19);
 
 var _index2 = _interopRequireDefault(_index);
 
@@ -303,21 +308,21 @@ _index2.default.el = '#root';
 new Vue(_index2.default);
 
 /***/ }),
-/* 14 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(15)
+__vue_styles__.push(__webpack_require__(20)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(16)
+__vue_exports__ = __webpack_require__(21)
 
 /* template */
-var __vue_template__ = __webpack_require__(17)
+var __vue_template__ = __webpack_require__(22)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -347,7 +352,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 15 */
+/* 20 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -374,7 +379,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 16 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -409,6 +414,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
+//
+//
 
 var navigator = weex.requireModule('navigator');
 var modal = weex.requireModule('modal');
@@ -428,6 +437,7 @@ exports.default = {
         turn: function turn() {
             navigator.push({
                 url: './twoPage.js',
+                param: { a: 11111 },
                 animated: "true"
             }, function (event) {
                 // modal.toast({ message: 'callback: ' + event })
@@ -436,10 +446,15 @@ exports.default = {
         toVideo: function toVideo() {
             navigator.push({
                 url: './demo/video.js',
+                param: { b: 22222 },
                 animated: "true"
-            }, function (event) {
-                modal.toast({ message: 'callback: ' + event });
-            });
+            }, function (event) {});
+        },
+        toImage: function toImage() {
+            navigator.push({
+                url: './demo/Image.js',
+                animated: "true"
+            }, function (event) {});
         }
     },
     created: function created() {
@@ -449,7 +464,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 17 */
+/* 22 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -499,7 +514,26 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       fontSize: "29px",
       color: "#ffffff"
     }
-  }, [_vm._v("videoDemo")])])], 1)
+  }, [_vm._v("videoDemo")])]), _c('div', {
+    staticStyle: {
+      height: "90px",
+      width: "200px",
+      backgroundColor: "#00B4FF",
+      alignItems: "center",
+      justifyContent: "center",
+      marginTop: "30px",
+      borderRadius: "10px"
+    },
+    on: {
+      "click": _vm.toImage
+    }
+  }, [_c('text', {
+    staticStyle: {
+      fontWeight: "bold",
+      fontSize: "29px",
+      color: "#ffffff"
+    }
+  }, [_vm._v("Image")])])], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 

@@ -71,14 +71,12 @@ public class WXPageActivity extends AbsWeexActivity implements
     });
 
     Intent intent = getIntent();
-    Uri uri = intent.getData();
+    String url= intent.getStringExtra(Constants.URL);
     String from = intent.getStringExtra("from");
     mFromSplash = "splash".equals(from);
     /*是否是启动页过来的，决定要赋值的uri*/
     if(mFromSplash){
-        mUri = Uri.parse(AppConfig.getLaunchUrl());
-    }else{
-        mUri = uri;
+        url =AppConfig.getLaunchUrl();
     }
     if (!WXSoInstallMgrSdk.isCPUSupport()) {
       mProgressBar.setVisibility(View.INVISIBLE);
@@ -89,7 +87,6 @@ public class WXPageActivity extends AbsWeexActivity implements
     if (getSupportActionBar() != null) {
       getSupportActionBar().hide();
     }
-    String url;
     if(AppConfig.isDebug()){
       /*调试模式*/
       mHotReloadManager = new HotReloadManager(AppConfig.getDebugId(), new HotReloadManager.ActionListener() {
@@ -118,7 +115,6 @@ public class WXPageActivity extends AbsWeexActivity implements
         }
       });
     }
-    url =mUri.toString();
     loadUrl(url);
   }
  private void setStatusBar(){
@@ -211,7 +207,11 @@ public class WXPageActivity extends AbsWeexActivity implements
     return super.onOptionsItemSelected(item);
   }
 
-  @Override
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+    @Override
   public void onActivityResult(int requestCode, int resultCode, Intent data) {
     IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
     if (result != null) {

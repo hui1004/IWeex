@@ -29,6 +29,7 @@ import com.taobao.weex.WXSDKManager;
 import com.taobao.weex.adapter.IWXImgLoaderAdapter;
 import com.taobao.weex.common.WXImageStrategy;
 import com.taobao.weex.dom.WXImageQuality;
+import com.weex.app.util.UrlParse;
 
 public class ImageAdapter implements IWXImgLoaderAdapter {
 
@@ -57,16 +58,12 @@ public class ImageAdapter implements IWXImgLoaderAdapter {
         if (view.getLayoutParams().width <= 0 || view.getLayoutParams().height <= 0) {
           return;
         }
-
-
         if(!TextUtils.isEmpty(strategy.placeHolder)){
           Picasso.Builder builder=new Picasso.Builder(WXEnvironment.getApplication());
           Picasso picasso=builder.build();
-          picasso.load(Uri.parse(strategy.placeHolder)).into(view);
-
+          picasso.load(url).into(view);
           view.setTag(strategy.placeHolder.hashCode(),picasso);
         }
-
         Picasso.with(WXEnvironment.getApplication())
             .load(temp)
             .transform(new BlurTransformation(strategy.blurRadius))

@@ -27,13 +27,14 @@ public class UrlParse {
     /*非调试包url解析*/
     public static String getReleaseUrl(Context context,String url){
         WXPageActivity wa= (WXPageActivity) context;
+        /*url in last Page*/
         String preUrl=wa.getUrl();  //file://assets/app/work/work.js
-        if(url.startsWith("root")){ //
+        if(url.startsWith("src:")){ //
             //root:work/work.js to file://assets/app/work/work.js
             if(preUrl.startsWith("http")){
-                url.replace("root:",schema);
+                url.replace("src:",schema);
             }else{
-                url.replace("root:","file://assets/app/");
+                url.replace("src:","file://assets/app/");
             }
             return url;
         }else if(url.startsWith("../")){//jump form fold use ../

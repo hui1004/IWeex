@@ -15,7 +15,9 @@
 
 <script>
     import head from './components/head.vue'
-    var nav=weex.requireModule('navigator')
+    let modal=weex.requireModule('modal');
+    var nav=weex.requireModule('navigator');
+    var params=weex.requireModule('params');
     export default {
         name: "two-page",
         components:{
@@ -30,11 +32,13 @@
               })
           },
             clickRight(){
-              let modal=weex.requireModule('modal');
               modal.toast({message:'点击顶部导航右部按钮'})
             }
         },
         created(){
+            params.getParam(function (res) {
+                modal.alert({message:res});
+            });
             console.log("aaa");
         }
     }
