@@ -7,7 +7,7 @@
     </string>
     <string name="index_tip" translatable="false">Network Error!\n1.Make sure you use the command "npm run serve"
         launched local service\n2.Make sure you modify "your_current_ip" to your local IP in
-        "WXMainActivity"
+        "WXMainActivity" \n\n\n ------------点击重试--------------\n\n"
     </string>
     <string name="scan_qr_code" translatable="false">扫码</string>
     <string name="page_refresh" translatable="false">刷新</string>

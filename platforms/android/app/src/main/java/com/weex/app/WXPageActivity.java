@@ -16,6 +16,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -48,6 +49,7 @@ public class WXPageActivity extends AbsWeexActivity implements
   private TextView mTipView;
   private boolean mFromSplash = false;
   private HotReloadManager mHotReloadManager;
+  private LinearLayout debug_tool;
   private ImageView scanner,refresh;
   @Override
   public void onCreateNestInstance(WXSDKInstance instance, NestedContainer container) {
@@ -64,6 +66,7 @@ public class WXPageActivity extends AbsWeexActivity implements
     mTipView = (TextView) findViewById(R.id.index_tip);
     scanner=(ImageView)findViewById(R.id.scanner);
     refresh=(ImageView)findViewById(R.id.refresh);
+    debug_tool=findViewById(R.id.debug_tool);
     mTipView.setBackgroundColor(Color.parseColor("#FF6600"));
     scanner.setOnClickListener(this);
     refresh.setOnClickListener(this);
@@ -88,7 +91,7 @@ public class WXPageActivity extends AbsWeexActivity implements
     if(AppConfig.isDebug()){
         if(mFromSplash){
             /*显示扫码悬浮窗*/
-
+           debug_tool.setVisibility(View.VISIBLE);
         }
       /*调试模式*/
       mHotReloadManager = new HotReloadManager(AppConfig.getDebugId(), new HotReloadManager.ActionListener() {
@@ -173,7 +176,7 @@ public class WXPageActivity extends AbsWeexActivity implements
     if (TextUtils.equals(errCode, WXErrorCode.WX_DEGRAD_ERR_NETWORK_BUNDLE_DOWNLOAD_FAILED.getErrorCode())) {
       mTipView.setText(R.string.index_tip);
     } else {
-      mTipView.setText("render error:" + errCode+msg);
+      mTipView.setText("render error:" + errCode+msg+"\\/n"+"---------点击重试---------");
     }
   }
     @Override
