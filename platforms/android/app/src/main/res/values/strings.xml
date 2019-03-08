@@ -11,4 +11,5 @@
     </string>
     <string name="scan_qr_code" translatable="false">扫码</string>
     <string name="page_refresh" translatable="false">刷新</string>
+    <string name="scanner">扫码</string>
 </resources>

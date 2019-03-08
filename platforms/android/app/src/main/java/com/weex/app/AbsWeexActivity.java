@@ -229,7 +229,7 @@ import com.weex.app.util.CommonUtils;
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class AbsWeexActivity extends AppCompatActivity implements IWXRenderListener {
+public abstract class AbsWeexActivity extends AppCompatActivity implements IWXRenderListener{
   private static final String TAG = "AbsWeexActivity";
   protected BroadcastReceiver mBroadcastReceiver;
   protected ViewGroup mContainer;
@@ -237,7 +237,7 @@ public abstract class AbsWeexActivity extends AppCompatActivity implements IWXRe
   protected Uri mUri;
   private WxReloadListener mReloadListener;
   private WxRefreshListener mRefreshListener;
-  private String mUrl;// "http://your_current_IP:12580/examples/build/index.js";
+  protected String mUrl;// "http://your_current_IP:12580/examples/build/index.js";
   private String mPageName = TAG;
   protected Boolean isLocalUrl = false;
 

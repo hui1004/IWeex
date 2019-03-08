@@ -68,6 +68,8 @@ dependencies {
     implementation 'com.squareup.okhttp:okhttp-ws:2.3.0'
     implementation 'com.squareup.okio:okio:1.0.1'
     implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'com.github.bumptech.glide:glide:4.1.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.1.1'
     implementation "com.alibaba:fastjson:${project.fastjsonLibVersion}"
     implementation "com.android.support:support-v4:${project.supportLibVersion}"
     implementation "com.android.support:appcompat-v7:${project.supportLibVersion}"

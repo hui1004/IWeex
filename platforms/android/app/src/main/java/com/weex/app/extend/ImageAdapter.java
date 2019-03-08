@@ -22,6 +22,7 @@ import android.net.Uri;
 import android.text.TextUtils;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 import com.taobao.weex.WXEnvironment;
@@ -64,28 +65,35 @@ public class ImageAdapter implements IWXImgLoaderAdapter {
           picasso.load(url).into(view);
           view.setTag(strategy.placeHolder.hashCode(),picasso);
         }
-        Picasso.with(WXEnvironment.getApplication())
-            .load(temp)
-            .transform(new BlurTransformation(strategy.blurRadius))
-            .into(view, new Callback() {
-              @Override
-              public void onSuccess() {
-                if(strategy.getImageListener()!=null){
-                  strategy.getImageListener().onImageFinish(url,view,true,null);
-                }
+        /*添加gif支持*/
+        if(temp.contains(".gif")){
+            Glide.with(WXEnvironment.getApplication())
+                    .load(temp)
+                    .into(view);
+        }else{
+            Picasso.with(WXEnvironment.getApplication())
+                    .load(temp)
+                    .transform(new BlurTransformation(strategy.blurRadius))
+                    .into(view, new Callback() {
+                        @Override
+                        public void onSuccess() {
+                            if(strategy.getImageListener()!=null){
+                                strategy.getImageListener().onImageFinish(url,view,true,null);
+                            }
 
-                if(!TextUtils.isEmpty(strategy.placeHolder)){
-                  ((Picasso) view.getTag(strategy.placeHolder.hashCode())).cancelRequest(view);
-                }
-              }
+                            if(!TextUtils.isEmpty(strategy.placeHolder)){
+                                ((Picasso) view.getTag(strategy.placeHolder.hashCode())).cancelRequest(view);
+                            }
+                        }
 
-              @Override
-              public void onError() {
-                if(strategy.getImageListener()!=null){
-                  strategy.getImageListener().onImageFinish(url,view,false,null);
-                }
-              }
-            });
+                        @Override
+                        public void onError() {
+                            if(strategy.getImageListener()!=null){
+                                strategy.getImageListener().onImageFinish(url,view,false,null);
+                            }
+                        }
+                    });
+        }
       }
     },0);
   }

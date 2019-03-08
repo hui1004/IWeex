@@ -12,8 +12,10 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,14 +41,14 @@ import org.json.JSONObject;
 
 
 public class WXPageActivity extends AbsWeexActivity implements
-    WXSDKInstance.NestedInstanceInterceptor {
+    WXSDKInstance.NestedInstanceInterceptor,OnClickListener{
 
   private static final String TAG = "WXPageActivity";
   private ProgressBar mProgressBar;
   private TextView mTipView;
   private boolean mFromSplash = false;
   private HotReloadManager mHotReloadManager;
-
+  private ImageView scanner,refresh;
   @Override
   public void onCreateNestInstance(WXSDKInstance instance, NestedContainer container) {
     Log.d(TAG, "Nested Instance created.");
@@ -60,16 +62,12 @@ public class WXPageActivity extends AbsWeexActivity implements
     mContainer = (ViewGroup) findViewById(R.id.container);
     mProgressBar = (ProgressBar) findViewById(R.id.progress);
     mTipView = (TextView) findViewById(R.id.index_tip);
+    scanner=(ImageView)findViewById(R.id.scanner);
+    refresh=(ImageView)findViewById(R.id.refresh);
     mTipView.setBackgroundColor(Color.parseColor("#FF6600"));
-    mTipView.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            mTipView.setVisibility(View.GONE);
-          createWeexInstance();
-          renderPage();
-        }
-    });
-
+    scanner.setOnClickListener(this);
+    refresh.setOnClickListener(this);
+    mTipView.setOnClickListener(this);
     Intent intent = getIntent();
     String url= intent.getStringExtra(Constants.URL);
     String from = intent.getStringExtra("from");
@@ -88,6 +86,10 @@ public class WXPageActivity extends AbsWeexActivity implements
       getSupportActionBar().hide();
     }
     if(AppConfig.isDebug()){
+        if(mFromSplash){
+            /*显示扫码悬浮窗*/
+
+        }
       /*调试模式*/
       mHotReloadManager = new HotReloadManager(AppConfig.getDebugId(), new HotReloadManager.ActionListener() {
         @Override
@@ -117,6 +119,7 @@ public class WXPageActivity extends AbsWeexActivity implements
     }
     loadUrl(url);
   }
+  /*设置状态栏*/
  private void setStatusBar(){
      if(OSVersion()>=19)
      {
@@ -132,7 +135,7 @@ public class WXPageActivity extends AbsWeexActivity implements
          getWindow().setStatusBarColor(Color.TRANSPARENT);
      }
  }
-    private  int OSVersion() {
+  private  int OSVersion() {
         int sdkVersion;
         try {
             sdkVersion = Integer.valueOf(android.os.Build.VERSION.SDK);
@@ -141,6 +144,7 @@ public class WXPageActivity extends AbsWeexActivity implements
         }
         return sdkVersion;
     }
+  /*界面开始渲染之前显示加载中进度条*/
   protected void preRenderPage() {
     mProgressBar.setVisibility(View.VISIBLE);
   }
@@ -172,59 +176,25 @@ public class WXPageActivity extends AbsWeexActivity implements
       mTipView.setText("render error:" + errCode+msg);
     }
   }
-
-  @Override
-  public boolean onCreateOptionsMenu(Menu menu) {
-//    getMenuInflater().inflate(mFromSplash ? R.menu.main_scan : R.menu.main, menu);
-    return super.onCreateOptionsMenu(menu);
-  }
-
-  /*这里的操作要改造成悬浮调试工具*/
-  @Override
-  public boolean onOptionsItemSelected(MenuItem item) {
-    switch (item.getItemId()) {
-      case R.id.action_refresh:
-        createWeexInstance();
-        renderPage();
-        break;
-      case R.id.action_scan:
-        IntentIntegrator integrator = new IntentIntegrator(this);
-        integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
-        integrator.setPrompt("Scan a barcode");
-        //integrator.setCameraId(0);  // Use a specific camera of the device
-        integrator.setBeepEnabled(true);
-        integrator.setOrientationLocked(false);
-        integrator.setBarcodeImageEnabled(true);
-        integrator.setPrompt(getString(R.string.capture_qrcode_prompt));
-        integrator.initiateScan();
-        break;
-      case android.R.id.home:
-        finish();
-      default:
-        break;
-    }
-
-    return super.onOptionsItemSelected(item);
-  }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-    }
     @Override
   public void onActivityResult(int requestCode, int resultCode, Intent data) {
     IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+
     if (result != null) {
       if (result.getContents() == null) {
         Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
       } else {
-
+          String url=result.getContents();
+          Uri uri=Uri.parse(url);
+          if (uri.getQueryParameter(Constants.WEEX_TPL_KEY)!=null){
+              createWeexInstance();
+              mUrl=uri.getQueryParameter(Constants.WEEX_TPL_KEY);
+              renderPage();
+          }
       }
     }
     super.onActivityResult(requestCode, resultCode, data);
   }
-
-
   @Override
   public void onDestroy() {
     super.onDestroy();
@@ -232,4 +202,33 @@ public class WXPageActivity extends AbsWeexActivity implements
       mHotReloadManager.destroy();
     }
   }
+
+    @Override
+    public void onClick(View v) {
+      switch (v.getId()){
+          case R.id.index_tip:
+              mTipView.setVisibility(View.GONE);
+              createWeexInstance();
+              renderPage();
+              break;
+          case R.id.scanner:
+              IntentIntegrator integrator = new IntentIntegrator(this);
+              integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
+              integrator.setPrompt("Scan a barcode");
+              //integrator.setCameraId(0);  // Use a specific camera of the device
+              integrator.setBeepEnabled(true);
+              integrator.setOrientationLocked(false);
+              integrator.setBarcodeImageEnabled(true);
+              integrator.setPrompt(getString(R.string.capture_qrcode_prompt));
+              integrator.initiateScan();
+              break;
+          case R.id.refresh:
+              createWeexInstance();
+              renderPage();
+              break;
+          default:
+              break;
+      }
+
+    }
 }

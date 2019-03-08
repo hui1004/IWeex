@@ -14,7 +14,11 @@
         android:background="#ffffff">
 
     </FrameLayout>
-
+    <include layout="@layout/debug_tool_layout"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center_vertical">
+    </include>
     <ProgressBar
         android:id="@+id/progress"
         android:layout_width="wrap_content"
