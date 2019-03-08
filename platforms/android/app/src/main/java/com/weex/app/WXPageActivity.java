@@ -193,6 +193,9 @@ public class WXPageActivity extends AbsWeexActivity implements
               createWeexInstance();
               mUrl=uri.getQueryParameter(Constants.WEEX_TPL_KEY);
               renderPage();
+          }else{
+              mUrl=url;
+              renderPage();
           }
       }
     }
