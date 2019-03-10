@@ -92,7 +92,7 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\MyPricticePro\\myWeexProject\\weexproject_test\\YoloVideoApp\\src\\components\\head.vue"
+__vue_options__.__file = "D:\\Myproject\\YoloVideoAppByWeex\\YoloVideoApp\\src\\components\\head.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
 __vue_options__._scopeId = "data-v-573557d0"
@@ -254,7 +254,7 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\MyPricticePro\\myWeexProject\\weexproject_test\\YoloVideoApp\\src\\components\\HelloWorld.vue"
+__vue_options__.__file = "D:\\Myproject\\YoloVideoAppByWeex\\YoloVideoApp\\src\\components\\HelloWorld.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
 __vue_options__.style = __vue_options__.style || {}
@@ -334,7 +334,7 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\MyPricticePro\\myWeexProject\\weexproject_test\\YoloVideoApp\\src\\index.vue"
+__vue_options__.__file = "D:\\Myproject\\YoloVideoAppByWeex\\YoloVideoApp\\src\\index.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
 __vue_options__._scopeId = "data-v-1a4d8e3c"

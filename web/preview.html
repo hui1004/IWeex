@@ -77,7 +77,7 @@
         $pages.innerHTML = contents;
       }
       var host = window.location.host;
-      createQRCode(`http://${host}/dist/${page || 'index.js'}`, wsport)
+      createQRCode(`http://${host}/nativedist/${page || 'index.js'}`, wsport)
     })();
   </script>
 </body>
