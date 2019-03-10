@@ -36,7 +36,7 @@ nav.pop({
 2、扩展了image标签支持加载本地图片，图片需要放在nativie目录下
    
 
-# 相关文档
+# weex开发相关文档
 https://blog.csdn.net/qq_33718648/column/info/32906
   
 
