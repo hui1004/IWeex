@@ -2,6 +2,7 @@ package com.weex.app;
 
 import android.app.Application;
 
+import com.alibaba.android.bindingx.plugin.weex.BindingX;
 import com.weex.app.extend.ImageAdapter;
 import com.weex.app.extend.WXEventModule;
 import com.weex.app.modle.ParamsModule;
@@ -20,6 +21,11 @@ public class WXApplication extends Application {
     WXSDKEngine.addCustomOptions("appName", "WXSample");
     WXSDKEngine.addCustomOptions("appGroup", "WXApp");
     WXSDKEngine.setNavigator(new WXNavigator());
+    try {
+      BindingX.register();
+    } catch (WXException e) {
+      e.printStackTrace();
+    }
     WXSDKEngine.initialize(this,
         new InitConfig.Builder()
                 .setImgAdapter(new ImageAdapter())
