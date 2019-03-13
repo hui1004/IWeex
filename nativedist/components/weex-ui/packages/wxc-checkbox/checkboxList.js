@@ -62,7 +62,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 124);
+/******/ 	return __webpack_require__(__webpack_require__.s = 123);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -862,21 +862,21 @@ module.exports = Url;
 
 /***/ }),
 
-/***/ 11:
+/***/ 10:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(12)
+__vue_styles__.push(__webpack_require__(11)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(13)
+__vue_exports__ = __webpack_require__(12)
 
 /* template */
-var __vue_template__ = __webpack_require__(14)
+var __vue_template__ = __webpack_require__(13)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -888,7 +888,7 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\Myproject\\YoloVideoAppByWeex\\YoloVideoApp\\src\\components\\weex-ui\\packages\\wxc-cell\\index.vue"
+__vue_options__.__file = "D:\\MyPricticePro\\myWeexProject\\weexproject_test\\YoloVideoApp\\src\\components\\weex-ui\\packages\\wxc-cell\\index.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
 __vue_options__._scopeId = "data-v-60b0eef6"
@@ -907,7 +907,7 @@ module.exports = __vue_exports__
 
 /***/ }),
 
-/***/ 12:
+/***/ 11:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -971,160 +971,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 124:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _checkboxList = __webpack_require__(125);
-
-var _checkboxList2 = _interopRequireDefault(_checkboxList);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-_checkboxList2.default.el = '#root';
-new Vue(_checkboxList2.default);
-
-/***/ }),
-
-/***/ 125:
-/***/ (function(module, exports, __webpack_require__) {
-
-var __vue_exports__, __vue_options__
-var __vue_styles__ = []
-
-/* script */
-__vue_exports__ = __webpack_require__(126)
-
-/* template */
-var __vue_template__ = __webpack_require__(127)
-__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-if (
-  typeof __vue_exports__.default === "object" ||
-  typeof __vue_exports__.default === "function"
-) {
-if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-__vue_options__ = __vue_exports__ = __vue_exports__.default
-}
-if (typeof __vue_options__ === "function") {
-  __vue_options__ = __vue_options__.options
-}
-__vue_options__.__file = "D:\\Myproject\\YoloVideoAppByWeex\\YoloVideoApp\\src\\components\\weex-ui\\packages\\wxc-checkbox\\checkboxList.vue"
-__vue_options__.render = __vue_template__.render
-__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__.style = __vue_options__.style || {}
-__vue_styles__.forEach(function (module) {
-  for (var name in module) {
-    __vue_options__.style[name] = module[name]
-  }
-})
-if (typeof __register_static_styles__ === "function") {
-  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
-}
-
-module.exports = __vue_exports__
-
-
-/***/ }),
-
-/***/ 126:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _index = __webpack_require__(26);
-
-var _index2 = _interopRequireDefault(_index);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = {
-  components: { WxcCheckbox: _index2.default },
-  props: {
-    list: {
-      type: Array,
-      default: function _default() {
-        return [];
-      }
-    },
-    config: {
-      type: Object,
-      default: function _default() {
-        return {};
-      }
-    }
-  },
-  data: function data() {
-    return {
-      checkedList: []
-    };
-  },
-  created: function created() {
-    var _this = this;
-
-    var list = this.list;
-
-    if (list && list.length > 0) {
-      list.forEach(function (item, i) {
-        item.checked && _this.checkedList.push(item.value);
-      });
-    }
-  },
-
-  methods: {
-    wxcCheckBoxItemChecked: function wxcCheckBoxItemChecked(e) {
-      if (e.checked) {
-        this.checkedList.push(e.value);
-      } else {
-        var index = this.checkedList.indexOf(e.value);
-        this.checkedList.splice(index, 1);
-      }
-      this.$emit('wxcCheckBoxListChecked', { checkedList: this.checkedList });
-    }
-  }
-}; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/***/ }),
-
-/***/ 127:
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', _vm._l((_vm.list), function(item, i) {
-    return _c('wxc-checkbox', _vm._b({
-      key: i,
-      attrs: {
-        "config": _vm.config
-      },
-      on: {
-        "wxcCheckBoxItemChecked": _vm.wxcCheckBoxItemChecked
-      }
-    }, 'wxc-checkbox', item, false))
-  }))
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-
-/***/ }),
-
-/***/ 13:
+/***/ 12:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1310,7 +1157,160 @@ exports.default = {
 
 /***/ }),
 
-/***/ 14:
+/***/ 123:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _checkboxList = __webpack_require__(124);
+
+var _checkboxList2 = _interopRequireDefault(_checkboxList);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_checkboxList2.default.el = '#root';
+new Vue(_checkboxList2.default);
+
+/***/ }),
+
+/***/ 124:
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* script */
+__vue_exports__ = __webpack_require__(125)
+
+/* template */
+var __vue_template__ = __webpack_require__(126)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "D:\\MyPricticePro\\myWeexProject\\weexproject_test\\YoloVideoApp\\src\\components\\weex-ui\\packages\\wxc-checkbox\\checkboxList.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
+
+/***/ }),
+
+/***/ 125:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _index = __webpack_require__(24);
+
+var _index2 = _interopRequireDefault(_index);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+  components: { WxcCheckbox: _index2.default },
+  props: {
+    list: {
+      type: Array,
+      default: function _default() {
+        return [];
+      }
+    },
+    config: {
+      type: Object,
+      default: function _default() {
+        return {};
+      }
+    }
+  },
+  data: function data() {
+    return {
+      checkedList: []
+    };
+  },
+  created: function created() {
+    var _this = this;
+
+    var list = this.list;
+
+    if (list && list.length > 0) {
+      list.forEach(function (item, i) {
+        item.checked && _this.checkedList.push(item.value);
+      });
+    }
+  },
+
+  methods: {
+    wxcCheckBoxItemChecked: function wxcCheckBoxItemChecked(e) {
+      if (e.checked) {
+        this.checkedList.push(e.value);
+      } else {
+        var index = this.checkedList.indexOf(e.value);
+        this.checkedList.splice(index, 1);
+      }
+      this.$emit('wxcCheckBoxListChecked', { checkedList: this.checkedList });
+    }
+  }
+}; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/***/ }),
+
+/***/ 126:
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', _vm._l((_vm.list), function(item, i) {
+    return _c('wxc-checkbox', _vm._b({
+      key: i,
+      attrs: {
+        "config": _vm.config
+      },
+      on: {
+        "wxcCheckBoxItemChecked": _vm.wxcCheckBoxItemChecked
+      }
+    }, 'wxc-checkbox', item, false))
+  }))
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+
+/***/ 13:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -1346,7 +1346,7 @@ module.exports.render._withStripped = true
 
 /***/ }),
 
-/***/ 15:
+/***/ 14:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1356,7 +1356,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _index = __webpack_require__(11);
+var _index = __webpack_require__(10);
 
 Object.defineProperty(exports, 'default', {
   enumerable: true,
@@ -1415,21 +1415,21 @@ module.exports = function required(port, protocol) {
 
 /***/ }),
 
-/***/ 26:
+/***/ 24:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(27)
+__vue_styles__.push(__webpack_require__(25)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(28)
+__vue_exports__ = __webpack_require__(26)
 
 /* template */
-var __vue_template__ = __webpack_require__(30)
+var __vue_template__ = __webpack_require__(28)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -1441,7 +1441,7 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\Myproject\\YoloVideoAppByWeex\\YoloVideoApp\\src\\components\\weex-ui\\packages\\wxc-checkbox\\index.vue"
+__vue_options__.__file = "D:\\MyPricticePro\\myWeexProject\\weexproject_test\\YoloVideoApp\\src\\components\\weex-ui\\packages\\wxc-checkbox\\index.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
 __vue_options__._scopeId = "data-v-e49fedd2"
@@ -1460,7 +1460,7 @@ module.exports = __vue_exports__
 
 /***/ }),
 
-/***/ 27:
+/***/ 25:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -1475,7 +1475,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 28:
+/***/ 26:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1485,11 +1485,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _wxcCell = __webpack_require__(15);
+var _wxcCell = __webpack_require__(14);
 
 var _wxcCell2 = _interopRequireDefault(_wxcCell);
 
-var _type = __webpack_require__(29);
+var _type = __webpack_require__(27);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1618,7 +1618,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 29:
+/***/ 27:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1636,6 +1636,42 @@ var CHECKED = exports.CHECKED = 'https://gw.alicdn.com/tfs/TB14fp2pwMPMeJjy1XbXX
 var UNCHECKED = exports.UNCHECKED = 'https://gw.alicdn.com/tfs/TB1U6SbpwMPMeJjy1XcXXXpppXa-72-72.png';
 var CHECKED_DISABLED = exports.CHECKED_DISABLED = 'https://gw.alicdn.com/tfs/TB1aPabpwMPMeJjy1XcXXXpppXa-72-72.png';
 var UNCHECKED_DISABLED = exports.UNCHECKED_DISABLED = 'https://gw.alicdn.com/tfs/TB1lTuzpwoQMeJjy0FoXXcShVXa-72-72.png';
+
+/***/ }),
+
+/***/ 28:
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('wxc-cell', {
+    attrs: {
+      "hasTopBorder": _vm.hasTopBorder,
+      "hasBottomBorder": _vm.hasBottomBorder,
+      "accessible": true,
+      "ariaLabel": (_vm.title + ",状态为" + (_vm.checked ? '已选中' : '未选中') + "," + (_vm.disabled ? '不可更改' : '点击可切换'))
+    },
+    on: {
+      "wxcCellClicked": _vm.wxcCellClicked
+    }
+  }, [_c('text', {
+    staticClass: ["title-text"],
+    style: {
+      color: _vm.textColor
+    },
+    attrs: {
+      "slot": "title"
+    },
+    slot: "title"
+  }, [_vm._v(_vm._s(_vm.title))]), _c('image', {
+    staticClass: ["checkbox"],
+    attrs: {
+      "slot": "value",
+      "src": _vm.checkIcon
+    },
+    slot: "value"
+  })])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
 
 /***/ }),
 
@@ -1732,42 +1768,6 @@ function querystringify(obj, prefix) {
 exports.stringify = querystringify;
 exports.parse = querystring;
 
-
-/***/ }),
-
-/***/ 30:
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('wxc-cell', {
-    attrs: {
-      "hasTopBorder": _vm.hasTopBorder,
-      "hasBottomBorder": _vm.hasBottomBorder,
-      "accessible": true,
-      "ariaLabel": (_vm.title + ",状态为" + (_vm.checked ? '已选中' : '未选中') + "," + (_vm.disabled ? '不可更改' : '点击可切换'))
-    },
-    on: {
-      "wxcCellClicked": _vm.wxcCellClicked
-    }
-  }, [_c('text', {
-    staticClass: ["title-text"],
-    style: {
-      color: _vm.textColor
-    },
-    attrs: {
-      "slot": "title"
-    },
-    slot: "title"
-  }, [_vm._v(_vm._s(_vm.title))]), _c('image', {
-    staticClass: ["checkbox"],
-    attrs: {
-      "slot": "value",
-      "src": _vm.checkIcon
-    },
-    slot: "value"
-  })])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
 
 /***/ })
 

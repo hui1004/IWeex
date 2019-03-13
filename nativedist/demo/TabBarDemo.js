@@ -62,7 +62,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 289);
+/******/ 	return __webpack_require__(__webpack_require__.s = 282);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -862,67 +862,21 @@ module.exports = Url;
 
 /***/ }),
 
-/***/ 2:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * Check if we're required to add a port number.
- *
- * @see https://url.spec.whatwg.org/#default-port
- * @param {Number|String} port Port number we need to check
- * @param {String} protocol Protocol we need to check against.
- * @returns {Boolean} Is it a default port for the given protocol
- * @api private
- */
-module.exports = function required(port, protocol) {
-  protocol = protocol.split(':')[0];
-  port = +port;
-
-  if (!port) return false;
-
-  switch (protocol) {
-    case 'http':
-    case 'ws':
-    return port !== 80;
-
-    case 'https':
-    case 'wss':
-    return port !== 443;
-
-    case 'ftp':
-    return port !== 21;
-
-    case 'gopher':
-    return port !== 70;
-
-    case 'file':
-    return false;
-  }
-
-  return port !== 0;
-};
-
-
-/***/ }),
-
-/***/ 265:
+/***/ 101:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(266)
+__vue_styles__.push(__webpack_require__(102)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(267)
+__vue_exports__ = __webpack_require__(103)
 
 /* template */
-var __vue_template__ = __webpack_require__(268)
+var __vue_template__ = __webpack_require__(104)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -934,7 +888,7 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\Myproject\\YoloVideoAppByWeex\\YoloVideoApp\\src\\components\\weex-ui\\packages\\wxc-tab-bar\\index.vue"
+__vue_options__.__file = "D:\\MyPricticePro\\myWeexProject\\weexproject_test\\YoloVideoApp\\src\\components\\weex-ui\\packages\\wxc-tab-bar\\index.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
 __vue_options__._scopeId = "data-v-237d0d63"
@@ -953,7 +907,7 @@ module.exports = __vue_exports__
 
 /***/ }),
 
-/***/ 266:
+/***/ 102:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -1022,7 +976,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 267:
+/***/ 103:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1305,7 +1259,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 268:
+/***/ 104:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -1384,13 +1338,142 @@ module.exports.render._withStripped = true
 
 /***/ }),
 
-/***/ 289:
+/***/ 109:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _TabBarDemo = __webpack_require__(290);
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = {
+
+    // 正常模式的tab title配置
+    tabTitles: [{
+        title: '首页',
+        icon: 'https://gw.alicdn.com/tfs/TB1MWXdSpXXXXcmXXXXXXXXXXXX-72-72.png',
+        activeIcon: 'https://gw.alicdn.com/tfs/TB1kCk2SXXXXXXFXFXXXXXXXXXX-72-72.png'
+    }, {
+        title: '特别推荐',
+        icon: 'https://gw.alicdn.com/tfs/TB1ARoKSXXXXXc9XVXXXXXXXXXX-72-72.png',
+        activeIcon: 'https://gw.alicdn.com/tfs/TB19Z72SXXXXXamXFXXXXXXXXXX-72-72.png'
+    }, {
+        title: '消息中心',
+        icon: 'https://gw.alicdn.com/tfs/TB1VKMISXXXXXbyaXXXXXXXXXXX-72-72.png',
+        activeIcon: 'https://gw.alicdn.com/tfs/TB1aTgZSXXXXXazXFXXXXXXXXXX-72-72.png',
+        badge: 5
+    }, {
+        title: '我的主页',
+        icon: 'https://gw.alicdn.com/tfs/TB1Do3tSXXXXXXMaFXXXXXXXXXX-72-72.png',
+        activeIcon: 'https://gw.alicdn.com/tfs/TB1LiNhSpXXXXaWXXXXXXXXXXXX-72-72.png',
+        dot: true
+    }],
+    tabStyles: {
+        bgColor: '#FFFFFF',
+        titleColor: '#666666',
+        activeTitleColor: '#3D3D3D',
+        activeBgColor: '#FFFFFF',
+        isActiveTitleBold: true,
+        iconWidth: 70,
+        iconHeight: 70,
+        width: 180,
+        height: 120,
+        fontSize: 24,
+        textPaddingLeft: 10,
+        textPaddingRight: 10
+    },
+
+    // 使用 iconFont 模式的tab title配置
+    tabIconFontTitles: [{
+        title: '首页',
+        codePoint: '\uE623'
+    }, {
+        title: '特别推荐',
+        codePoint: '\uE608'
+    }, {
+        title: '消息中心',
+        codePoint: '\uE752',
+        badge: 5
+    }, {
+        title: '我的主页',
+        codePoint: '\uE601',
+        dot: true
+    }],
+    tabIconFontStyles: {
+        bgColor: '#FFFFFF',
+        titleColor: '#666666',
+        activeTitleColor: '#3D3D3D',
+        activeBgColor: '#FFFFFF',
+        isActiveTitleBold: true,
+        width: 160,
+        height: 120,
+        fontSize: 24,
+        textPaddingLeft: 10,
+        textPaddingRight: 10,
+        iconFontSize: 50,
+        iconFontMarginBottom: 8,
+        iconFontColor: '#333333',
+        activeIconFontColor: 'red',
+        iconFontUrl: '//at.alicdn.com/t/font_501019_mauqv15evc1pp66r.ttf'
+    }
+};
+
+/***/ }),
+
+/***/ 2:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Check if we're required to add a port number.
+ *
+ * @see https://url.spec.whatwg.org/#default-port
+ * @param {Number|String} port Port number we need to check
+ * @param {String} protocol Protocol we need to check against.
+ * @returns {Boolean} Is it a default port for the given protocol
+ * @api private
+ */
+module.exports = function required(port, protocol) {
+  protocol = protocol.split(':')[0];
+  port = +port;
+
+  if (!port) return false;
+
+  switch (protocol) {
+    case 'http':
+    case 'ws':
+    return port !== 80;
+
+    case 'https':
+    case 'wss':
+    return port !== 443;
+
+    case 'ftp':
+    return port !== 21;
+
+    case 'gopher':
+    return port !== 70;
+
+    case 'file':
+    return false;
+  }
+
+  return port !== 0;
+};
+
+
+/***/ }),
+
+/***/ 282:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _TabBarDemo = __webpack_require__(283);
 
 var _TabBarDemo2 = _interopRequireDefault(_TabBarDemo);
 
@@ -1401,21 +1484,21 @@ new Vue(_TabBarDemo2.default);
 
 /***/ }),
 
-/***/ 290:
+/***/ 283:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(291)
+__vue_styles__.push(__webpack_require__(284)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(292)
+__vue_exports__ = __webpack_require__(285)
 
 /* template */
-var __vue_template__ = __webpack_require__(519)
+var __vue_template__ = __webpack_require__(287)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -1427,7 +1510,7 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\Myproject\\YoloVideoAppByWeex\\YoloVideoApp\\src\\demo\\TabBarDemo.vue"
+__vue_options__.__file = "D:\\MyPricticePro\\myWeexProject\\weexproject_test\\YoloVideoApp\\src\\demo\\TabBarDemo.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
 __vue_options__._scopeId = "data-v-4e395438"
@@ -1446,7 +1529,7 @@ module.exports = __vue_exports__
 
 /***/ }),
 
-/***/ 291:
+/***/ 284:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -1459,7 +1542,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 292:
+/***/ 285:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1469,7 +1552,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _wxcTabBar = __webpack_require__(548);
+var _wxcTabBar = __webpack_require__(286);
 
 var _wxcTabBar2 = _interopRequireDefault(_wxcTabBar);
 
@@ -1477,7 +1560,7 @@ var _utils = __webpack_require__(0);
 
 var _utils2 = _interopRequireDefault(_utils);
 
-var _config = __webpack_require__(518);
+var _config = __webpack_require__(109);
 
 var _config2 = _interopRequireDefault(_config);
 
@@ -1552,6 +1635,76 @@ exports.default = {
         }
     }
 };
+
+/***/ }),
+
+/***/ 286:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _index = __webpack_require__(101);
+
+Object.defineProperty(exports, 'default', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_index).default;
+  }
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/***/ }),
+
+/***/ 287:
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('wxc-tab-bar', {
+    attrs: {
+      "tabTitles": _vm.tabTitles,
+      "tabStyles": _vm.tabStyles,
+      "titleType": "icon"
+    },
+    on: {
+      "wxcTabBarCurrentTabSelected": _vm.wxcTabBarCurrentTabSelected
+    }
+  }, [_c('div', {
+    staticClass: ["item-container"],
+    style: _vm.contentStyle
+  }, [_c('head', {
+    attrs: {
+      "title": "首页"
+    }
+  })], 1), _c('div', {
+    staticClass: ["item-container"],
+    style: _vm.contentStyle
+  }, [_c('head', {
+    attrs: {
+      "title": "特别推荐"
+    }
+  })], 1), _c('div', {
+    staticClass: ["item-container"],
+    style: _vm.contentStyle
+  }, [_c('head', {
+    attrs: {
+      "title": "消息中心"
+    }
+  })], 1), _c('div', {
+    staticClass: ["item-container"],
+    style: _vm.contentStyle
+  }, [_c('head', {
+    attrs: {
+      "title": "我的主页"
+    }
+  })], 1)])], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
 
 /***/ }),
 
@@ -1651,159 +1804,6 @@ exports.parse = querystring;
 
 /***/ }),
 
-/***/ 518:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.default = {
-
-    // 正常模式的tab title配置
-    tabTitles: [{
-        title: '首页',
-        icon: 'https://gw.alicdn.com/tfs/TB1MWXdSpXXXXcmXXXXXXXXXXXX-72-72.png',
-        activeIcon: 'https://gw.alicdn.com/tfs/TB1kCk2SXXXXXXFXFXXXXXXXXXX-72-72.png'
-    }, {
-        title: '特别推荐',
-        icon: 'https://gw.alicdn.com/tfs/TB1ARoKSXXXXXc9XVXXXXXXXXXX-72-72.png',
-        activeIcon: 'https://gw.alicdn.com/tfs/TB19Z72SXXXXXamXFXXXXXXXXXX-72-72.png'
-    }, {
-        title: '消息中心',
-        icon: 'https://gw.alicdn.com/tfs/TB1VKMISXXXXXbyaXXXXXXXXXXX-72-72.png',
-        activeIcon: 'https://gw.alicdn.com/tfs/TB1aTgZSXXXXXazXFXXXXXXXXXX-72-72.png',
-        badge: 5
-    }, {
-        title: '我的主页',
-        icon: 'https://gw.alicdn.com/tfs/TB1Do3tSXXXXXXMaFXXXXXXXXXX-72-72.png',
-        activeIcon: 'https://gw.alicdn.com/tfs/TB1LiNhSpXXXXaWXXXXXXXXXXXX-72-72.png',
-        dot: true
-    }],
-    tabStyles: {
-        bgColor: '#FFFFFF',
-        titleColor: '#666666',
-        activeTitleColor: '#3D3D3D',
-        activeBgColor: '#FFFFFF',
-        isActiveTitleBold: true,
-        iconWidth: 70,
-        iconHeight: 70,
-        width: 180,
-        height: 120,
-        fontSize: 24,
-        textPaddingLeft: 10,
-        textPaddingRight: 10
-    },
-
-    // 使用 iconFont 模式的tab title配置
-    tabIconFontTitles: [{
-        title: '首页',
-        codePoint: '\uE623'
-    }, {
-        title: '特别推荐',
-        codePoint: '\uE608'
-    }, {
-        title: '消息中心',
-        codePoint: '\uE752',
-        badge: 5
-    }, {
-        title: '我的主页',
-        codePoint: '\uE601',
-        dot: true
-    }],
-    tabIconFontStyles: {
-        bgColor: '#FFFFFF',
-        titleColor: '#666666',
-        activeTitleColor: '#3D3D3D',
-        activeBgColor: '#FFFFFF',
-        isActiveTitleBold: true,
-        width: 160,
-        height: 120,
-        fontSize: 24,
-        textPaddingLeft: 10,
-        textPaddingRight: 10,
-        iconFontSize: 50,
-        iconFontMarginBottom: 8,
-        iconFontColor: '#333333',
-        activeIconFontColor: 'red',
-        iconFontUrl: '//at.alicdn.com/t/font_501019_mauqv15evc1pp66r.ttf'
-    }
-};
-
-/***/ }),
-
-/***/ 519:
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('wxc-tab-bar', {
-    attrs: {
-      "tabTitles": _vm.tabTitles,
-      "tabStyles": _vm.tabStyles,
-      "titleType": "icon"
-    },
-    on: {
-      "wxcTabBarCurrentTabSelected": _vm.wxcTabBarCurrentTabSelected
-    }
-  }, [_c('div', {
-    staticClass: ["item-container"],
-    style: _vm.contentStyle
-  }, [_c('head', {
-    attrs: {
-      "title": "首页"
-    }
-  })], 1), _c('div', {
-    staticClass: ["item-container"],
-    style: _vm.contentStyle
-  }, [_c('head', {
-    attrs: {
-      "title": "特别推荐"
-    }
-  })], 1), _c('div', {
-    staticClass: ["item-container"],
-    style: _vm.contentStyle
-  }, [_c('head', {
-    attrs: {
-      "title": "消息中心"
-    }
-  })], 1), _c('div', {
-    staticClass: ["item-container"],
-    style: _vm.contentStyle
-  }, [_c('head', {
-    attrs: {
-      "title": "我的主页"
-    }
-  })], 1)])], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-
-/***/ }),
-
-/***/ 548:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _index = __webpack_require__(265);
-
-Object.defineProperty(exports, 'default', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_index).default;
-  }
-});
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/***/ }),
-
 /***/ 6:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1830,7 +1830,7 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\Myproject\\YoloVideoAppByWeex\\YoloVideoApp\\src\\components\\head.vue"
+__vue_options__.__file = "D:\\MyPricticePro\\myWeexProject\\weexproject_test\\YoloVideoApp\\src\\components\\head.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
 __vue_options__._scopeId = "data-v-573557d0"

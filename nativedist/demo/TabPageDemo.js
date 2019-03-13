@@ -62,7 +62,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 520);
+/******/ 	return __webpack_require__(__webpack_require__.s = 288);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -862,288 +862,21 @@ module.exports = Url;
 
 /***/ }),
 
-/***/ 10:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _indexWeex = __webpack_require__(4);
-
-var _indexWeex2 = _interopRequireDefault(_indexWeex);
-
-var _index = __webpack_require__(0);
-
-var _index2 = _interopRequireDefault(_index);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/**
- * CopyRight (C) 2017-2022 Alibaba Group Holding Limited.
- * Created by Tw93 on 18/03/22
- */
-var BindEnv = {
-  supportsEB: function supportsEB() {
-    return _indexWeex2.default.isSupportBinding && !_index2.default.env.isWeb();
-  },
-
-
-  /**
-   * 判断Android容器是否支持是否支持expressionBinding(处理方式很不一致)
-   * @returns {boolean}
-   */
-  supportsEBForAndroid: function supportsEBForAndroid() {
-    return _index2.default.env.isAndroid() && BindEnv.supportsEB();
-  },
-
-
-  /**
-   * 判断IOS容器是否支持是否支持expressionBinding
-   * @returns {boolean}
-   */
-  supportsEBForIos: function supportsEBForIos() {
-    return _index2.default.env.isIOS() && BindEnv.supportsEB();
-  }
-};
-
-exports.default = BindEnv;
-
-/***/ }),
-
-/***/ 199:
-/***/ (function(module, exports, __webpack_require__) {
-
-var __vue_exports__, __vue_options__
-var __vue_styles__ = []
-
-/* script */
-__vue_exports__ = __webpack_require__(200)
-
-/* template */
-var __vue_template__ = __webpack_require__(201)
-__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-if (
-  typeof __vue_exports__.default === "object" ||
-  typeof __vue_exports__.default === "function"
-) {
-if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-__vue_options__ = __vue_exports__ = __vue_exports__.default
-}
-if (typeof __vue_options__ === "function") {
-  __vue_options__ = __vue_options__.options
-}
-__vue_options__.__file = "D:\\Myproject\\YoloVideoAppByWeex\\YoloVideoApp\\src\\components\\weex-ui\\packages\\wxc-pan-item\\index.vue"
-__vue_options__.render = __vue_template__.render
-__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__.style = __vue_options__.style || {}
-__vue_styles__.forEach(function (module) {
-  for (var name in module) {
-    __vue_options__.style[name] = module[name]
-  }
-})
-if (typeof __register_static_styles__ === "function") {
-  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
-}
-
-module.exports = __vue_exports__
-
-
-/***/ }),
-
-/***/ 2:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * Check if we're required to add a port number.
- *
- * @see https://url.spec.whatwg.org/#default-port
- * @param {Number|String} port Port number we need to check
- * @param {String} protocol Protocol we need to check against.
- * @returns {Boolean} Is it a default port for the given protocol
- * @api private
- */
-module.exports = function required(port, protocol) {
-  protocol = protocol.split(':')[0];
-  port = +port;
-
-  if (!port) return false;
-
-  switch (protocol) {
-    case 'http':
-    case 'ws':
-    return port !== 80;
-
-    case 'https':
-    case 'wss':
-    return port !== 443;
-
-    case 'ftp':
-    return port !== 21;
-
-    case 'gopher':
-    return port !== 70;
-
-    case 'file':
-    return false;
-  }
-
-  return port !== 0;
-};
-
-
-/***/ }),
-
-/***/ 200:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _indexWeex = __webpack_require__(4);
-
-var _indexWeex2 = _interopRequireDefault(_indexWeex);
-
-var _utils = __webpack_require__(0);
-
-var _utils2 = _interopRequireDefault(_utils);
-
-var _bindEnv = __webpack_require__(10);
-
-var _bindEnv2 = _interopRequireDefault(_bindEnv);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = {
-  props: {
-    url: {
-      type: String,
-      default: ''
-    },
-    needSlider: {
-      type: Boolean,
-      default: true
-    }
-  },
-  data: function data() {
-    return {
-      isPanning: false,
-      appearMap: [],
-      supportAndroid: _bindEnv2.default.supportsEBForAndroid()
-    };
-  },
-  mounted: function mounted() {
-    var _this = this;
-
-    setTimeout(function () {
-      if (_this.supportAndroid && _this.needSlider) {
-        var element = _this.$refs['wxc-pan-item'];
-        _indexWeex2.default.prepare && _indexWeex2.default.prepare({
-          anchor: element.ref,
-          eventType: 'pan'
-        });
-      }
-    }, 300);
-  },
-
-  methods: {
-    itemClicked: function itemClicked() {
-      if (this.isPanning) {
-        return;
-      }
-      this.url && _utils2.default.goToH5Page(this.url, true);
-      this.$emit('wxcPanItemClicked', { extId: this.extId });
-    },
-    dispatchPan: function dispatchPan(e) {
-      var _this2 = this;
-
-      if (this.supportAndroid && this.needSlider) {
-        if (e.state === 'start') {
-          this.isPanning = true;
-          var element = this.$refs['wxc-pan-item'];
-          element && this.$emit('wxcPanItemPan', { element: element });
-        } else if (e.state === 'end') {
-          setTimeout(function () {
-            _this2.isPanning = false;
-          }, 50);
-        }
-      }
-    }
-  }
-}; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/***/ }),
-
-/***/ 201:
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [(_vm.supportAndroid) ? _c('div', {
-    ref: "wxc-pan-item",
-    on: {
-      "horizontalpan": _vm.dispatchPan,
-      "appear": _vm.onItemAppear,
-      "disappear": _vm.onItemDisAppear,
-      "click": _vm.itemClicked
-    }
-  }, [_vm._t("default")], 2) : _c('div', {
-    ref: "wxc-pan-item",
-    on: {
-      "click": _vm.itemClicked
-    }
-  }, [_vm._t("default")], 2)])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-
-/***/ }),
-
-/***/ 275:
+/***/ 105:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(276)
+__vue_styles__.push(__webpack_require__(106)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(277)
+__vue_exports__ = __webpack_require__(107)
 
 /* template */
-var __vue_template__ = __webpack_require__(278)
+var __vue_template__ = __webpack_require__(108)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -1155,7 +888,7 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\Myproject\\YoloVideoAppByWeex\\YoloVideoApp\\src\\components\\weex-ui\\packages\\wxc-tab-page\\index.vue"
+__vue_options__.__file = "D:\\MyPricticePro\\myWeexProject\\weexproject_test\\YoloVideoApp\\src\\components\\weex-ui\\packages\\wxc-tab-page\\index.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
 __vue_options__._scopeId = "data-v-03ef1bca"
@@ -1174,7 +907,7 @@ module.exports = __vue_exports__
 
 /***/ }),
 
-/***/ 276:
+/***/ 106:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -1215,7 +948,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 277:
+/***/ 107:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1229,7 +962,7 @@ var _utils = __webpack_require__(0);
 
 var _utils2 = _interopRequireDefault(_utils);
 
-var _bindEnv = __webpack_require__(10);
+var _bindEnv = __webpack_require__(5);
 
 var _bindEnv2 = _interopRequireDefault(_bindEnv);
 
@@ -1617,7 +1350,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 278:
+/***/ 108:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -1717,6 +1450,497 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     ref: "tab-container",
     staticClass: ["tab-container"]
   }, [_vm._t("default")], 2)])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+
+/***/ 109:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = {
+
+    // 正常模式的tab title配置
+    tabTitles: [{
+        title: '首页',
+        icon: 'https://gw.alicdn.com/tfs/TB1MWXdSpXXXXcmXXXXXXXXXXXX-72-72.png',
+        activeIcon: 'https://gw.alicdn.com/tfs/TB1kCk2SXXXXXXFXFXXXXXXXXXX-72-72.png'
+    }, {
+        title: '特别推荐',
+        icon: 'https://gw.alicdn.com/tfs/TB1ARoKSXXXXXc9XVXXXXXXXXXX-72-72.png',
+        activeIcon: 'https://gw.alicdn.com/tfs/TB19Z72SXXXXXamXFXXXXXXXXXX-72-72.png'
+    }, {
+        title: '消息中心',
+        icon: 'https://gw.alicdn.com/tfs/TB1VKMISXXXXXbyaXXXXXXXXXXX-72-72.png',
+        activeIcon: 'https://gw.alicdn.com/tfs/TB1aTgZSXXXXXazXFXXXXXXXXXX-72-72.png',
+        badge: 5
+    }, {
+        title: '我的主页',
+        icon: 'https://gw.alicdn.com/tfs/TB1Do3tSXXXXXXMaFXXXXXXXXXX-72-72.png',
+        activeIcon: 'https://gw.alicdn.com/tfs/TB1LiNhSpXXXXaWXXXXXXXXXXXX-72-72.png',
+        dot: true
+    }],
+    tabStyles: {
+        bgColor: '#FFFFFF',
+        titleColor: '#666666',
+        activeTitleColor: '#3D3D3D',
+        activeBgColor: '#FFFFFF',
+        isActiveTitleBold: true,
+        iconWidth: 70,
+        iconHeight: 70,
+        width: 180,
+        height: 120,
+        fontSize: 24,
+        textPaddingLeft: 10,
+        textPaddingRight: 10
+    },
+
+    // 使用 iconFont 模式的tab title配置
+    tabIconFontTitles: [{
+        title: '首页',
+        codePoint: '\uE623'
+    }, {
+        title: '特别推荐',
+        codePoint: '\uE608'
+    }, {
+        title: '消息中心',
+        codePoint: '\uE752',
+        badge: 5
+    }, {
+        title: '我的主页',
+        codePoint: '\uE601',
+        dot: true
+    }],
+    tabIconFontStyles: {
+        bgColor: '#FFFFFF',
+        titleColor: '#666666',
+        activeTitleColor: '#3D3D3D',
+        activeBgColor: '#FFFFFF',
+        isActiveTitleBold: true,
+        width: 160,
+        height: 120,
+        fontSize: 24,
+        textPaddingLeft: 10,
+        textPaddingRight: 10,
+        iconFontSize: 50,
+        iconFontMarginBottom: 8,
+        iconFontColor: '#333333',
+        activeIconFontColor: 'red',
+        iconFontUrl: '//at.alicdn.com/t/font_501019_mauqv15evc1pp66r.ttf'
+    }
+};
+
+/***/ }),
+
+/***/ 2:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Check if we're required to add a port number.
+ *
+ * @see https://url.spec.whatwg.org/#default-port
+ * @param {Number|String} port Port number we need to check
+ * @param {String} protocol Protocol we need to check against.
+ * @returns {Boolean} Is it a default port for the given protocol
+ * @api private
+ */
+module.exports = function required(port, protocol) {
+  protocol = protocol.split(':')[0];
+  port = +port;
+
+  if (!port) return false;
+
+  switch (protocol) {
+    case 'http':
+    case 'ws':
+    return port !== 80;
+
+    case 'https':
+    case 'wss':
+    return port !== 443;
+
+    case 'ftp':
+    return port !== 21;
+
+    case 'gopher':
+    return port !== 70;
+
+    case 'file':
+    return false;
+  }
+
+  return port !== 0;
+};
+
+
+/***/ }),
+
+/***/ 288:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _TabPageDemo = __webpack_require__(289);
+
+var _TabPageDemo2 = _interopRequireDefault(_TabPageDemo);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_TabPageDemo2.default.el = '#root';
+new Vue(_TabPageDemo2.default);
+
+/***/ }),
+
+/***/ 289:
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(290)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(291)
+
+/* template */
+var __vue_template__ = __webpack_require__(295)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "D:\\MyPricticePro\\myWeexProject\\weexproject_test\\YoloVideoApp\\src\\demo\\TabPageDemo.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-41b9d3b4"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
+
+/***/ }),
+
+/***/ 290:
+/***/ (function(module, exports) {
+
+module.exports = {
+  "item-container": {
+    "width": "750",
+    "backgroundColor": "#f2f3f4"
+  },
+  "border-cell": {
+    "backgroundColor": "#f2f3f4",
+    "width": "750",
+    "height": "24",
+    "alignItems": "center",
+    "justifyContent": "center",
+    "borderBottomWidth": "1",
+    "borderStyle": "solid",
+    "borderColor": "#e0e0e0"
+  },
+  "cell": {
+    "backgroundColor": "#ffffff"
+  },
+  "content": {
+    "width": "750",
+    "height": "300",
+    "borderBottomWidth": "1",
+    "alignItems": "center",
+    "justifyContent": "center"
+  }
+}
+
+/***/ }),
+
+/***/ 291:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _head = __webpack_require__(6);
+
+var _head2 = _interopRequireDefault(_head);
+
+var _config = __webpack_require__(109);
+
+var _config2 = _interopRequireDefault(_config);
+
+var _wxcTabPage = __webpack_require__(292);
+
+var _wxcTabPage2 = _interopRequireDefault(_wxcTabPage);
+
+var _wxcPanItem = __webpack_require__(293);
+
+var _wxcPanItem2 = _interopRequireDefault(_wxcPanItem);
+
+var _bindEnv = __webpack_require__(294);
+
+var _bindEnv2 = _interopRequireDefault(_bindEnv);
+
+var _utils = __webpack_require__(0);
+
+var _utils2 = _interopRequireDefault(_utils);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } } //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var dom = weex.requireModule('dom');
+/*不要使用这种方式引入，会导致js文件体积很大，要引入项目中的vue组件，参考 weex-ui.vue demo*/
+// import { WxcTabPage, WxcPanItem, Utils, BindEnv } from 'weex-ui';
+exports.default = {
+    components: {
+        Head: _head2.default,
+        WxcTabPage: _wxcTabPage2.default, WxcPanItem: _wxcPanItem2.default },
+    data: function data() {
+        return {
+            tabTitles: _config2.default.tabTitles,
+            tabStyles: _config2.default.tabStyles,
+            tabList: [],
+            demoList: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+            tabPageHeight: 1334
+        };
+    },
+    created: function created() {
+        this.tabPageHeight = _utils2.default.env.getPageHeight();
+        this.tabList = [].concat(_toConsumableArray(Array(this.tabTitles.length).keys())).map(function (i) {
+            return [];
+        });
+        Vue.set(this.tabList, 0, this.demoList);
+    },
+
+    methods: {
+        wxcTabPageCurrentTabSelected: function wxcTabPageCurrentTabSelected(e) {
+            var self = this;
+            var index = e.page;
+            /* Unloaded tab analog data request */
+            if (!_utils2.default.isNonEmptyArray(self.tabList[index])) {
+                setTimeout(function () {
+                    Vue.set(self.tabList, index, self.demoList);
+                }, 100);
+            }
+        },
+        wxcPanItemPan: function wxcPanItemPan(e) {
+            if (_bindEnv2.default.supportsEBForAndroid()) {
+                this.$refs['wxc-tab-page'].bindExp(e.element);
+            }
+        }
+    }
+};
+
+/***/ }),
+
+/***/ 292:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _index = __webpack_require__(105);
+
+Object.defineProperty(exports, 'default', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_index).default;
+  }
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/***/ }),
+
+/***/ 293:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _index = __webpack_require__(82);
+
+Object.defineProperty(exports, 'default', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_index).default;
+  }
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/***/ }),
+
+/***/ 294:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _bindEnv = __webpack_require__(5);
+
+Object.defineProperty(exports, 'default', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_bindEnv).default;
+  }
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/***/ }),
+
+/***/ 295:
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('head', {
+    attrs: {
+      "title": "TabPage"
+    }
+  }), _c('wxc-tab-page', {
+    ref: "wxc-tab-page",
+    attrs: {
+      "tabTitles": _vm.tabTitles,
+      "tabStyles": _vm.tabStyles,
+      "titleType": "icon",
+      "tabPageHeight": _vm.tabPageHeight
+    },
+    on: {
+      "wxcTabPageCurrentTabSelected": _vm.wxcTabPageCurrentTabSelected
+    }
+  }, _vm._l((_vm.tabList), function(v, index) {
+    return _c('list', {
+      key: index,
+      staticClass: ["item-container"],
+      style: {
+        height: (_vm.tabPageHeight - _vm.tabStyles.height) + 'px'
+      }
+    }, [_c('cell', {
+      staticClass: ["border-cell"],
+      appendAsTree: true,
+      attrs: {
+        "append": "tree"
+      }
+    }), _vm._l((v), function(demo, key) {
+      return _c('cell', {
+        key: key,
+        staticClass: ["cell"],
+        appendAsTree: true,
+        attrs: {
+          "append": "tree"
+        }
+      }, [_c('wxc-pan-item', {
+        attrs: {
+          "extId": '1-' + (v) + '-' + (key),
+          "url": "https://h5.m.taobao.com/trip/ticket/detail/index.html?scenicId=2675"
+        },
+        on: {
+          "wxcPanItemPan": _vm.wxcPanItemPan
+        }
+      }, [_c('div', {
+        staticClass: ["content"]
+      }, [_c('text', [_vm._v(_vm._s(key))])])])], 1)
+    })], 2)
+  }))], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 
@@ -2622,448 +2846,55 @@ var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbo
 
 /***/ }),
 
-/***/ 518:
+/***/ 5:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
-exports.default = {
 
-    // 正常模式的tab title配置
-    tabTitles: [{
-        title: '首页',
-        icon: 'https://gw.alicdn.com/tfs/TB1MWXdSpXXXXcmXXXXXXXXXXXX-72-72.png',
-        activeIcon: 'https://gw.alicdn.com/tfs/TB1kCk2SXXXXXXFXFXXXXXXXXXX-72-72.png'
-    }, {
-        title: '特别推荐',
-        icon: 'https://gw.alicdn.com/tfs/TB1ARoKSXXXXXc9XVXXXXXXXXXX-72-72.png',
-        activeIcon: 'https://gw.alicdn.com/tfs/TB19Z72SXXXXXamXFXXXXXXXXXX-72-72.png'
-    }, {
-        title: '消息中心',
-        icon: 'https://gw.alicdn.com/tfs/TB1VKMISXXXXXbyaXXXXXXXXXXX-72-72.png',
-        activeIcon: 'https://gw.alicdn.com/tfs/TB1aTgZSXXXXXazXFXXXXXXXXXX-72-72.png',
-        badge: 5
-    }, {
-        title: '我的主页',
-        icon: 'https://gw.alicdn.com/tfs/TB1Do3tSXXXXXXMaFXXXXXXXXXX-72-72.png',
-        activeIcon: 'https://gw.alicdn.com/tfs/TB1LiNhSpXXXXaWXXXXXXXXXXXX-72-72.png',
-        dot: true
-    }],
-    tabStyles: {
-        bgColor: '#FFFFFF',
-        titleColor: '#666666',
-        activeTitleColor: '#3D3D3D',
-        activeBgColor: '#FFFFFF',
-        isActiveTitleBold: true,
-        iconWidth: 70,
-        iconHeight: 70,
-        width: 180,
-        height: 120,
-        fontSize: 24,
-        textPaddingLeft: 10,
-        textPaddingRight: 10
-    },
+var _indexWeex = __webpack_require__(4);
 
-    // 使用 iconFont 模式的tab title配置
-    tabIconFontTitles: [{
-        title: '首页',
-        codePoint: '\uE623'
-    }, {
-        title: '特别推荐',
-        codePoint: '\uE608'
-    }, {
-        title: '消息中心',
-        codePoint: '\uE752',
-        badge: 5
-    }, {
-        title: '我的主页',
-        codePoint: '\uE601',
-        dot: true
-    }],
-    tabIconFontStyles: {
-        bgColor: '#FFFFFF',
-        titleColor: '#666666',
-        activeTitleColor: '#3D3D3D',
-        activeBgColor: '#FFFFFF',
-        isActiveTitleBold: true,
-        width: 160,
-        height: 120,
-        fontSize: 24,
-        textPaddingLeft: 10,
-        textPaddingRight: 10,
-        iconFontSize: 50,
-        iconFontMarginBottom: 8,
-        iconFontColor: '#333333',
-        activeIconFontColor: 'red',
-        iconFontUrl: '//at.alicdn.com/t/font_501019_mauqv15evc1pp66r.ttf'
-    }
+var _indexWeex2 = _interopRequireDefault(_indexWeex);
+
+var _index = __webpack_require__(0);
+
+var _index2 = _interopRequireDefault(_index);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * CopyRight (C) 2017-2022 Alibaba Group Holding Limited.
+ * Created by Tw93 on 18/03/22
+ */
+var BindEnv = {
+  supportsEB: function supportsEB() {
+    return _indexWeex2.default.isSupportBinding && !_index2.default.env.isWeb();
+  },
+
+
+  /**
+   * 判断Android容器是否支持是否支持expressionBinding(处理方式很不一致)
+   * @returns {boolean}
+   */
+  supportsEBForAndroid: function supportsEBForAndroid() {
+    return _index2.default.env.isAndroid() && BindEnv.supportsEB();
+  },
+
+
+  /**
+   * 判断IOS容器是否支持是否支持expressionBinding
+   * @returns {boolean}
+   */
+  supportsEBForIos: function supportsEBForIos() {
+    return _index2.default.env.isIOS() && BindEnv.supportsEB();
+  }
 };
 
-/***/ }),
-
-/***/ 520:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _TabPageDemo = __webpack_require__(521);
-
-var _TabPageDemo2 = _interopRequireDefault(_TabPageDemo);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-_TabPageDemo2.default.el = '#root';
-new Vue(_TabPageDemo2.default);
-
-/***/ }),
-
-/***/ 521:
-/***/ (function(module, exports, __webpack_require__) {
-
-var __vue_exports__, __vue_options__
-var __vue_styles__ = []
-
-/* styles */
-__vue_styles__.push(__webpack_require__(522)
-)
-
-/* script */
-__vue_exports__ = __webpack_require__(523)
-
-/* template */
-var __vue_template__ = __webpack_require__(524)
-__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-if (
-  typeof __vue_exports__.default === "object" ||
-  typeof __vue_exports__.default === "function"
-) {
-if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-__vue_options__ = __vue_exports__ = __vue_exports__.default
-}
-if (typeof __vue_options__ === "function") {
-  __vue_options__ = __vue_options__.options
-}
-__vue_options__.__file = "D:\\Myproject\\YoloVideoAppByWeex\\YoloVideoApp\\src\\demo\\TabPageDemo.vue"
-__vue_options__.render = __vue_template__.render
-__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-41b9d3b4"
-__vue_options__.style = __vue_options__.style || {}
-__vue_styles__.forEach(function (module) {
-  for (var name in module) {
-    __vue_options__.style[name] = module[name]
-  }
-})
-if (typeof __register_static_styles__ === "function") {
-  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
-}
-
-module.exports = __vue_exports__
-
-
-/***/ }),
-
-/***/ 522:
-/***/ (function(module, exports) {
-
-module.exports = {
-  "item-container": {
-    "width": "750",
-    "backgroundColor": "#f2f3f4"
-  },
-  "border-cell": {
-    "backgroundColor": "#f2f3f4",
-    "width": "750",
-    "height": "24",
-    "alignItems": "center",
-    "justifyContent": "center",
-    "borderBottomWidth": "1",
-    "borderStyle": "solid",
-    "borderColor": "#e0e0e0"
-  },
-  "cell": {
-    "backgroundColor": "#ffffff"
-  },
-  "content": {
-    "width": "750",
-    "height": "300",
-    "borderBottomWidth": "1",
-    "alignItems": "center",
-    "justifyContent": "center"
-  }
-}
-
-/***/ }),
-
-/***/ 523:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _head = __webpack_require__(6);
-
-var _head2 = _interopRequireDefault(_head);
-
-var _config = __webpack_require__(518);
-
-var _config2 = _interopRequireDefault(_config);
-
-var _wxcTabPage = __webpack_require__(549);
-
-var _wxcTabPage2 = _interopRequireDefault(_wxcTabPage);
-
-var _wxcPanItem = __webpack_require__(550);
-
-var _wxcPanItem2 = _interopRequireDefault(_wxcPanItem);
-
-var _bindEnv = __webpack_require__(551);
-
-var _bindEnv2 = _interopRequireDefault(_bindEnv);
-
-var _utils = __webpack_require__(0);
-
-var _utils2 = _interopRequireDefault(_utils);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } } //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-var dom = weex.requireModule('dom');
-/*不要使用这种方式引入，会导致js文件体积很大，要引入项目中的vue组件，参考 weex-ui.vue demo*/
-// import { WxcTabPage, WxcPanItem, Utils, BindEnv } from 'weex-ui';
-exports.default = {
-    components: {
-        Head: _head2.default,
-        WxcTabPage: _wxcTabPage2.default, WxcPanItem: _wxcPanItem2.default },
-    data: function data() {
-        return {
-            tabTitles: _config2.default.tabTitles,
-            tabStyles: _config2.default.tabStyles,
-            tabList: [],
-            demoList: [1, 2, 3, 4, 5, 6, 7, 8, 9],
-            tabPageHeight: 1334
-        };
-    },
-    created: function created() {
-        this.tabPageHeight = _utils2.default.env.getPageHeight();
-        this.tabList = [].concat(_toConsumableArray(Array(this.tabTitles.length).keys())).map(function (i) {
-            return [];
-        });
-        Vue.set(this.tabList, 0, this.demoList);
-    },
-
-    methods: {
-        wxcTabPageCurrentTabSelected: function wxcTabPageCurrentTabSelected(e) {
-            var self = this;
-            var index = e.page;
-            /* Unloaded tab analog data request */
-            if (!_utils2.default.isNonEmptyArray(self.tabList[index])) {
-                setTimeout(function () {
-                    Vue.set(self.tabList, index, self.demoList);
-                }, 100);
-            }
-        },
-        wxcPanItemPan: function wxcPanItemPan(e) {
-            if (_bindEnv2.default.supportsEBForAndroid()) {
-                this.$refs['wxc-tab-page'].bindExp(e.element);
-            }
-        }
-    }
-};
-
-/***/ }),
-
-/***/ 524:
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('head', {
-    attrs: {
-      "title": "TabPage"
-    }
-  }), _c('wxc-tab-page', {
-    ref: "wxc-tab-page",
-    attrs: {
-      "tabTitles": _vm.tabTitles,
-      "tabStyles": _vm.tabStyles,
-      "titleType": "icon",
-      "tabPageHeight": _vm.tabPageHeight
-    },
-    on: {
-      "wxcTabPageCurrentTabSelected": _vm.wxcTabPageCurrentTabSelected
-    }
-  }, _vm._l((_vm.tabList), function(v, index) {
-    return _c('list', {
-      key: index,
-      staticClass: ["item-container"],
-      style: {
-        height: (_vm.tabPageHeight - _vm.tabStyles.height) + 'px'
-      }
-    }, [_c('cell', {
-      staticClass: ["border-cell"],
-      appendAsTree: true,
-      attrs: {
-        "append": "tree"
-      }
-    }), _vm._l((v), function(demo, key) {
-      return _c('cell', {
-        key: key,
-        staticClass: ["cell"],
-        appendAsTree: true,
-        attrs: {
-          "append": "tree"
-        }
-      }, [_c('wxc-pan-item', {
-        attrs: {
-          "extId": '1-' + (v) + '-' + (key),
-          "url": "https://h5.m.taobao.com/trip/ticket/detail/index.html?scenicId=2675"
-        },
-        on: {
-          "wxcPanItemPan": _vm.wxcPanItemPan
-        }
-      }, [_c('div', {
-        staticClass: ["content"]
-      }, [_c('text', [_vm._v(_vm._s(key))])])])], 1)
-    })], 2)
-  }))], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-
-/***/ }),
-
-/***/ 549:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _index = __webpack_require__(275);
-
-Object.defineProperty(exports, 'default', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_index).default;
-  }
-});
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/***/ }),
-
-/***/ 550:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _index = __webpack_require__(199);
-
-Object.defineProperty(exports, 'default', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_index).default;
-  }
-});
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/***/ }),
-
-/***/ 551:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _bindEnv = __webpack_require__(10);
-
-Object.defineProperty(exports, 'default', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_bindEnv).default;
-  }
-});
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+exports.default = BindEnv;
 
 /***/ }),
 
@@ -3093,7 +2924,7 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\Myproject\\YoloVideoAppByWeex\\YoloVideoApp\\src\\components\\head.vue"
+__vue_options__.__file = "D:\\MyPricticePro\\myWeexProject\\weexproject_test\\YoloVideoApp\\src\\components\\head.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
 __vue_options__._scopeId = "data-v-573557d0"
@@ -3206,6 +3037,175 @@ exports.default = {
         }
     }
 };
+
+/***/ }),
+
+/***/ 82:
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* script */
+__vue_exports__ = __webpack_require__(83)
+
+/* template */
+var __vue_template__ = __webpack_require__(84)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "D:\\MyPricticePro\\myWeexProject\\weexproject_test\\YoloVideoApp\\src\\components\\weex-ui\\packages\\wxc-pan-item\\index.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
+
+/***/ }),
+
+/***/ 83:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _indexWeex = __webpack_require__(4);
+
+var _indexWeex2 = _interopRequireDefault(_indexWeex);
+
+var _utils = __webpack_require__(0);
+
+var _utils2 = _interopRequireDefault(_utils);
+
+var _bindEnv = __webpack_require__(5);
+
+var _bindEnv2 = _interopRequireDefault(_bindEnv);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+  props: {
+    url: {
+      type: String,
+      default: ''
+    },
+    needSlider: {
+      type: Boolean,
+      default: true
+    }
+  },
+  data: function data() {
+    return {
+      isPanning: false,
+      appearMap: [],
+      supportAndroid: _bindEnv2.default.supportsEBForAndroid()
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    setTimeout(function () {
+      if (_this.supportAndroid && _this.needSlider) {
+        var element = _this.$refs['wxc-pan-item'];
+        _indexWeex2.default.prepare && _indexWeex2.default.prepare({
+          anchor: element.ref,
+          eventType: 'pan'
+        });
+      }
+    }, 300);
+  },
+
+  methods: {
+    itemClicked: function itemClicked() {
+      if (this.isPanning) {
+        return;
+      }
+      this.url && _utils2.default.goToH5Page(this.url, true);
+      this.$emit('wxcPanItemClicked', { extId: this.extId });
+    },
+    dispatchPan: function dispatchPan(e) {
+      var _this2 = this;
+
+      if (this.supportAndroid && this.needSlider) {
+        if (e.state === 'start') {
+          this.isPanning = true;
+          var element = this.$refs['wxc-pan-item'];
+          element && this.$emit('wxcPanItemPan', { element: element });
+        } else if (e.state === 'end') {
+          setTimeout(function () {
+            _this2.isPanning = false;
+          }, 50);
+        }
+      }
+    }
+  }
+}; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/***/ }),
+
+/***/ 84:
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [(_vm.supportAndroid) ? _c('div', {
+    ref: "wxc-pan-item",
+    on: {
+      "horizontalpan": _vm.dispatchPan,
+      "appear": _vm.onItemAppear,
+      "disappear": _vm.onItemDisAppear,
+      "click": _vm.itemClicked
+    }
+  }, [_vm._t("default")], 2) : _c('div', {
+    ref: "wxc-pan-item",
+    on: {
+      "click": _vm.itemClicked
+    }
+  }, [_vm._t("default")], 2)])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
 
 /***/ }),
 

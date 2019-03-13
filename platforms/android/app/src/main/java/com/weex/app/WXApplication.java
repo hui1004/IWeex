@@ -1,12 +1,8 @@
 package com.weex.app;
 
 import android.app.Application;
-
-<<<<<<< HEAD
 import com.weex.app.component.MWXHost;
-=======
 import com.alibaba.android.bindingx.plugin.weex.BindingX;
->>>>>>> 2f3a698593065cbfbe902398609b60b1704bbd1f
 import com.weex.app.extend.ImageAdapter;
 import com.weex.app.extend.WXEventModule;
 import com.weex.app.modle.ParamsModule;

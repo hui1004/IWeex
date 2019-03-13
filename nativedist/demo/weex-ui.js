@@ -62,7 +62,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 530);
+/******/ 	return __webpack_require__(__webpack_require__.s = 301);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -862,58 +862,6 @@ module.exports = Url;
 
 /***/ }),
 
-/***/ 10:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _indexWeex = __webpack_require__(4);
-
-var _indexWeex2 = _interopRequireDefault(_indexWeex);
-
-var _index = __webpack_require__(0);
-
-var _index2 = _interopRequireDefault(_index);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/**
- * CopyRight (C) 2017-2022 Alibaba Group Holding Limited.
- * Created by Tw93 on 18/03/22
- */
-var BindEnv = {
-  supportsEB: function supportsEB() {
-    return _indexWeex2.default.isSupportBinding && !_index2.default.env.isWeb();
-  },
-
-
-  /**
-   * 判断Android容器是否支持是否支持expressionBinding(处理方式很不一致)
-   * @returns {boolean}
-   */
-  supportsEBForAndroid: function supportsEBForAndroid() {
-    return _index2.default.env.isAndroid() && BindEnv.supportsEB();
-  },
-
-
-  /**
-   * 判断IOS容器是否支持是否支持expressionBinding
-   * @returns {boolean}
-   */
-  supportsEBForIos: function supportsEBForIos() {
-    return _index2.default.env.isIOS() && BindEnv.supportsEB();
-  }
-};
-
-exports.default = BindEnv;
-
-/***/ }),
-
 /***/ 100:
 /***/ (function(module, exports) {
 
@@ -1003,6 +951,51 @@ module.exports = function required(port, protocol) {
 
   return port !== 0;
 };
+
+
+/***/ }),
+
+/***/ 29:
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(30)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(31)
+
+/* template */
+var __vue_template__ = __webpack_require__(32)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "D:\\MyPricticePro\\myWeexProject\\weexproject_test\\YoloVideoApp\\src\\components\\weex-ui\\packages\\wxc-grid-select\\option.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-2897cda8"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
 
 
 /***/ }),
@@ -1103,52 +1096,7 @@ exports.parse = querystring;
 
 /***/ }),
 
-/***/ 31:
-/***/ (function(module, exports, __webpack_require__) {
-
-var __vue_exports__, __vue_options__
-var __vue_styles__ = []
-
-/* styles */
-__vue_styles__.push(__webpack_require__(32)
-)
-
-/* script */
-__vue_exports__ = __webpack_require__(33)
-
-/* template */
-var __vue_template__ = __webpack_require__(34)
-__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-if (
-  typeof __vue_exports__.default === "object" ||
-  typeof __vue_exports__.default === "function"
-) {
-if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-__vue_options__ = __vue_exports__ = __vue_exports__.default
-}
-if (typeof __vue_options__ === "function") {
-  __vue_options__ = __vue_options__.options
-}
-__vue_options__.__file = "D:\\Myproject\\YoloVideoAppByWeex\\YoloVideoApp\\src\\components\\weex-ui\\packages\\wxc-grid-select\\option.vue"
-__vue_options__.render = __vue_template__.render
-__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-2897cda8"
-__vue_options__.style = __vue_options__.style || {}
-__vue_styles__.forEach(function (module) {
-  for (var name in module) {
-    __vue_options__.style[name] = module[name]
-  }
-})
-if (typeof __register_static_styles__ === "function") {
-  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
-}
-
-module.exports = __vue_exports__
-
-
-/***/ }),
-
-/***/ 32:
+/***/ 30:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -1177,7 +1125,522 @@ module.exports = {
 
 /***/ }),
 
-/***/ 33:
+/***/ 301:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _weexUi = __webpack_require__(302);
+
+var _weexUi2 = _interopRequireDefault(_weexUi);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_weexUi2.default.el = '#root';
+new Vue(_weexUi2.default);
+
+/***/ }),
+
+/***/ 302:
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(303)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(304)
+
+/* template */
+var __vue_template__ = __webpack_require__(308)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "D:\\MyPricticePro\\myWeexProject\\weexproject_test\\YoloVideoApp\\src\\demo\\weex-ui.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-066d01ed"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
+
+/***/ }),
+
+/***/ 303:
+/***/ (function(module, exports) {
+
+module.exports = {
+  "cell": {
+    "width": "750",
+    "backgroundColor": "#FFFFFF",
+    "paddingTop": "20",
+    "paddingRight": "20",
+    "paddingBottom": "20",
+    "paddingLeft": "20",
+    "marginTop": "20"
+  },
+  "head": {
+    "height": "70",
+    "width": "710",
+    "justifyContent": "center",
+    "borderBottomWidth": "2",
+    "borderColor": "#dddddd",
+    "marginBottom": "20"
+  },
+  "wrapper": {
+    "paddingTop": "100"
+  },
+  "slider": {
+    "width": "400",
+    "height": "300",
+    "backgroundColor": "#C3413D",
+    "alignItems": "center",
+    "justifyContent": "center"
+  },
+  "slider1": {
+    "backgroundColor": "#635147"
+  },
+  "slider2": {
+    "backgroundColor": "#FFC302"
+  },
+  "slider3": {
+    "backgroundColor": "#FF9090"
+  },
+  "slider4": {
+    "backgroundColor": "#546E7A"
+  }
+}
+
+/***/ }),
+
+/***/ 304:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _wxcGridSelect = __webpack_require__(305);
+
+var _wxcGridSelect2 = _interopRequireDefault(_wxcGridSelect);
+
+var _wxcEpSlider = __webpack_require__(306);
+
+var _wxcEpSlider2 = _interopRequireDefault(_wxcEpSlider);
+
+var _wxcSimpleFlow = __webpack_require__(307);
+
+var _wxcSimpleFlow2 = _interopRequireDefault(_wxcSimpleFlow);
+
+var _head = __webpack_require__(6);
+
+var _head2 = _interopRequireDefault(_head);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/*使用此方式引入项目中的vue组件，而不是 import { WxcTabPage, WxcPanItem, Utils, BindEnv } from 'weex-ui';这样引入，
+* 后者会导致js文件体积过大*/
+exports.default = {
+    components: {
+        Head: _head2.default,
+        WxcEpSlider: _wxcEpSlider2.default,
+        WxcSimpleFlow: _wxcSimpleFlow2.default,
+        WxcGridSelect: _wxcGridSelect2.default },
+    data: function data() {
+        return {
+            sliderId: 1,
+            cardLength: 5,
+            cardSize: {
+                width: 400,
+                height: 300,
+                spacing: 0,
+                scale: 0.8
+            },
+            customStyles: {
+                lineSpacing: '14px',
+                width: '120px',
+                height: '50px',
+                icon: '',
+                color: '#333333',
+                checkedColor: '#ffffff',
+                disabledColor: '#eeeeee',
+                borderColor: '#666666',
+                checkedBorderColor: '#ffb200',
+                backgroundColor: '#ffffff',
+                checkedBackgroundColor: '#ffb200'
+            },
+            testData1: [{
+                'title': '上海'
+            }, {
+                'title': '杭州',
+                'checked': true
+            }, {
+                'title': '北京'
+            }, {
+                'title': '广州'
+            }, {
+                'title': '深圳'
+            }, {
+                'title': '南京'
+            }],
+            testData2: [{
+                'title': '上海'
+            }, {
+                'title': '杭州',
+                'checked': true
+            }, {
+                'title': '北京',
+                'checked': true
+            }, {
+                'title': '广州'
+            }, {
+                'title': '深圳'
+            }, {
+                'title': '南京'
+            }],
+            themeColor: {
+                lineColor: '#bf280b',
+                pointInnerColor: '#b95048',
+                pointBorderColor: '#bf280b',
+                highlightTitleColor: '#bf280b',
+                highlightPointInnerColor: '#bf280b',
+                highlightPointBorderColor: '#d46262'
+            },
+            testData: [{
+                'date': '2017-05-24 21:10:29',
+                'desc': '',
+                'highlight': true,
+                'title': '方案已确认'
+            }, {
+                'date': '2017-05-24 19:54:28',
+                'desc': '',
+                'title': '方案已更新'
+            }, {
+                'date': '2017-05-24 19:50:21',
+                'desc': '您以确定了方案',
+                'title': '方案已上传'
+            }, {
+                'date': '2017-05-24 19:49:03',
+                'desc': '商家会在2个工作小时内电话或旺旺联系您',
+                'title': '商家已接单'
+            }]
+        };
+    },
+    methods: {
+        onSelect: function onSelect(res, _ref) {
+            var selectIndex = _ref.selectIndex,
+                checked = _ref.checked,
+                checkedList = _ref.checkedList;
+
+            Vue.set(this, res, '\u672C\u6B21\u9009\u62E9\u7684index\uFF1A' + selectIndex + '\n\u662F\u5426\u9009\u4E2D\uFF1A' + (checked ? '是' : '否') + '\n\u9009\u4E2D\u5217\u8868\uFF1A' + checkedList.map(function (item) {
+                return item.title;
+            }).join(','));
+        },
+        onOverLimit: function onOverLimit(limit) {
+            modal.toast({
+                message: '\u6700\u591A\u9009\u62E9' + limit + '\u4E2A',
+                duration: 0.8
+            });
+        },
+        wxcEpSliderCurrentIndexSelected: function wxcEpSliderCurrentIndexSelected(e) {
+            var index = e.currentIndex;
+            console.log(index);
+        }
+    }
+};
+
+/***/ }),
+
+/***/ 305:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _index = __webpack_require__(63);
+
+Object.defineProperty(exports, 'default', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_index).default;
+  }
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/***/ }),
+
+/***/ 306:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _index = __webpack_require__(59);
+
+Object.defineProperty(exports, 'default', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_index).default;
+  }
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/***/ }),
+
+/***/ 307:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _index = __webpack_require__(97);
+
+Object.defineProperty(exports, 'default', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_index).default;
+  }
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/***/ }),
+
+/***/ 308:
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticStyle: {
+      backgroundColor: "#eeeeee"
+    }
+  }, [_c('head', {
+    attrs: {
+      "title": "weex-ui"
+    }
+  }), _c('scroller', [_c('div', {
+    staticClass: ["cell"]
+  }, [_vm._m(0), _c('wxc-grid-select', {
+    attrs: {
+      "single": true,
+      "cols": 5,
+      "customStyles": _vm.customStyles,
+      "list": _vm.testData1
+    },
+    on: {
+      "select": function (params) { return _vm.onSelect('res3', params); }
+    }
+  }), _c('wxc-grid-select', {
+    attrs: {
+      "limit": 5,
+      "list": _vm.testData2
+    },
+    on: {
+      "overLimit": _vm.onOverLimit,
+      "select": function (params) { return _vm.onSelect('res3', params); }
+    }
+  })], 1), _c('div', {
+    staticClass: ["cell"]
+  }, [_vm._m(1), _c('div', {
+    staticClass: ["wrapper"]
+  }, [_c('wxc-ep-slider', {
+    attrs: {
+      "sliderId": _vm.sliderId,
+      "cardLength": _vm.cardLength,
+      "cardS": _vm.cardSize,
+      "selectIndex": 2
+    },
+    on: {
+      "wxcEpSliderCurrentIndexSelected": _vm.wxcEpSliderCurrentIndexSelected
+    }
+  }, _vm._l(([1, 2, 3, 4, 5]), function(v, index) {
+    return _c('div', {
+      key: index,
+      class: ['slider', ("slider" + index)],
+      attrs: {
+        "slot": ("card" + index + "_" + _vm.sliderId)
+      },
+      slot: ("card" + index + "_" + _vm.sliderId)
+    }, [_c('text', [_vm._v("这里是第" + _vm._s(index + 1) + "个滑块")])])
+  }))], 1)]), _c('div', {
+    staticClass: ["cell"]
+  }, [_vm._m(2), _c('wxc-simple-flow', {
+    attrs: {
+      "list": _vm.testData,
+      "themeColor": _vm.themeColor
+    }
+  })], 1)])], 1)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["head"]
+  }, [_c('text', {
+    staticStyle: {
+      fontWeight: "bold",
+      fontSize: "30px",
+      color: "#00B4FF"
+    }
+  }, [_vm._v("选择框")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["head"]
+  }, [_c('text', {
+    staticStyle: {
+      fontWeight: "bold",
+      fontSize: "30px",
+      color: "#00B4FF"
+    }
+  }, [_vm._v("动画滑块")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["head"]
+  }, [_c('text', {
+    staticStyle: {
+      fontWeight: "bold",
+      fontSize: "30px",
+      color: "#00B4FF"
+    }
+  }, [_vm._v("进度")])])
+}]}
+module.exports.render._withStripped = true
+
+/***/ }),
+
+/***/ 31:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1325,7 +1788,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 34:
+/***/ 32:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -2157,38 +2620,73 @@ var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbo
 
 /***/ }),
 
-/***/ 530:
+/***/ 5:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _weexUi = __webpack_require__(531);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
-var _weexUi2 = _interopRequireDefault(_weexUi);
+var _indexWeex = __webpack_require__(4);
+
+var _indexWeex2 = _interopRequireDefault(_indexWeex);
+
+var _index = __webpack_require__(0);
+
+var _index2 = _interopRequireDefault(_index);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_weexUi2.default.el = '#root';
-new Vue(_weexUi2.default);
+/**
+ * CopyRight (C) 2017-2022 Alibaba Group Holding Limited.
+ * Created by Tw93 on 18/03/22
+ */
+var BindEnv = {
+  supportsEB: function supportsEB() {
+    return _indexWeex2.default.isSupportBinding && !_index2.default.env.isWeb();
+  },
+
+
+  /**
+   * 判断Android容器是否支持是否支持expressionBinding(处理方式很不一致)
+   * @returns {boolean}
+   */
+  supportsEBForAndroid: function supportsEBForAndroid() {
+    return _index2.default.env.isAndroid() && BindEnv.supportsEB();
+  },
+
+
+  /**
+   * 判断IOS容器是否支持是否支持expressionBinding
+   * @returns {boolean}
+   */
+  supportsEBForIos: function supportsEBForIos() {
+    return _index2.default.env.isIOS() && BindEnv.supportsEB();
+  }
+};
+
+exports.default = BindEnv;
 
 /***/ }),
 
-/***/ 531:
+/***/ 59:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(532)
+__vue_styles__.push(__webpack_require__(60)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(533)
+__vue_exports__ = __webpack_require__(61)
 
 /* template */
-var __vue_template__ = __webpack_require__(537)
+var __vue_template__ = __webpack_require__(62)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -2200,10 +2698,10 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\Myproject\\YoloVideoAppByWeex\\YoloVideoApp\\src\\demo\\weex-ui.vue"
+__vue_options__.__file = "D:\\MyPricticePro\\myWeexProject\\weexproject_test\\YoloVideoApp\\src\\components\\weex-ui\\packages\\wxc-ep-slider\\index.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-066d01ed"
+__vue_options__._scopeId = "data-v-4d47974b"
 __vue_options__.style = __vue_options__.style || {}
 __vue_styles__.forEach(function (module) {
   for (var name in module) {
@@ -2216,496 +2714,6 @@ if (typeof __register_static_styles__ === "function") {
 
 module.exports = __vue_exports__
 
-
-/***/ }),
-
-/***/ 532:
-/***/ (function(module, exports) {
-
-module.exports = {
-  "cell": {
-    "width": "750",
-    "backgroundColor": "#FFFFFF",
-    "paddingTop": "20",
-    "paddingRight": "20",
-    "paddingBottom": "20",
-    "paddingLeft": "20",
-    "marginTop": "20"
-  },
-  "head": {
-    "height": "70",
-    "width": "710",
-    "justifyContent": "center",
-    "borderBottomWidth": "2",
-    "borderColor": "#dddddd",
-    "marginBottom": "20"
-  },
-  "wrapper": {
-    "paddingTop": "100"
-  },
-  "slider": {
-    "width": "400",
-    "height": "300",
-    "backgroundColor": "#C3413D",
-    "alignItems": "center",
-    "justifyContent": "center"
-  },
-  "slider1": {
-    "backgroundColor": "#635147"
-  },
-  "slider2": {
-    "backgroundColor": "#FFC302"
-  },
-  "slider3": {
-    "backgroundColor": "#FF9090"
-  },
-  "slider4": {
-    "backgroundColor": "#546E7A"
-  }
-}
-
-/***/ }),
-
-/***/ 533:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _wxcGridSelect = __webpack_require__(534);
-
-var _wxcGridSelect2 = _interopRequireDefault(_wxcGridSelect);
-
-var _wxcEpSlider = __webpack_require__(535);
-
-var _wxcEpSlider2 = _interopRequireDefault(_wxcEpSlider);
-
-var _wxcSimpleFlow = __webpack_require__(536);
-
-var _wxcSimpleFlow2 = _interopRequireDefault(_wxcSimpleFlow);
-
-var _head = __webpack_require__(6);
-
-var _head2 = _interopRequireDefault(_head);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/*使用此方式引入项目中的vue组件，而不是 import { WxcTabPage, WxcPanItem, Utils, BindEnv } from 'weex-ui';这样引入，
-* 后者会导致js文件体积过大*/
-exports.default = {
-    components: {
-        Head: _head2.default,
-        WxcEpSlider: _wxcEpSlider2.default,
-        WxcSimpleFlow: _wxcSimpleFlow2.default,
-        WxcGridSelect: _wxcGridSelect2.default },
-    data: function data() {
-        return {
-            sliderId: 1,
-            cardLength: 5,
-            cardSize: {
-                width: 400,
-                height: 300,
-                spacing: 0,
-                scale: 0.8
-            },
-            customStyles: {
-                lineSpacing: '14px',
-                width: '120px',
-                height: '50px',
-                icon: '',
-                color: '#333333',
-                checkedColor: '#ffffff',
-                disabledColor: '#eeeeee',
-                borderColor: '#666666',
-                checkedBorderColor: '#ffb200',
-                backgroundColor: '#ffffff',
-                checkedBackgroundColor: '#ffb200'
-            },
-            testData1: [{
-                'title': '上海'
-            }, {
-                'title': '杭州',
-                'checked': true
-            }, {
-                'title': '北京'
-            }, {
-                'title': '广州'
-            }, {
-                'title': '深圳'
-            }, {
-                'title': '南京'
-            }],
-            testData2: [{
-                'title': '上海'
-            }, {
-                'title': '杭州',
-                'checked': true
-            }, {
-                'title': '北京',
-                'checked': true
-            }, {
-                'title': '广州'
-            }, {
-                'title': '深圳'
-            }, {
-                'title': '南京'
-            }],
-            themeColor: {
-                lineColor: '#bf280b',
-                pointInnerColor: '#b95048',
-                pointBorderColor: '#bf280b',
-                highlightTitleColor: '#bf280b',
-                highlightPointInnerColor: '#bf280b',
-                highlightPointBorderColor: '#d46262'
-            },
-            testData: [{
-                'date': '2017-05-24 21:10:29',
-                'desc': '',
-                'highlight': true,
-                'title': '方案已确认'
-            }, {
-                'date': '2017-05-24 19:54:28',
-                'desc': '',
-                'title': '方案已更新'
-            }, {
-                'date': '2017-05-24 19:50:21',
-                'desc': '您以确定了方案',
-                'title': '方案已上传'
-            }, {
-                'date': '2017-05-24 19:49:03',
-                'desc': '商家会在2个工作小时内电话或旺旺联系您',
-                'title': '商家已接单'
-            }]
-        };
-    },
-    methods: {
-        onSelect: function onSelect(res, _ref) {
-            var selectIndex = _ref.selectIndex,
-                checked = _ref.checked,
-                checkedList = _ref.checkedList;
-
-            Vue.set(this, res, '\u672C\u6B21\u9009\u62E9\u7684index\uFF1A' + selectIndex + '\n\u662F\u5426\u9009\u4E2D\uFF1A' + (checked ? '是' : '否') + '\n\u9009\u4E2D\u5217\u8868\uFF1A' + checkedList.map(function (item) {
-                return item.title;
-            }).join(','));
-        },
-        onOverLimit: function onOverLimit(limit) {
-            modal.toast({
-                message: '\u6700\u591A\u9009\u62E9' + limit + '\u4E2A',
-                duration: 0.8
-            });
-        },
-        wxcEpSliderCurrentIndexSelected: function wxcEpSliderCurrentIndexSelected(e) {
-            var index = e.currentIndex;
-            console.log(index);
-        }
-    }
-};
-
-/***/ }),
-
-/***/ 534:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _index = __webpack_require__(66);
-
-Object.defineProperty(exports, 'default', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_index).default;
-  }
-});
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/***/ }),
-
-/***/ 535:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _index = __webpack_require__(62);
-
-Object.defineProperty(exports, 'default', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_index).default;
-  }
-});
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/***/ }),
-
-/***/ 536:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _index = __webpack_require__(97);
-
-Object.defineProperty(exports, 'default', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_index).default;
-  }
-});
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/***/ }),
-
-/***/ 537:
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticStyle: {
-      backgroundColor: "#eeeeee"
-    }
-  }, [_c('head', {
-    attrs: {
-      "title": "weex-ui"
-    }
-  }), _c('scroller', [_c('div', {
-    staticClass: ["cell"]
-  }, [_vm._m(0), _c('wxc-grid-select', {
-    attrs: {
-      "single": true,
-      "cols": 5,
-      "customStyles": _vm.customStyles,
-      "list": _vm.testData1
-    },
-    on: {
-      "select": function (params) { return _vm.onSelect('res3', params); }
-    }
-  }), _c('wxc-grid-select', {
-    attrs: {
-      "limit": 5,
-      "list": _vm.testData2
-    },
-    on: {
-      "overLimit": _vm.onOverLimit,
-      "select": function (params) { return _vm.onSelect('res3', params); }
-    }
-  })], 1), _c('div', {
-    staticClass: ["cell"]
-  }, [_vm._m(1), _c('div', {
-    staticClass: ["wrapper"]
-  }, [_c('wxc-ep-slider', {
-    attrs: {
-      "sliderId": _vm.sliderId,
-      "cardLength": _vm.cardLength,
-      "cardS": _vm.cardSize,
-      "selectIndex": 2
-    },
-    on: {
-      "wxcEpSliderCurrentIndexSelected": _vm.wxcEpSliderCurrentIndexSelected
-    }
-  }, _vm._l(([1, 2, 3, 4, 5]), function(v, index) {
-    return _c('div', {
-      key: index,
-      class: ['slider', ("slider" + index)],
-      attrs: {
-        "slot": ("card" + index + "_" + _vm.sliderId)
-      },
-      slot: ("card" + index + "_" + _vm.sliderId)
-    }, [_c('text', [_vm._v("这里是第" + _vm._s(index + 1) + "个滑块")])])
-  }))], 1)]), _c('div', {
-    staticClass: ["cell"]
-  }, [_vm._m(2), _c('wxc-simple-flow', {
-    attrs: {
-      "list": _vm.testData,
-      "themeColor": _vm.themeColor
-    }
-  })], 1), _c('wxc-tab-bar', {
-    attrs: {
-      "tabTitles": _vm.tabTitles,
-      "tabStyles": _vm.tabStyles,
-      "titleType": "icon"
-    },
-    on: {
-      "wxcTabBarCurrentTabSelected": _vm.wxcTabBarCurrentTabSelected
-    }
-  }, [_c('div', {
-    staticClass: ["item-container"],
-    style: _vm.contentStyle
-  }, [_c('text', [_vm._v("首页")])]), _c('div', {
-    staticClass: ["item-container"],
-    style: _vm.contentStyle
-  }, [_c('text', [_vm._v("特别推荐")])]), _c('div', {
-    staticClass: ["item-container"],
-    style: _vm.contentStyle
-  }, [_c('text', [_vm._v("消息中心")])]), _c('div', {
-    staticClass: ["item-container"],
-    style: _vm.contentStyle
-  }, [_c('text', [_vm._v("我的主页")])])])], 1)], 1)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["head"]
-  }, [_c('text', {
-    staticStyle: {
-      fontWeight: "bold",
-      fontSize: "30px",
-      color: "#00B4FF"
-    }
-  }, [_vm._v("选择框")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["head"]
-  }, [_c('text', {
-    staticStyle: {
-      fontWeight: "bold",
-      fontSize: "30px",
-      color: "#00B4FF"
-    }
-  }, [_vm._v("动画滑块")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["head"]
-  }, [_c('text', {
-    staticStyle: {
-      fontWeight: "bold",
-      fontSize: "30px",
-      color: "#00B4FF"
-    }
-  }, [_vm._v("动画滑块")])])
-}]}
-module.exports.render._withStripped = true
 
 /***/ }),
 
@@ -2735,7 +2743,7 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\Myproject\\YoloVideoAppByWeex\\YoloVideoApp\\src\\components\\head.vue"
+__vue_options__.__file = "D:\\MyPricticePro\\myWeexProject\\weexproject_test\\YoloVideoApp\\src\\components\\head.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
 __vue_options__._scopeId = "data-v-573557d0"
@@ -2754,52 +2762,7 @@ module.exports = __vue_exports__
 
 /***/ }),
 
-/***/ 62:
-/***/ (function(module, exports, __webpack_require__) {
-
-var __vue_exports__, __vue_options__
-var __vue_styles__ = []
-
-/* styles */
-__vue_styles__.push(__webpack_require__(63)
-)
-
-/* script */
-__vue_exports__ = __webpack_require__(64)
-
-/* template */
-var __vue_template__ = __webpack_require__(65)
-__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-if (
-  typeof __vue_exports__.default === "object" ||
-  typeof __vue_exports__.default === "function"
-) {
-if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-__vue_options__ = __vue_exports__ = __vue_exports__.default
-}
-if (typeof __vue_options__ === "function") {
-  __vue_options__ = __vue_options__.options
-}
-__vue_options__.__file = "D:\\Myproject\\YoloVideoAppByWeex\\YoloVideoApp\\src\\components\\weex-ui\\packages\\wxc-ep-slider\\index.vue"
-__vue_options__.render = __vue_template__.render
-__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-4d47974b"
-__vue_options__.style = __vue_options__.style || {}
-__vue_styles__.forEach(function (module) {
-  for (var name in module) {
-    __vue_options__.style[name] = module[name]
-  }
-})
-if (typeof __register_static_styles__ === "function") {
-  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
-}
-
-module.exports = __vue_exports__
-
-
-/***/ }),
-
-/***/ 63:
+/***/ 60:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -2811,7 +2774,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 64:
+/***/ 61:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2825,7 +2788,7 @@ var _utils = __webpack_require__(0);
 
 var _utils2 = _interopRequireDefault(_utils);
 
-var _bindEnv = __webpack_require__(10);
+var _bindEnv = __webpack_require__(5);
 
 var _bindEnv2 = _interopRequireDefault(_bindEnv);
 
@@ -3269,7 +3232,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 65:
+/***/ 62:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -3307,21 +3270,21 @@ module.exports.render._withStripped = true
 
 /***/ }),
 
-/***/ 66:
+/***/ 63:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(67)
+__vue_styles__.push(__webpack_require__(64)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(68)
+__vue_exports__ = __webpack_require__(65)
 
 /* template */
-var __vue_template__ = __webpack_require__(69)
+var __vue_template__ = __webpack_require__(66)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -3333,7 +3296,7 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\Myproject\\YoloVideoAppByWeex\\YoloVideoApp\\src\\components\\weex-ui\\packages\\wxc-grid-select\\index.vue"
+__vue_options__.__file = "D:\\MyPricticePro\\myWeexProject\\weexproject_test\\YoloVideoApp\\src\\components\\weex-ui\\packages\\wxc-grid-select\\index.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
 __vue_options__._scopeId = "data-v-4860f1eb"
@@ -3352,7 +3315,7 @@ module.exports = __vue_exports__
 
 /***/ }),
 
-/***/ 67:
+/***/ 64:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -3365,7 +3328,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 68:
+/***/ 65:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3397,7 +3360,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 
-var _option = __webpack_require__(31);
+var _option = __webpack_require__(29);
 
 var _option2 = _interopRequireDefault(_option);
 
@@ -3523,7 +3486,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 69:
+/***/ 66:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -3712,7 +3675,7 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\Myproject\\YoloVideoAppByWeex\\YoloVideoApp\\src\\components\\weex-ui\\packages\\wxc-simple-flow\\index.vue"
+__vue_options__.__file = "D:\\MyPricticePro\\myWeexProject\\weexproject_test\\YoloVideoApp\\src\\components\\weex-ui\\packages\\wxc-simple-flow\\index.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
 __vue_options__._scopeId = "data-v-59949971"
