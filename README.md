@@ -18,7 +18,10 @@ iOS：
 敬请期待...  
 # 体验IWeex  
 
-![image](https://github.com/liuxinyea/IWeex/blob/master/doc/image/downLoad.png)  
+![image](https://github.com/liuxinyea/IWeex/blob/master/doc/image/downLoad.png)    
+
+ [点击下载体验](https://www.pgyer.com/RTEV)
+
 
 # 扩展
 
