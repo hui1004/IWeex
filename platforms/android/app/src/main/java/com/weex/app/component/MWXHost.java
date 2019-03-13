@@ -38,16 +38,16 @@ public class MWXHost extends WXComponent<ViewPager>{
     @Override
     protected ViewPager initComponentHostView(@NonNull Context context) {
         hostView=new ViewPager(context);
-        if(getAttrs().get("position")!=null){
-            position= Integer.parseInt(getAttrs().get("position").toString());
+        if(getAttrs().get("index")!=null){
+            position= Integer.parseInt(getAttrs().get("index").toString());
         }
         addOnPageChangeListener();
         return hostView;
     }
-    @JSMethod
+//    @JSMethod
     @WXComponentProp(name = "index")
-    public void setIndex(int position){
-        this.position=position;
+    public void setIndex(int index){
+        this.position=index;
         hostView.setCurrentItem(this.position,true);
     }
     @WXComponentProp(name = "pages")
