@@ -13,6 +13,7 @@ busi
 temp
 boilerplate/*
 platforms/ios/app/*
+platforms/android/app/release/*
 platforms/android/app/src/main/assets/app/*
 platforms/android/.gradle
 platforms/android/settings.gradle

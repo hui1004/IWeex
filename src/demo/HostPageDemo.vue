@@ -38,7 +38,7 @@
             },
             tabClick(index){
                 this.position=index;
-                this.$refs.host.setIndex(index);
+                // this.$refs.host.setIndex(index);
             }
         }
     }
