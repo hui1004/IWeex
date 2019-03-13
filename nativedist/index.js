@@ -62,65 +62,18 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 538);
+/******/ 	return __webpack_require__(__webpack_require__.s = 309);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 41:
-/***/ (function(module, exports, __webpack_require__) {
-
-var __vue_exports__, __vue_options__
-var __vue_styles__ = []
-
-/* template */
-var __vue_template__ = __webpack_require__(42)
-__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-if (
-  typeof __vue_exports__.default === "object" ||
-  typeof __vue_exports__.default === "function"
-) {
-if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-__vue_options__ = __vue_exports__ = __vue_exports__.default
-}
-if (typeof __vue_options__ === "function") {
-  __vue_options__ = __vue_options__.options
-}
-__vue_options__.__file = "D:\\Myproject\\YoloVideoAppByWeex\\YoloVideoApp\\src\\components\\HelloWorld.vue"
-__vue_options__.render = __vue_template__.render
-__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__.style = __vue_options__.style || {}
-__vue_styles__.forEach(function (module) {
-  for (var name in module) {
-    __vue_options__.style[name] = module[name]
-  }
-})
-if (typeof __register_static_styles__ === "function") {
-  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
-}
-
-module.exports = __vue_exports__
-
-
-/***/ }),
-
-/***/ 42:
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('text', [_vm._v("Now, let's use Vue.js to build your Weex appq.")])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-
-/***/ }),
-
-/***/ 538:
+/***/ 309:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _index = __webpack_require__(539);
+var _index = __webpack_require__(310);
 
 var _index2 = _interopRequireDefault(_index);
 
@@ -131,21 +84,21 @@ new Vue(_index2.default);
 
 /***/ }),
 
-/***/ 539:
+/***/ 310:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(540)
+__vue_styles__.push(__webpack_require__(311)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(541)
+__vue_exports__ = __webpack_require__(312)
 
 /* template */
-var __vue_template__ = __webpack_require__(542)
+var __vue_template__ = __webpack_require__(313)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -157,7 +110,7 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\Myproject\\YoloVideoAppByWeex\\YoloVideoApp\\src\\index.vue"
+__vue_options__.__file = "D:\\MyPricticePro\\myWeexProject\\weexproject_test\\YoloVideoApp\\src\\index.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
 __vue_options__._scopeId = "data-v-1a4d8e3c"
@@ -176,10 +129,27 @@ module.exports = __vue_exports__
 
 /***/ }),
 
-/***/ 540:
+/***/ 311:
 /***/ (function(module, exports) {
 
 module.exports = {
+  "content": {
+    "flexDirection": "row",
+    "flexWrap": "wrap"
+  },
+  "cell": {
+    "height": "90",
+    "paddingTop": "30",
+    "paddingRight": "30",
+    "paddingBottom": "30",
+    "paddingLeft": "30",
+    "backgroundColor": "#00B4FF",
+    "alignItems": "center",
+    "justifyContent": "center",
+    "marginTop": "30",
+    "borderRadius": "10",
+    "marginLeft": "15"
+  },
   "wrapper": {
     "alignItems": "center"
   },
@@ -204,7 +174,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 541:
+/***/ 312:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -214,7 +184,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _HelloWorld = __webpack_require__(41);
+var _HelloWorld = __webpack_require__(38);
 
 var _HelloWorld2 = _interopRequireDefault(_HelloWorld);
 
@@ -224,8 +194,6 @@ var _head2 = _interopRequireDefault(_head);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-//
-//
 //
 //
 //
@@ -310,6 +278,12 @@ exports.default = {
                 url: './demo/TabPageDemo.js',
                 animated: "true"
             }, function (event) {});
+        },
+        hostPage: function hostPage() {
+            navigator.push({
+                url: './demo/HostPageDemo.js',
+                animated: "true"
+            }, function (event) {});
         }
     },
     created: function created() {
@@ -320,7 +294,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 542:
+/***/ 313:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -333,15 +307,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _c('text', {
     staticClass: ["greeting"]
-  }, [_vm._v("The environment is ready!!!!")]), _c('HelloWorld'), _c('div', {
-    staticStyle: {
-      height: "90px",
-      width: "200px",
-      backgroundColor: "#00B4FF",
-      alignItems: "center",
-      justifyContent: "center",
-      borderRadius: "10px"
-    },
+  }, [_vm._v("The environment is ready!!!!")]), _c('div', {
+    staticClass: ["content"]
+  }, [_c('div', {
+    staticClass: ["cell"],
     on: {
       "click": _vm.turn
     }
@@ -352,15 +321,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       color: "#ffffff"
     }
   }, [_vm._v("PopDemo")])]), _c('div', {
-    staticStyle: {
-      height: "90px",
-      width: "200px",
-      backgroundColor: "#00B4FF",
-      alignItems: "center",
-      justifyContent: "center",
-      marginTop: "30px",
-      borderRadius: "10px"
-    },
+    staticClass: ["cell"],
     on: {
       "click": _vm.toVideo
     }
@@ -371,15 +332,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       color: "#ffffff"
     }
   }, [_vm._v("videoDemo")])]), _c('div', {
-    staticStyle: {
-      height: "90px",
-      width: "200px",
-      backgroundColor: "#00B4FF",
-      alignItems: "center",
-      justifyContent: "center",
-      marginTop: "30px",
-      borderRadius: "10px"
-    },
+    staticClass: ["cell"],
     on: {
       "click": _vm.toImage
     }
@@ -390,15 +343,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       color: "#ffffff"
     }
   }, [_vm._v("Image")])]), _c('div', {
-    staticStyle: {
-      height: "90px",
-      width: "200px",
-      backgroundColor: "#00B4FF",
-      alignItems: "center",
-      justifyContent: "center",
-      marginTop: "30px",
-      borderRadius: "10px"
-    },
+    staticClass: ["cell"],
     on: {
       "click": _vm.toWeeUi
     }
@@ -409,15 +354,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       color: "#ffffff"
     }
   }, [_vm._v("weex-ui示例")])]), _c('div', {
-    staticStyle: {
-      height: "90px",
-      width: "200px",
-      backgroundColor: "#00B4FF",
-      alignItems: "center",
-      justifyContent: "center",
-      marginTop: "30px",
-      borderRadius: "10px"
-    },
+    staticClass: ["cell"],
     on: {
       "click": _vm.TabBar
     }
@@ -428,15 +365,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       color: "#ffffff"
     }
   }, [_vm._v("TabBar示例")])]), _c('div', {
-    staticStyle: {
-      height: "90px",
-      width: "200px",
-      backgroundColor: "#00B4FF",
-      alignItems: "center",
-      justifyContent: "center",
-      marginTop: "30px",
-      borderRadius: "10px"
-    },
+    staticClass: ["cell"],
     on: {
       "click": _vm.TabPage
     }
@@ -446,7 +375,65 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       fontSize: "29px",
       color: "#ffffff"
     }
-  }, [_vm._v("TabPage示例")])])], 1)
+  }, [_vm._v("TabPage示例")])]), _c('div', {
+    staticClass: ["cell"],
+    on: {
+      "click": _vm.hostPage
+    }
+  }, [_c('text', {
+    staticStyle: {
+      fontWeight: "bold",
+      fontSize: "29px",
+      color: "#ffffff"
+    }
+  }, [_vm._v("原生组件hostPage示例")])])])], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+
+/***/ 38:
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* template */
+var __vue_template__ = __webpack_require__(39)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "D:\\MyPricticePro\\myWeexProject\\weexproject_test\\YoloVideoApp\\src\\components\\HelloWorld.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
+
+/***/ }),
+
+/***/ 39:
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('text', [_vm._v("Now, let's use Vue.js to build your Weex appq.")])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 
@@ -478,7 +465,7 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\Myproject\\YoloVideoAppByWeex\\YoloVideoApp\\src\\components\\head.vue"
+__vue_options__.__file = "D:\\MyPricticePro\\myWeexProject\\weexproject_test\\YoloVideoApp\\src\\components\\head.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
 __vue_options__._scopeId = "data-v-573557d0"

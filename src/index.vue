@@ -2,30 +2,28 @@
   <div class="wrapper">
     <head title="首页" :canBack="false"></head>
     <text class="greeting">The environment is ready!!!!</text>
-    <HelloWorld/>
-    <div style="height: 90px;width: 200px;background-color: #00B4FF;align-items: center;justify-content: center;
-     border-radius: 10px" @click="turn">
-      <text style="font-weight: bold;font-size: 29px;color: #ffffff">PopDemo</text>
-    </div>
-    <div style="height: 90px;width: 200px;background-color: #00B4FF;align-items: center;justify-content: center;margin-top: 30px;
-      border-radius: 10px" @click="toVideo">
-      <text style="font-weight: bold;font-size: 29px;color: #ffffff">videoDemo</text>
-    </div>
-    <div style="height: 90px;width: 200px;background-color: #00B4FF;align-items: center;justify-content: center;margin-top: 30px;
-      border-radius: 10px" @click="toImage">
-      <text style="font-weight: bold;font-size: 29px;color: #ffffff">Image</text>
-    </div>
-    <div style="height: 90px;width: 200px;background-color: #00B4FF;align-items: center;justify-content: center;margin-top: 30px;
-      border-radius: 10px" @click="toWeeUi">
-      <text style="font-weight: bold;font-size: 29px;color: #ffffff">weex-ui示例</text>
-    </div>
-    <div style="height: 90px;width: 200px;background-color: #00B4FF;align-items: center;justify-content: center;margin-top: 30px;
-      border-radius: 10px" @click="TabBar">
-      <text style="font-weight: bold;font-size: 29px;color: #ffffff">TabBar示例</text>
-    </div>
-    <div style="height: 90px;width: 200px;background-color: #00B4FF;align-items: center;justify-content: center;margin-top: 30px;
-      border-radius: 10px" @click="TabPage">
-      <text style="font-weight: bold;font-size: 29px;color: #ffffff">TabPage示例</text>
+    <div class="content">
+      <div class="cell" @click="turn">
+        <text style="font-weight: bold;font-size: 29px;color: #ffffff">PopDemo</text>
+      </div>
+      <div class="cell" @click="toVideo">
+        <text style="font-weight: bold;font-size: 29px;color: #ffffff">videoDemo</text>
+      </div>
+      <div class="cell" @click="toImage">
+        <text style="font-weight: bold;font-size: 29px;color: #ffffff">Image</text>
+      </div>
+      <div class="cell" @click="toWeeUi">
+        <text style="font-weight: bold;font-size: 29px;color: #ffffff">weex-ui示例</text>
+      </div>
+      <div class="cell" @click="TabBar">
+        <text style="font-weight: bold;font-size: 29px;color: #ffffff">TabBar示例</text>
+      </div>
+      <div class="cell" @click="TabPage">
+        <text style="font-weight: bold;font-size: 29px;color: #ffffff">TabPage示例</text>
+      </div>
+      <div class="cell" @click="hostPage">
+        <text style="font-weight: bold;font-size: 29px;color: #ffffff">原生组件hostPage示例</text>
+      </div>
     </div>
   </div>
 </template>
@@ -90,6 +88,13 @@ export default {
                 animated: "true"
             }, event => {
             })
+        },
+        hostPage(){
+            navigator.push({
+                url: './demo/HostPageDemo.js',
+                animated: "true"
+            }, event => {
+            })
         }
     },
     created(){
@@ -101,6 +106,14 @@ export default {
 </script>
 
 <style scoped>
+  .content{
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .cell{
+    height: 90px;padding:30px;background-color: #00B4FF;align-items: center;justify-content: center;margin-top: 30px;
+    border-radius: 10px;margin-left: 15px;
+  }
   .wrapper {
     /*justify-content: center;*/
     align-items: center;

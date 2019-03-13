@@ -43,7 +43,7 @@
             </div>
             <div class="cell">
                 <div class="head">
-                    <text style="font-weight: bold;font-size: 30px;color: #00B4FF">动画滑块</text>
+                    <text style="font-weight: bold;font-size: 30px;color: #00B4FF">进度</text>
                 </div>
                 <wxc-simple-flow :list="testData" :themeColor="themeColor"></wxc-simple-flow>
             </div>

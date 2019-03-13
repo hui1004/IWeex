@@ -1,7 +1,7 @@
 package com.weex.app;
 
 import android.app.Application;
-
+import com.weex.app.component.MWXHost;
 import com.alibaba.android.bindingx.plugin.weex.BindingX;
 import com.weex.app.extend.ImageAdapter;
 import com.weex.app.extend.WXEventModule;
@@ -10,6 +10,7 @@ import com.weex.app.util.AppConfig;
 import com.taobao.weex.InitConfig;
 import com.taobao.weex.WXSDKEngine;
 import com.taobao.weex.common.WXException;
+import com.weex.app.view.WXHostView;
 import com.weex.app.weexAdapter.URIAdapter;
 import com.weex.app.weexAdapter.WXNavigator;
 
@@ -20,6 +21,11 @@ public class WXApplication extends Application {
     super.onCreate();
     WXSDKEngine.addCustomOptions("appName", "WXSample");
     WXSDKEngine.addCustomOptions("appGroup", "WXApp");
+    try {
+      WXSDKEngine.registerComponent("hostPage",MWXHost.class);
+    } catch (WXException e) {
+      e.printStackTrace();
+    }
     WXSDKEngine.setNavigator(new WXNavigator());
     try {
       BindingX.register();

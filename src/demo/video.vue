@@ -50,7 +50,7 @@
         },
         created(){
             params.getParam(function (res) {
-                modal.toast({message:res});
+                // modal.toast({message:res});
             });
         }
     }
