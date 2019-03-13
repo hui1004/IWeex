@@ -16,7 +16,7 @@ Android：
 4、使用测试APP扫描浏览器上的二维码即可在手机上预览界面  
 iOS：  
 敬请期待...
-
+![image](https://github.com/ButBueatiful/dotvim/raw/master/screenshots/vim-screenshot.jpg)
 # 扩展
 
 1、本项目扩展了weex的路由导航模块，支持相对路径的写法加载进行导航，并且可以传参  
