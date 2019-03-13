@@ -62,25 +62,43 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 13);
+/******/ 	return __webpack_require__(__webpack_require__.s = 525);
 /******/ })
 /************************************************************************/
-/******/ ([
-/* 0 */
+/******/ ({
+
+/***/ 525:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _video = __webpack_require__(526);
+
+var _video2 = _interopRequireDefault(_video);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_video2.default.el = '#root';
+new Vue(_video2.default);
+
+/***/ }),
+
+/***/ 526:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(1)
+__vue_styles__.push(__webpack_require__(527)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(2)
+__vue_exports__ = __webpack_require__(528)
 
 /* template */
-var __vue_template__ = __webpack_require__(3)
+var __vue_template__ = __webpack_require__(529)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -92,7 +110,174 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\MyPricticePro\\myWeexProject\\weexproject_test\\YoloVideoApp\\src\\components\\head.vue"
+__vue_options__.__file = "D:\\Myproject\\YoloVideoAppByWeex\\YoloVideoApp\\src\\demo\\video.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-f367c370"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
+
+/***/ }),
+
+/***/ 527:
+/***/ (function(module, exports) {
+
+module.exports = {
+  "video": {
+    "width": "630",
+    "height": "350",
+    "marginTop": "60",
+    "marginLeft": "60"
+  },
+  "info": {
+    "marginTop": "40",
+    "fontSize": "40",
+    "textAlign": "center"
+  }
+}
+
+/***/ }),
+
+/***/ 528:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _head = __webpack_require__(6);
+
+var _head2 = _interopRequireDefault(_head);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var modal = weex.requireModule('modal'); //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var nav = weex.requireModule('navigator');
+var params = weex.requireModule('params');
+exports.default = {
+    components: { Head: _head2.default },
+    data: function data() {
+        return {
+            state: '----',
+            src: 'http://flv2.bn.netease.com/videolib3/1611/01/XGqSL5981/SD/XGqSL5981-mobile.mp4'
+        };
+    },
+
+    methods: {
+        onstart: function onstart(event) {
+            this.state = 'onstart';
+        },
+        onpause: function onpause(event) {
+            this.state = 'onpause';
+        },
+        onfinish: function onfinish(event) {
+            this.state = 'onfinish';
+        },
+        onfail: function onfail(event) {
+            this.state = 'onfinish';
+        }
+    },
+    created: function created() {
+        params.getParam(function (res) {
+            modal.toast({ message: res });
+        });
+    }
+};
+
+/***/ }),
+
+/***/ 529:
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('head', {
+    attrs: {
+      "title": "videoDemo"
+    }
+  }), _c('video', {
+    staticClass: ["video"],
+    attrs: {
+      "src": _vm.src,
+      "autoplay": "",
+      "controls": ""
+    },
+    on: {
+      "start": _vm.onstart,
+      "pause": _vm.onpause,
+      "finish": _vm.onfinish,
+      "fail": _vm.onfail
+    }
+  }), _c('text', {
+    staticClass: ["info"]
+  }, [_vm._v("state: " + _vm._s(_vm.state))])], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+
+/***/ 6:
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(7)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(8)
+
+/* template */
+var __vue_template__ = __webpack_require__(9)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "D:\\Myproject\\YoloVideoAppByWeex\\YoloVideoApp\\src\\components\\head.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
 __vue_options__._scopeId = "data-v-573557d0"
@@ -110,7 +295,8 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 1 */
+
+/***/ 7:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -154,7 +340,8 @@ module.exports = {
 }
 
 /***/ }),
-/* 2 */
+
+/***/ 8:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -205,7 +392,8 @@ exports.default = {
 };
 
 /***/ }),
-/* 3 */
+
+/***/ 9:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -234,184 +422,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 
-/***/ }),
-/* 4 */,
-/* 5 */,
-/* 6 */,
-/* 7 */,
-/* 8 */,
-/* 9 */,
-/* 10 */,
-/* 11 */,
-/* 12 */,
-/* 13 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _video = __webpack_require__(14);
-
-var _video2 = _interopRequireDefault(_video);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-_video2.default.el = '#root';
-new Vue(_video2.default);
-
-/***/ }),
-/* 14 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __vue_exports__, __vue_options__
-var __vue_styles__ = []
-
-/* styles */
-__vue_styles__.push(__webpack_require__(15)
-)
-
-/* script */
-__vue_exports__ = __webpack_require__(16)
-
-/* template */
-var __vue_template__ = __webpack_require__(17)
-__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-if (
-  typeof __vue_exports__.default === "object" ||
-  typeof __vue_exports__.default === "function"
-) {
-if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-__vue_options__ = __vue_exports__ = __vue_exports__.default
-}
-if (typeof __vue_options__ === "function") {
-  __vue_options__ = __vue_options__.options
-}
-__vue_options__.__file = "D:\\MyPricticePro\\myWeexProject\\weexproject_test\\YoloVideoApp\\src\\demo\\video.vue"
-__vue_options__.render = __vue_template__.render
-__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-f367c370"
-__vue_options__.style = __vue_options__.style || {}
-__vue_styles__.forEach(function (module) {
-  for (var name in module) {
-    __vue_options__.style[name] = module[name]
-  }
-})
-if (typeof __register_static_styles__ === "function") {
-  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
-}
-
-module.exports = __vue_exports__
-
-
-/***/ }),
-/* 15 */
-/***/ (function(module, exports) {
-
-module.exports = {
-  "video": {
-    "width": "630",
-    "height": "350",
-    "marginTop": "60",
-    "marginLeft": "60"
-  },
-  "info": {
-    "marginTop": "40",
-    "fontSize": "40",
-    "textAlign": "center"
-  }
-}
-
-/***/ }),
-/* 16 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _head = __webpack_require__(0);
-
-var _head2 = _interopRequireDefault(_head);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = {
-    components: { Head: _head2.default },
-    data: function data() {
-        return {
-            state: '----',
-            src: 'http://flv2.bn.netease.com/videolib3/1611/01/XGqSL5981/SD/XGqSL5981-mobile.mp4'
-        };
-    },
-
-    methods: {
-        onstart: function onstart(event) {
-            this.state = 'onstart';
-        },
-        onpause: function onpause(event) {
-            this.state = 'onpause';
-        },
-        onfinish: function onfinish(event) {
-            this.state = 'onfinish';
-        },
-        onfail: function onfail(event) {
-            this.state = 'onfinish';
-        }
-    }
-}; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/***/ }),
-/* 17 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('head', {
-    attrs: {
-      "title": "videoDemo"
-    }
-  }), _c('video', {
-    staticClass: ["video"],
-    attrs: {
-      "src": _vm.src,
-      "autoplay": "",
-      "controls": ""
-    },
-    on: {
-      "start": _vm.onstart,
-      "pause": _vm.onpause,
-      "finish": _vm.onfinish,
-      "fail": _vm.onfail
-    }
-  }), _c('text', {
-    staticClass: ["info"]
-  }, [_vm._v("state: " + _vm._s(_vm.state))])], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-
 /***/ })
-/******/ ]);
+
+/******/ });

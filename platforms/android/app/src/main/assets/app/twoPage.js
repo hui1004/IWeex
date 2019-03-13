@@ -62,25 +62,43 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 23);
+/******/ 	return __webpack_require__(__webpack_require__.s = 543);
 /******/ })
 /************************************************************************/
-/******/ ([
-/* 0 */
+/******/ ({
+
+/***/ 543:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _twoPage = __webpack_require__(544);
+
+var _twoPage2 = _interopRequireDefault(_twoPage);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_twoPage2.default.el = '#root';
+new Vue(_twoPage2.default);
+
+/***/ }),
+
+/***/ 544:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(1)
+__vue_styles__.push(__webpack_require__(545)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(2)
+__vue_exports__ = __webpack_require__(546)
 
 /* template */
-var __vue_template__ = __webpack_require__(3)
+var __vue_template__ = __webpack_require__(547)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -92,7 +110,159 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\MyPricticePro\\myWeexProject\\weexproject_test\\YoloVideoApp\\src\\components\\head.vue"
+__vue_options__.__file = "D:\\Myproject\\YoloVideoAppByWeex\\YoloVideoApp\\src\\twoPage.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-32890f65"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
+
+/***/ }),
+
+/***/ 545:
+/***/ (function(module, exports) {
+
+module.exports = {}
+
+/***/ }),
+
+/***/ 546:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _head = __webpack_require__(6);
+
+var _head2 = _interopRequireDefault(_head);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var modal = weex.requireModule('modal'); //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var nav = weex.requireModule('navigator');
+var params = weex.requireModule('params');
+exports.default = {
+    name: "two-page",
+    components: {
+        head: _head2.default
+    },
+    methods: {
+        popPage: function popPage() {
+            nav.pop({
+                url: '',
+                animated: "true"
+            }, function (event) {});
+        },
+        clickRight: function clickRight() {
+            modal.toast({ message: '点击顶部导航右部按钮' });
+        }
+    },
+    created: function created() {
+        params.getParam(function (res) {
+            modal.toast({ message: res });
+        });
+        console.log("aaa");
+    }
+};
+
+/***/ }),
+
+/***/ 547:
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('head', {
+    attrs: {
+      "title": "界面跳转",
+      "showRight": "true"
+    },
+    on: {
+      "rightItemClick": _vm.clickRight
+    }
+  }, [_c('div', {
+    attrs: {
+      "slot": "rightItem"
+    },
+    slot: "rightItem"
+  }, [_c('text', [_vm._v("自定义右边")])])]), _c('div', {
+    staticStyle: {
+      width: "750px",
+      height: "700px",
+      alignItems: "center",
+      justifyContent: "center"
+    }
+  }, [_c('div', {
+    staticClass: ["button"],
+    on: {
+      "click": _vm.popPage
+    }
+  }, [_c('text', {
+    staticStyle: {
+      fontSize: "35px",
+      fontWeight: "bold"
+    }
+  }, [_vm._v("返回上一页")])])])], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+
+/***/ 6:
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(7)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(8)
+
+/* template */
+var __vue_template__ = __webpack_require__(9)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "D:\\Myproject\\YoloVideoAppByWeex\\YoloVideoApp\\src\\components\\head.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
 __vue_options__._scopeId = "data-v-573557d0"
@@ -110,7 +280,8 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 1 */
+
+/***/ 7:
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -154,7 +325,8 @@ module.exports = {
 }
 
 /***/ }),
-/* 2 */
+
+/***/ 8:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -205,7 +377,8 @@ exports.default = {
 };
 
 /***/ }),
-/* 3 */
+
+/***/ 9:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -234,184 +407,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 
-/***/ }),
-/* 4 */,
-/* 5 */,
-/* 6 */,
-/* 7 */,
-/* 8 */,
-/* 9 */,
-/* 10 */,
-/* 11 */,
-/* 12 */,
-/* 13 */,
-/* 14 */,
-/* 15 */,
-/* 16 */,
-/* 17 */,
-/* 18 */,
-/* 19 */,
-/* 20 */,
-/* 21 */,
-/* 22 */,
-/* 23 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _twoPage = __webpack_require__(24);
-
-var _twoPage2 = _interopRequireDefault(_twoPage);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-_twoPage2.default.el = '#root';
-new Vue(_twoPage2.default);
-
-/***/ }),
-/* 24 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __vue_exports__, __vue_options__
-var __vue_styles__ = []
-
-/* styles */
-__vue_styles__.push(__webpack_require__(25)
-)
-
-/* script */
-__vue_exports__ = __webpack_require__(26)
-
-/* template */
-var __vue_template__ = __webpack_require__(27)
-__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-if (
-  typeof __vue_exports__.default === "object" ||
-  typeof __vue_exports__.default === "function"
-) {
-if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-__vue_options__ = __vue_exports__ = __vue_exports__.default
-}
-if (typeof __vue_options__ === "function") {
-  __vue_options__ = __vue_options__.options
-}
-__vue_options__.__file = "D:\\MyPricticePro\\myWeexProject\\weexproject_test\\YoloVideoApp\\src\\twoPage.vue"
-__vue_options__.render = __vue_template__.render
-__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-32890f65"
-__vue_options__.style = __vue_options__.style || {}
-__vue_styles__.forEach(function (module) {
-  for (var name in module) {
-    __vue_options__.style[name] = module[name]
-  }
-})
-if (typeof __register_static_styles__ === "function") {
-  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
-}
-
-module.exports = __vue_exports__
-
-
-/***/ }),
-/* 25 */
-/***/ (function(module, exports) {
-
-module.exports = {}
-
-/***/ }),
-/* 26 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _head = __webpack_require__(0);
-
-var _head2 = _interopRequireDefault(_head);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var nav = weex.requireModule('navigator'); //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-exports.default = {
-    name: "two-page",
-    components: {
-        head: _head2.default
-    },
-    methods: {
-        popPage: function popPage() {
-            nav.pop({
-                url: '',
-                animated: "true"
-            }, function (event) {});
-        },
-        clickRight: function clickRight() {
-            var modal = weex.requireModule('modal');
-            modal.toast({ message: '点击顶部导航右部按钮' });
-        }
-    },
-    created: function created() {
-        console.log("aaa");
-    }
-};
-
-/***/ }),
-/* 27 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('head', {
-    attrs: {
-      "title": "界面跳转",
-      "showRight": "true"
-    },
-    on: {
-      "rightItemClick": _vm.clickRight
-    }
-  }, [_c('div', {
-    attrs: {
-      "slot": "rightItem"
-    },
-    slot: "rightItem"
-  }, [_c('text', [_vm._v("自定义右边")])])]), _c('div', {
-    staticStyle: {
-      width: "750px",
-      height: "700px",
-      alignItems: "center",
-      justifyContent: "center"
-    }
-  }, [_c('div', {
-    staticClass: ["button"],
-    on: {
-      "click": _vm.popPage
-    }
-  }, [_c('text', {
-    staticStyle: {
-      fontSize: "35px",
-      fontWeight: "bold"
-    }
-  }, [_vm._v("返回上一页")])])])], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-
 /***/ })
-/******/ ]);
+
+/******/ });

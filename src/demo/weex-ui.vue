@@ -47,22 +47,6 @@
                 </div>
                 <wxc-simple-flow :list="testData" :themeColor="themeColor"></wxc-simple-flow>
             </div>
-            <wxc-tab-bar :tab-titles="tabTitles"
-                         :tab-styles="tabStyles"
-                         title-type="icon"
-                         @wxcTabBarCurrentTabSelected="wxcTabBarCurrentTabSelected">
-                <!-- 第一个页面内容-->
-                <div class="item-container" :style="contentStyle"><text>首页</text></div>
-
-                <!-- 第二个页面内容-->
-                <div class="item-container" :style="contentStyle"><text>特别推荐</text></div>
-
-                <!-- 第三个页面内容-->
-                <div class="item-container" :style="contentStyle"><text>消息中心</text></div>
-
-                <!-- 第四个页面内容-->
-                <div class="item-container" :style="contentStyle"><text>我的主页</text></div>
-            </wxc-tab-bar>
         </scroller>
     </div>
 
