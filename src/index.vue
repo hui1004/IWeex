@@ -15,6 +15,18 @@
       border-radius: 10px" @click="toImage">
       <text style="font-weight: bold;font-size: 29px;color: #ffffff">Image</text>
     </div>
+    <div style="height: 90px;width: 200px;background-color: #00B4FF;align-items: center;justify-content: center;margin-top: 30px;
+      border-radius: 10px" @click="toWeeUi">
+      <text style="font-weight: bold;font-size: 29px;color: #ffffff">weex-ui示例</text>
+    </div>
+    <div style="height: 90px;width: 200px;background-color: #00B4FF;align-items: center;justify-content: center;margin-top: 30px;
+      border-radius: 10px" @click="TabBar">
+      <text style="font-weight: bold;font-size: 29px;color: #ffffff">TabBar示例</text>
+    </div>
+    <div style="height: 90px;width: 200px;background-color: #00B4FF;align-items: center;justify-content: center;margin-top: 30px;
+      border-radius: 10px" @click="TabPage">
+      <text style="font-weight: bold;font-size: 29px;color: #ffffff">TabPage示例</text>
+    </div>
   </div>
 </template>
 <script>
@@ -54,6 +66,27 @@ export default {
         toImage(){
             navigator.push({
                 url: './demo/Image.js',
+                animated: "true"
+            }, event => {
+            })
+        },
+        toWeeUi(){
+            navigator.push({
+                url: './demo/weex-ui.js',
+                animated: "true"
+            }, event => {
+            })
+        },
+        TabBar(){
+            navigator.push({
+                url: './demo/TabBarDemo.js',
+                animated: "true"
+            }, event => {
+            })
+        },
+        TabPage(){
+            navigator.push({
+                url: './demo/TabPageDemo.js',
                 animated: "true"
             }, event => {
             })

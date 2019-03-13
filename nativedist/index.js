@@ -418,6 +418,18 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 var navigator = weex.requireModule('navigator');
 var modal = weex.requireModule('modal');
@@ -453,6 +465,24 @@ exports.default = {
         toImage: function toImage() {
             navigator.push({
                 url: './demo/Image.js',
+                animated: "true"
+            }, function (event) {});
+        },
+        toWeeUi: function toWeeUi() {
+            navigator.push({
+                url: './demo/weex-ui.js',
+                animated: "true"
+            }, function (event) {});
+        },
+        TabBar: function TabBar() {
+            navigator.push({
+                url: './demo/TabBarDemo.js',
+                animated: "true"
+            }, function (event) {});
+        },
+        TabPage: function TabPage() {
+            navigator.push({
+                url: './demo/TabPageDemo.js',
                 animated: "true"
             }, function (event) {});
         }
@@ -533,7 +563,64 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       fontSize: "29px",
       color: "#ffffff"
     }
-  }, [_vm._v("Image")])])], 1)
+  }, [_vm._v("Image")])]), _c('div', {
+    staticStyle: {
+      height: "90px",
+      width: "200px",
+      backgroundColor: "#00B4FF",
+      alignItems: "center",
+      justifyContent: "center",
+      marginTop: "30px",
+      borderRadius: "10px"
+    },
+    on: {
+      "click": _vm.toWeeUi
+    }
+  }, [_c('text', {
+    staticStyle: {
+      fontWeight: "bold",
+      fontSize: "29px",
+      color: "#ffffff"
+    }
+  }, [_vm._v("weex-ui示例")])]), _c('div', {
+    staticStyle: {
+      height: "90px",
+      width: "200px",
+      backgroundColor: "#00B4FF",
+      alignItems: "center",
+      justifyContent: "center",
+      marginTop: "30px",
+      borderRadius: "10px"
+    },
+    on: {
+      "click": _vm.TabBar
+    }
+  }, [_c('text', {
+    staticStyle: {
+      fontWeight: "bold",
+      fontSize: "29px",
+      color: "#ffffff"
+    }
+  }, [_vm._v("TabBar示例")])]), _c('div', {
+    staticStyle: {
+      height: "90px",
+      width: "200px",
+      backgroundColor: "#00B4FF",
+      alignItems: "center",
+      justifyContent: "center",
+      marginTop: "30px",
+      borderRadius: "10px"
+    },
+    on: {
+      "click": _vm.TabPage
+    }
+  }, [_c('text', {
+    staticStyle: {
+      fontWeight: "bold",
+      fontSize: "29px",
+      color: "#ffffff"
+    }
+  }, [_vm._v("TabPage示例")])])], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 

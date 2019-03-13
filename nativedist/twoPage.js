@@ -372,7 +372,7 @@ exports.default = {
     },
     created: function created() {
         params.getParam(function (res) {
-            modal.alert({ message: res });
+            modal.toast({ message: res });
         });
         console.log("aaa");
     }
