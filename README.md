@@ -15,8 +15,11 @@ Android：
 3、使用手机链接电脑，打开开发者模式和USB调试，修改app_config.xml中的debug属性为true，使用Androidstudio给你的手机打安装测试APP。  
 4、使用测试APP扫描浏览器上的二维码即可在手机上预览界面  
 iOS：  
-敬请期待...
-![image](https://github.com/ButBueatiful/dotvim/raw/master/screenshots/vim-screenshot.jpg)
+敬请期待...  
+# 体验IWeex  
+
+![image](https://github.com/liuxinyea/IWeex/blob/master/doc/image/downLoad.png)  
+
 # 扩展
 
 1、本项目扩展了weex的路由导航模块，支持相对路径的写法加载进行导航，并且可以传参  
