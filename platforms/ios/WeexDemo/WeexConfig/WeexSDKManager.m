@@ -11,6 +11,7 @@
 #import <WeexSDK/WeexSDK.h>
 #import "WXDemoViewController.h"
 #import "WXImgLoaderDefaultImpl.h"
+#import "IWXNavigatorImpl.h"
 
 @implementation WeexSDKManager
 
@@ -39,7 +40,7 @@
     [self initWeexSDK];
     [self loadCustomContainWithScannerWithUrl:url];
 }
-
+//初始化weex相关配置
 + (void)initWeexSDK
 {
     [WXAppConfiguration setAppGroup:@"AliApp"];
@@ -48,14 +49,15 @@
     [WXAppConfiguration setExternalUserAgent:@"ExternalUA"];
     
     [WXSDKEngine initSDKEnvironment];
-    
+//    [WXSDKEngine setNa]
+    [WXSDKEngine registerHandler:[IWXNavigatorImpl new] withProtocol:@protocol(WXNavigationProtocol)];
     [WXSDKEngine registerHandler:[WXImgLoaderDefaultImpl new] withProtocol:@protocol(WXImgLoaderProtocol)];
     
 #ifdef DEBUG
     [WXLog setLogLevel:WXLogLevelLog];
 #endif
 }
-
+//打开第一个界面
 + (void)loadCustomContainWithScannerWithUrl:(NSURL *)url
 {
     UIViewController *demo = [[WXDemoViewController alloc] init];

@@ -107,6 +107,7 @@ export default {
 
 <style scoped>
   .content{
+    width: 750px;
     flex-direction: row;
     flex-wrap: wrap;
   }

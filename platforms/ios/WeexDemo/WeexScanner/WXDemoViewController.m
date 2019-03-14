@@ -44,12 +44,21 @@
 {
     [super viewDidLoad];
     
-    [self setupNaviBar];
-    [self setupRightBarItem];
+//    [self setupNaviBar];
+//    [self setupRightBarItem];
     self.view.backgroundColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.translucent=false;
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
+    if ([self.navigationController isKindOfClass:[WXDemoViewController class]]) {
+        self.navigationController.navigationBarHidden = YES;
+    }
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+
+//    [[UIApplication sharedApplication] setStatusBarOrientation:<#(UIInterfaceOrientation)#>];
     _weexHeight = self.view.frame.size.height - 64;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationRefreshInstance:) name:@"RefreshInstance" object:nil];
+
     
 #if DEBUG
     NSString * hotReloadURL =  [[NSBundle mainBundle] objectForInfoDictionaryKey:@"WXSocketConnectionURL"];
@@ -63,7 +72,6 @@
     
     [self render];
 }
-
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
@@ -99,7 +107,7 @@
         // Fallback on earlier versions
     }
 #endif
-    _instance.frame = CGRectMake(safeArea.left, safeArea.top, self.view.frame.size.width-safeArea.left-safeArea.right, _weexHeight-safeArea.bottom);
+    _instance.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height);
 
 }
 
@@ -120,12 +128,14 @@
 
 - (void)render
 {
-    CGFloat width = self.view.frame.size.width;
+//    CGFloat width = self.view.frame.size.width;
     [_instance destroyInstance];
     _instance = [[WXSDKInstance alloc] init];
     _instance.viewController = self;
-    _instance.frame = CGRectMake(self.view.frame.size.width-width, 0, width, _weexHeight);
-    
+    [self.instance setFrame:CGRectMake(0.0f,0.0f, [UIScreen mainScreen].bounds.size.width,
+                                       [UIScreen mainScreen].bounds.size.height)];
+//    _instance.frame = CGRectMake(self.view.frame.size.width-width, 0, width, _weexHeight);
+
     __weak typeof(self) weakSelf = self;
     _instance.onCreate = ^(UIView *view) {
         [weakSelf.weexView removeFromSuperview];
