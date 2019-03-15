@@ -5,7 +5,7 @@
     <name>Hello</name>
     <preference name="loglevel" value="DEBUG" />
     <preference name="debug" value="true" />
-    <preference name="debugId" value="http://10.2.113.237:8082" />
+    <preference name="debugId" value="http://192.168.1.105:8082" />
     <preference name="debug_url" value="http://10.2.113.242:8081/nativedist/index.js"/>
     <preference name="local_url" value="file://assets/app/index.js" />
 

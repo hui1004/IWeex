@@ -5,5 +5,5 @@ import weex from 'weex-vue-render'
 
 weex.init(Vue)
 
-const App = require('..\\..\\src\\demo\\TabPageDemo.vue');
+const App = require('../../src/demo/TabPageDemo.vue');
 new Vue(Vue.util.extend({el: '#root'}, App));

@@ -15,10 +15,10 @@ public class AppConfig {
   }
 
   public static String getLaunchUrl() {
-    if (!isDebug()) {
+//    if (!isDebug()) {
       return sPreferences.getString("local_url", "file://assets/app/index.js");
-    }
-    return sPreferences.getString("debug_url", "http://192.168.1.103:8081/dist/index.js");
+//    }
+//    return sPreferences.getString("debug_url", "http://192.168.1.103:8081/dist/index.js");
    }
     public static String getDebugId() {
         return sPreferences.getString("debugId", "http://192.168.1.103:8082");
