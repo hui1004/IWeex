@@ -34,7 +34,7 @@ public class UrlParse {
             if(preUrl.startsWith("http")){
                 url.replace("src:",schema);
             }else{
-                url.replace("src:","file://assets/app/");
+                url.replace("srcnull:","file://assets/app/");
             }
             return url;
         }else if(url.startsWith("../")){//jump form fold use ../
@@ -57,6 +57,14 @@ public class UrlParse {
             return p2Str;
         }else{ //user complete path like file://assets/work/index.js or http://xxx.xxx.xx/app/index.js
             return url;
+        }
+    }
+    public static  String getHtmlUrl(String url){
+        if(url.startsWith("http"))
+        {
+            return url;
+        }else {
+            return "file:///android_asset/html/"+url;
         }
     }
 }
