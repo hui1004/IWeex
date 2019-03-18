@@ -15,6 +15,10 @@ boilerplate/*
 platforms/ios/app/*
 platforms/android/app/release/*
 platforms/android/app/src/main/assets/app/*
+platforms/android/android.iml
+platforms/android/baidu.speech/baidu.speech.iml
+platforms/android/commons/commons.iml
+platforms/android/app/app.iml
 platforms/android/.gradle
 platforms/android/settings.gradle
 start.bat
