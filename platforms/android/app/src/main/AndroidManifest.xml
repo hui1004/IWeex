@@ -3,9 +3,9 @@
           xmlns:tools="http://schemas.android.com/tools"
           package="com.weex.app">
 
-    <permission
-        android:name="com.xindi.apps.permission.JPUSH_MESSAGE"
-        android:protectionLevel="signature" />
+    <!--<permission-->
+        <!--android:name="com.xindi.apps.permission.JPUSH_MESSAGE"-->
+        <!--android:protectionLevel="signature" />-->
     <!-- Required -->
     <uses-permission android:name="com.weex.app.permission.JPUSH_MESSAGE" />
     <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />

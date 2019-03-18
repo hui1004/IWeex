@@ -5,5 +5,5 @@ import weex from 'weex-vue-render'
 
 weex.init(Vue)
 
-const App = require('../../../../../src/components/weex-ui/packages/wxc-progress/index.vue');
+const App = require('..\\..\\..\\..\\..\\src\\components\\weex-ui\\packages\\wxc-progress\\index.vue');
 new Vue(Vue.util.extend({el: '#root'}, App));

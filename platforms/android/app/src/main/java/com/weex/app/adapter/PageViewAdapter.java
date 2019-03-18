@@ -17,6 +17,18 @@ public class PageViewAdapter extends PagerAdapter{
     }
 
     @Override
+    public int getItemPosition(Object object) {
+//        View view = (View)object;
+//        int currentPage =view.getContext().getCurrentPagerIdx(); // Get current page index
+//        if(currentPage == (Integer)view.getTag()){
+//            return POSITION_NONE;
+//        }else{
+//            return POSITION_UNCHANGED;
+//        }
+      return POSITION_NONE;
+    }
+
+    @Override
     public boolean isViewFromObject(View view, Object object) {
         return view==object;
     }
@@ -24,6 +36,7 @@ public class PageViewAdapter extends PagerAdapter{
     public Object instantiateItem(ViewGroup container, int position) {
         // return super.instantiateItem(container, position);
         View view=views.get(position);
+        view.setTag(position);
         container.addView(view);
         return  view;
     }

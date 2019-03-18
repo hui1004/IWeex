@@ -3,6 +3,7 @@ package com.weex.app;
 import android.app.Application;
 
 import com.weex.app.component.IWXMap;
+import com.weex.app.component.IWXSuperHost;
 import com.weex.app.component.IWXWebView;
 import com.weex.app.component.IWXHost;
 import com.alibaba.android.bindingx.plugin.weex.BindingX;
@@ -39,6 +40,7 @@ public class WXApplication extends Application {
     try {
       BindingX.register();
       WXSDKEngine.registerComponent("hostPage",IWXHost.class);
+      WXSDKEngine.registerComponent("superHostPage",IWXSuperHost.class);
       WXSDKEngine.registerComponent("webView",IWXWebView.class);
       WXSDKEngine.registerComponent("map",IWXMap.class);
       WXSDKEngine.registerModule("event", WXEventModule.class);
