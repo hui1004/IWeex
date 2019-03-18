@@ -1,6 +1,7 @@
 package com.weex.app.util.download;
 
 
+import android.annotation.SuppressLint;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -17,7 +18,13 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.appset.weex.R;
+import com.squareup.okhttp.Call;
+import com.squareup.okhttp.Callback;
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
+import com.squareup.okhttp.ResponseBody;
+import com.weex.app.R;
 
 import java.io.DataOutputStream;
 import java.io.File;
@@ -28,13 +35,6 @@ import java.io.RandomAccessFile;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
-import okhttp3.ResponseBody;
 
 /**
  * Created by liulu on 16/10/19
@@ -83,6 +83,7 @@ public class DownloadService extends Service {
     }
     private void initHandler() {
         handler = new Handler(getMainLooper()) {
+            @SuppressLint("StringFormatInvalid")
             @Override
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
@@ -164,9 +165,10 @@ public class DownloadService extends Service {
         }
         Log.v("下载地址",url);
 //        final File fileTemp = new File(dir.getAbsolutePath());
-        OkHttpClient okHttpClient = new OkHttpClient.Builder().connectTimeout(120, TimeUnit.SECONDS)
-                .readTimeout(120, TimeUnit.SECONDS)
-                .build();
+        OkHttpClient okHttpClient = new OkHttpClient();
+//        .connectTimeout(120, TimeUnit.SECONDS)
+//                .readTimeout(120, TimeUnit.SECONDS)
+//                .build();
         /**
          * HTTP请求是有一个Header的，里面有个Range属性是定义下载区域的，它接收的值是一个区间范围，
          * 比如：Range:bytes=0-10000。这样我们就可以按照一定的规则，将一个大文件拆分为若干很小的部分，
@@ -183,7 +185,7 @@ public class DownloadService extends Service {
 //        Log.e("message-----","正在下载......");
         okHttpClient.newCall(request).enqueue(new Callback() {
             @Override
-            public void onFailure(Call call, final IOException e) {
+            public void onFailure(Request request, IOException e) {
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
@@ -191,8 +193,9 @@ public class DownloadService extends Service {
                     }
                 });
             }
+
             @Override
-            public void onResponse(Call call, Response response) throws IOException {
+            public void onResponse(Response response) throws IOException {
                 Log.e("message-----","正在下载2"+"-code:"+response.code());
                 if (response != null && response.code() == 200) {
                     InputStream is = null;

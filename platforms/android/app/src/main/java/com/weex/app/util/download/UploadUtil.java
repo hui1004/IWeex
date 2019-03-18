@@ -8,7 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 
-import com.appset.weex.R;
+import com.weex.app.R;
 
 import java.io.File;
 
@@ -71,7 +71,7 @@ public class UploadUtil {
      * @param title
      * @param percent
      */
-    @SuppressLint({"NewApi", "StringFormatMatches"})
+    @SuppressLint({"NewApi", "StringFormatMatches", "StringFormatInvalid"})
     public  void notifyChange(Context context, String title, int percent) {
         buider.setOnlyAlertOnce(true);
         buider.setAutoCancel(false);
@@ -79,7 +79,7 @@ public class UploadUtil {
         buider.setContentTitle(context.getResources().getString(
                 R.string.download_ing_, title));
         buider.setContentText(context.getString(R.string.download_precent, percent) + "%");
-        buider.setSmallIcon(R.drawable.ic_launcher_sales);
+        buider.setSmallIcon(R.mipmap.iclauncher);
         buider.setWhen(System.currentTimeMillis());
         nf = buider.build();
         nfm.notify(1121, nf);
@@ -87,14 +87,14 @@ public class UploadUtil {
             nfm.cancel(1121);
         }
     }
-    @SuppressLint({"NewApi", "StringFormatMatches"})
+    @SuppressLint({"NewApi", "StringFormatMatches", "StringFormatInvalid"})
     public  void notifyPasue(Context context,String title,int percent){
         buider.setOnlyAlertOnce(true);
         buider.setAutoCancel(false);
         buider.setProgress(100, percent, false);
         buider.setContentTitle( title);
         buider.setContentText(context.getString(R.string.download_precent, percent) + "%");
-        buider.setSmallIcon(R.drawable.app_logo120);
+        buider.setSmallIcon(R.mipmap.iclauncher);
         buider.setWhen(System.currentTimeMillis());
         nf = buider.build();
         nfm.notify(1121, nf);

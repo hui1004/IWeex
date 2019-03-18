@@ -24,7 +24,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 
-public class IWXHost extends WXComponent<ViewPager>{
+public class IWXHost extends WXVContainer<ViewPager>{
     private ViewPager hostView=null;
     private ArrayList<View> weexPages=null;
     private WXSDKInstance mInstance=null;
@@ -44,7 +44,8 @@ public class IWXHost extends WXComponent<ViewPager>{
         addOnPageChangeListener();
         return hostView;
     }
-//    @JSMethod
+
+    //    @JSMethod
     @WXComponentProp(name = "index")
     public void setIndex(int index){
         this.position=index;
