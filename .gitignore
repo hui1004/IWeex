@@ -20,7 +20,6 @@ platforms/android/baidu.speech/baidu.speech.iml
 platforms/android/commons/commons.iml
 platforms/android/app/app.iml
 platforms/android/.gradle
-platforms/android/settings.gradle
 start.bat
 startServe.bat
 .DS_Store
