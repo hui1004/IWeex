@@ -1,5 +1,7 @@
+
 include ':app'
 include ':sdk'
-
 include ':commons'
 include ':baidu.speech'
+
+

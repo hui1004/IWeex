@@ -27,6 +27,9 @@
       <div class="cell" @click="hostPage1">
         <text style="font-weight: bold;font-size: 29px;color: #ffffff">原生组件superHostPage示例,性能更佳</text>
       </div>
+      <div class="cell" @click="map">
+        <text style="font-weight: bold;font-size: 29px;color: #ffffff">地图组件</text>
+      </div>
     </div>
   </div>
 </template>
@@ -50,6 +53,15 @@ export default {
         turn(){
             navigator.push({
                 url: './twoPage.js',
+                param:{a:11111},
+                animated: "true"
+            }, event => {
+                // modal.toast({ message: 'callback: ' + event })
+            })
+        },
+        map(){
+            navigator.push({
+                url: './demo/MapDemo.js',
                 param:{a:11111},
                 animated: "true"
             }, event => {
