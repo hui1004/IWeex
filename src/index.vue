@@ -24,6 +24,9 @@
       <div class="cell" @click="hostPage">
         <text style="font-weight: bold;font-size: 29px;color: #ffffff">原生组件hostPage示例</text>
       </div>
+      <div class="cell" @click="hostPage1">
+        <text style="font-weight: bold;font-size: 29px;color: #ffffff">原生组件superHostPage示例,性能更佳</text>
+      </div>
     </div>
   </div>
 </template>
@@ -92,6 +95,13 @@ export default {
         hostPage(){
             navigator.push({
                 url: './demo/HostPageDemo.js',
+                animated: "true"
+            }, event => {
+            })
+        },
+        hostPage1(){
+            navigator.push({
+                url: './demo/SuperHostDemo.js',
                 animated: "true"
             }, event => {
             })
