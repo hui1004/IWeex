@@ -1,6 +1,5 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.taobao.android.weex.plugin.gradle'
-
 android {
     compileSdkVersion project.compileSdkVersion
 
