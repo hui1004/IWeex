@@ -18,9 +18,9 @@ iOS：
 敬请期待...  
 # 体验IWeex  
 
-[![image](https://github.com/liuxinyea/IWeex/blob/master/doc/image/downLoad.png)](https://www.pgyer.com/VPzf)    
+[![image](https://www.pgyer.com/app/qrcode/VPzf)](https://www.pgyer.com/VPzf)    
 
- [点击下载体验](https://www.pgyer.com/RTEV)
+ [点击下载体验](https://www.pgyer.com/VPzf)
 
 
 # 框架扩展
