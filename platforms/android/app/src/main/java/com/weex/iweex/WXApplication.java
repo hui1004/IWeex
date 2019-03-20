@@ -2,9 +2,10 @@ package com.weex.iweex;
 
 import android.app.Application;
 
-import com.weex.iweex.component.IWXInfoWindow;
-import com.weex.iweex.component.IWXMap;
-import com.weex.iweex.component.IWXMapMarker;
+import com.weex.iweex.component.map.IWXInfoWindow;
+import com.weex.iweex.component.map.IWXMap;
+import com.weex.iweex.component.map.IWXMapCircle;
+import com.weex.iweex.component.map.IWXMapMarker;
 import com.weex.iweex.component.IWXSuperHost;
 import com.weex.iweex.component.IWXWebView;
 import com.weex.iweex.component.IWXHost;
@@ -46,6 +47,7 @@ public class WXApplication extends Application {
       WXSDKEngine.registerComponent("webView",IWXWebView.class);
       WXSDKEngine.registerComponent("mapMarker",IWXMapMarker.class);
       WXSDKEngine.registerComponent("mapInfoWindows",IWXInfoWindow.class);
+      WXSDKEngine.registerComponent("mapCircle",IWXMapCircle.class);
       WXSDKEngine.registerComponent("map",IWXMap.class);
       WXSDKEngine.registerModule("event", WXEventModule.class);
       WXSDKEngine.registerModule("params", ParamsModule.class);

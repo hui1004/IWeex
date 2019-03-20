@@ -1,4 +1,4 @@
-package com.weex.iweex.component;
+package com.weex.iweex.component.map;
 
 import android.content.Context;
 import android.content.res.AssetManager;
@@ -33,11 +33,14 @@ import com.taobao.weex.ui.component.WXComponent;
 import com.taobao.weex.ui.component.WXComponentProp;
 import com.taobao.weex.ui.component.WXVContainer;
 import com.weex.iweex.util.Constant;
+import com.weex.iweex.util.URIType;
 import com.weex.iweex.view.WeexMapView;
+import com.weex.iweex.weexAdapter.URIAdapter;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Array;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -46,9 +49,11 @@ import java.util.Map;
 public class IWXMapMarker extends WXComponent{
     private WXSDKInstance mInstance;
     private WeexMapView mapView;
-    private ImageView imageView;
     private MarkerOptions options;
     private Animation markerAnimarion;
+    private boolean isOrigin=false;
+    private Marker marker;
+    private int attrCount=0;
     public IWXMapMarker(WXSDKInstance instance, WXVContainer parent, BasicComponentData basicComponentData) {
         super(instance, parent, basicComponentData);
         mInstance=instance;
@@ -62,6 +67,7 @@ public class IWXMapMarker extends WXComponent{
         for (String key:getAttrs().keySet()){
              setProperty(key,getAttrs().get(key));
         }
+
         return super.initComponentHostView(context);
     }
     private void addMarkerListener(){
@@ -99,7 +105,6 @@ public class IWXMapMarker extends WXComponent{
          if (point!=null&&point.length==2){
              LatLng latLng=new LatLng(point[0],point[1]);
              options.position(latLng);
-//             addMarker();
          }else{
              Toast.makeText(mInstance.getContext(),"坐标数据错误！",Toast.LENGTH_LONG).show();
          }
@@ -107,14 +112,11 @@ public class IWXMapMarker extends WXComponent{
     @WXComponentProp(name = Constant.MapProp.TITLE)
     public void setTitle(String title){
         options.title(title);
-//        addMarker();
     }
     @WXComponentProp(name =  Constant.MapProp.CONTENT)
     public void setContent(String content){
         options.snippet(content);
-//        addMarker();
     }
-
     @WXComponentProp(name = Constant.MapProp.IMGSRC)
     public void setImage(String imageStr){
         JSONObject image=JSON.parseObject(imageStr);
@@ -122,21 +124,20 @@ public class IWXMapMarker extends WXComponent{
         int w=image.getInteger("width");
         int h=image.getInteger("height");
         if(url.startsWith("http")){
+            isOrigin=true;
             setOriginImage(url,w,h);
         }else{
+            isOrigin=false;
             setLocalImage(url,w,h);
         }
-//        addMarker();
     }
     @WXComponentProp(name = Constant.MapProp.DRAGGABLE)
     public void setDraggable(boolean draggable){
        options.draggable(draggable);
-//        addMarker();
     }
     @WXComponentProp(name = Constant.MapProp.FLAT)
     public void setFlat(boolean isFlat){
         options.setFlat(isFlat);
-//        addMarker();
     }
     @WXComponentProp(name = Constant.MapProp.ANIMATION)
     public void isAnimation(boolean isAnimation){
@@ -144,7 +145,6 @@ public class IWXMapMarker extends WXComponent{
             Animation animation = new RotateAnimation(0,180);
             markerAnimarion=animation;
         }
-//        addMarker();
     }
     /*初始化时设置属性值*/
     @Override
@@ -155,53 +155,80 @@ public class IWXMapMarker extends WXComponent{
                 Double[] points={Double.parseDouble(point.get(0).toString())
                         , Double.parseDouble(point.get(1).toString())};
                 setPoint(points);
+                attrCount++;
                 return true;
             case Constant.MapProp.TITLE:
                 options.title(param.toString());
+                attrCount++;
                 return true;
             case Constant.MapProp.CONTENT:
                 options.snippet(param.toString());
+                attrCount++;
                 return true;
             case Constant.MapProp.IMGSRC:
                 setImage(param.toString());
+                attrCount++;
                 return true;
             case Constant.MapProp.DRAGGABLE:
                 setDraggable((Boolean) param);
+                attrCount++;
                 return true;
             case Constant.MapProp.FLAT:
                 setFlat((Boolean) param);
+                attrCount++;
                 return true;
             case Constant.MapProp.ANIMATION:
                 isAnimation((Boolean) param);
+                attrCount++;
+                return true;
+            case "showType":
+                 attrCount++;
                 return true;
             default:
+                attrCount++;
                 return super.setProperty(key,param);
         }
     }
-
+    @Override
+    public void updateAttrs(Map attrs) {
+        super.updateAttrs(attrs);
+        for (Object key:attrs.keySet()){
+            setProperty(key.toString(),attrs.get(key));
+        }
+        addMarker();
+    }
     @Override
     protected void onFinishLayout() {
         super.onFinishLayout();
-
     }
-
     @Override
     public void onRenderFinish(int state) {
         super.onRenderFinish(state);
     }
-    /*初始化完成回调*/
+    /*初始化完成回调，会在setProperty设置完所有属性之后执行*/
     @Override
     protected void onHostViewInitialized(View host) {
         super.onHostViewInitialized(host);
-//        Marker marker = mapView.aMap.addMarker(options);
-//        marker.showInfoWindow();
-//        marker.setAnimation(markerAnimarion);
+        if (isOrigin){
+            return;
+        }
+        addMarker();
     }
     private void addMarker(){
-        Marker marker = mapView.aMap.addMarker(options);
+        if (marker!=null){
+            marker.destroy();
+        }
+        marker = mapView.aMap.addMarker(options);
+        LatLng latLng=options.getPosition();
+        options.position(latLng);
+        if(markerAnimarion!=null){
+            marker.setAnimation(markerAnimarion);
+        }
         marker.showInfoWindow();
         marker.setObject(getAttrByKey("showType")==null?"-1":getAttrByKey("showType"));
-        marker.setAnimation(markerAnimarion);
+    }
+    private void resetMarker(){
+
     }
     public String getShowType(){
         String s=getAttrs().get("showType").toString();
@@ -212,8 +239,14 @@ public class IWXMapMarker extends WXComponent{
     }
     private void setLocalImage(String src, int w, int h){
         Bitmap image = null;
-        if (src.startsWith("root:")){
-            src=src.replace("root:","app/");
+        if(src.startsWith("app:")){
+            src=src.replace("app:","app/");
+        }else{
+            src= new URIAdapter().rewrite(mInstance, URIType.IMG,Uri.parse(src)).toString();
+            if(src.startsWith("http")){
+                setOriginImage(src,w,h);
+                return;
+            }
         }
         AssetManager am = mInstance.getContext().getResources().getAssets();
         // 定义矩阵对象
@@ -223,16 +256,13 @@ public class IWXMapMarker extends WXComponent{
             InputStream is = am.open(src);
             image = BitmapFactory.decodeStream(is);
             is.close();
-            Bitmap dstbmp = Bitmap.createBitmap(image,0,0, w, h,
-                    matrix, true);
+            Bitmap dstbmp = Bitmap.createScaledBitmap(image,w,h,true);
             options.icon(BitmapDescriptorFactory.fromBitmap(dstbmp));
         }catch (Exception e){
             e.printStackTrace();
         }
     }
     private void setOriginImage(String url, final int width, final int height){
-        imageView=new ImageView(mInstance.getContext());
-        imageView.setDrawingCacheEnabled(true);
         Picasso.with(mInstance.getContext())
                 .load(Uri.parse(url))
                 .into(new Target() {
@@ -240,31 +270,22 @@ public class IWXMapMarker extends WXComponent{
                     public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
                         if (bitmap==null)
                             return;
-//                        Matrix matrix = new Matrix();
                         Bitmap dstbmp =  Bitmap.createScaledBitmap(bitmap,width,height, true);
                         options.icon(BitmapDescriptorFactory.fromBitmap(dstbmp));
-                        if (imageLoadedListener!=null){
-                            imageLoadedListener.loaded();
+                        if (attrCount==getAttrs().entrySet().size()){
+                            addMarker();
+                        }else{
+                            isOrigin=false;
                         }
-                        imageView.setDrawingCacheEnabled(false);
                     }
 
                     @Override
                     public void onBitmapFailed(Drawable errorDrawable) {
-
+                        addMarker();
                     }
-
                     @Override
                     public void onPrepareLoad(Drawable placeHolderDrawable) {
-
                     }
                 });
-    }
-    private OnImageLoadedListener imageLoadedListener;
-    public  void  setOnImageLoadedListener(OnImageLoadedListener imageLoadedListener){
-        this.imageLoadedListener=imageLoadedListener;
-    }
-    public interface OnImageLoadedListener{
-        public void loaded();
     }
 }

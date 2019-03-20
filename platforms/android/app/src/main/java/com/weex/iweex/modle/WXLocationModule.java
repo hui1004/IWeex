@@ -81,16 +81,16 @@ public class WXLocationModule extends WXModule{
             }
         });
         clientOption=new AMapLocationClientOption();
-//       //设置为高精度定位模式
-//        clientOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);
-//        //连续定位
-//        clientOption.setOnceLocation(false);
-//        //连续定位模式2s一次
-//        clientOption.setInterval(2000);
-//        //超时设置20s
-//        clientOption.setHttpTimeOut(20000);
+       //设置为高精度定位模式
+        clientOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);
+        //连续定位
+        clientOption.setOnceLocation(false);
+        //连续定位模式2s一次
+        clientOption.setInterval(2000);
+        //超时设置20s
+        clientOption.setHttpTimeOut(10000);
         //设置定位场景，签到
-        clientOption.setLocationPurpose(AMapLocationClientOption.AMapLocationPurpose.SignIn);
+//        clientOption.setLocationPurpose(AMapLocationClientOption.AMapLocationPurpose.SignIn);
         if(null != mLocationClient){
             mLocationClient.setLocationOption(clientOption);
             //设置场景模式后最好调用一次stop，再调用start以保证场景模式生效

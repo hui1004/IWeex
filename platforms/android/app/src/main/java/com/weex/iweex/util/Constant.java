@@ -20,6 +20,12 @@ public class Constant {
      String DRAGGABLE="draggable";
      String FLAT="isFlat";
     String ANIMATION="isAnimation";
+    String CIRCLE_LAT="lat";
+    String CIRCLE_LNG="lng";
+    String CIRCLE_RADIUS="radius";
+    String CIRCLE_STROKE_WIDTH="strokeWidth";
+    String CIRCLE_STROKE_COLOR="strokeColor";
+    String CIRCLE_FILL_COLOR="fillColor";
   }
   public interface Name {
 

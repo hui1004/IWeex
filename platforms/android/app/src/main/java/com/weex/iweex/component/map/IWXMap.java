@@ -1,4 +1,4 @@
-package com.weex.iweex.component;
+package com.weex.iweex.component.map;
 
 import android.app.Activity;
 import android.content.Context;
@@ -14,7 +14,6 @@ import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.Pair;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.widget.Toast;
@@ -41,7 +40,6 @@ import com.taobao.weex.ui.component.WXComponent;
 import com.taobao.weex.ui.component.WXComponentProp;
 import com.taobao.weex.ui.component.WXDiv;
 import com.taobao.weex.ui.component.WXVContainer;
-import com.weex.iweex.R;
 import com.weex.iweex.view.WeexMapView;
 
 import java.io.IOException;
@@ -322,39 +320,6 @@ public class IWXMap extends WXVContainer<WeexMapView> {
         mapView.aMap.addTileOverlay(tileOverlayOptions);
     }
     @JSMethod(uiThread = true)
-    public void setInfoWindowAdapter(){
-        mapView.aMap.setInfoWindowAdapter(new AMap.InfoWindowAdapter() {
-            /**
-             * 监听自定义infowindow窗口的infowindow事件回调
-             */
-            @Override
-            public View getInfoWindow(Marker marker) {
-                return null;
-            }
-            View infoWindow = null;
-            /**
-             * 监听自定义infowindow窗口的infocontents事件回调
-             */
-            @Override
-            public View getInfoContents(Marker marker) {
-                if(infoWindow == null) {
-                    infoWindow = LayoutInflater.from(wxInstance.getContext()).inflate(
-                            R.layout.tabitem_view, null);
-                }
-//              render(marker, infoWindow);
-                return infoWindow;
-                //加载custom_info_window.xml布局文件作为InfoWindow的样式
-            }
-        });
-        mapView.aMap.setOnInfoWindowClickListener(new AMap.OnInfoWindowClickListener() {
-            @Override
-            public void onInfoWindowClick(Marker marker) {
-                String content=marker.getSnippet().toString();
-                Toast.makeText(wxInstance.getContext(),content,Toast.LENGTH_LONG).show();
-            }
-        });
-    }
-    @JSMethod(uiThread = true)
     public void mapPause() {
          mapView.onPause();
     }
@@ -385,62 +350,16 @@ public class IWXMap extends WXVContainer<WeexMapView> {
         });
         fireEvent("mapLoaded");
     }
-    HashMap infoList=new HashMap();
-        @Override
+    @Override
     public void createChildViewAt(int index) {
         super.createChildViewAt(index);
-        Pair<WXComponent, Integer> ret = rearrangeIndexAndGetChild(index);
-        if (ret.first != null) {
-            final WXComponent child = ret.first;
-            //执行这个方法会才会调用子元素一系列回调方法
-            child.createView();
-            if(child instanceof IWXMapMarker){
-              final MarkerOptions options=((IWXMapMarker) child).getOptions();
-              ((IWXMapMarker) child).setOnImageLoadedListener(new IWXMapMarker.OnImageLoadedListener() {
-                  @Override
-                  public void loaded() {
-                      Marker marker= mapView.aMap.addMarker(options);
-                      marker.setObject(((IWXMapMarker) child).getShowType());
-                  }
-              });
-                Marker marker= mapView.aMap.addMarker(options);
-//              marker.setObject(((IWXMapMarker) child).getShowType());
-//              marker.showInfoWindow();
-//              marker.setAnimation(markerAnimarion);
-            }else if (child instanceof WXDiv){
-                infoList.put("1",child.getRealView());
-                if(index==getChildCount()-1){
-                    addInfoAdapter();
-                }
-            }
-        }
     }
-
     @Override
     protected void onHostViewInitialized(WeexMapView host) {
         super.onHostViewInitialized(host);
     }
-
     @Override
     public void onRenderFinish(int state) {
         super.onRenderFinish(state);
-    }
-
-    private void addInfoAdapter(){
-        mapView.aMap.setInfoWindowAdapter(new AMap.InfoWindowAdapter() {
-            @Override
-            public View getInfoWindow(Marker marker) {
-                String showType=marker.getObject().toString();
-                if (infoList.containsKey(showType)){
-                      return (View) infoList.get("1");
-                }else{
-                    return (View) infoList.get("1");
-                }
-            }
-            @Override
-            public View getInfoContents(Marker marker) {
-                return null;
-            }
-        });
     }
 }

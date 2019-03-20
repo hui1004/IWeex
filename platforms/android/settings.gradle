@@ -1,5 +1,5 @@
 
-include ':app'
+include ':app', ':wxApi'
 include ':sdk'
 include ':commons'
 include ':baidu.speech'

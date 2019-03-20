@@ -239,6 +239,7 @@ public class WXPageActivity extends AbsWeexActivity implements
               break;
           case R.id.refresh:
               createWeexInstance();
+              mTipView.setVisibility(View.GONE);
               refreshPage();
               break;
           default:

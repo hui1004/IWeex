@@ -1,4 +1,4 @@
-package com.weex.iweex.component;
+package com.weex.iweex.component.map;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
