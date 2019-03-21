@@ -7,7 +7,7 @@ android {
         minSdkVersion project.appMinSdkVersion
         targetSdkVersion project.targetSdkVersion
         versionCode 1
-        versionName "1.0.0"
+        versionName "1.0.1"
         ndk{
             abiFilters "x86"
             abiFilters "armeabi"

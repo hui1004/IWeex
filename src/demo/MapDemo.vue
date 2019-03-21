@@ -37,7 +37,7 @@
 
 <script>
     var location=weex.requireModule('location');
-    var utils=weex.requireModule('util');
+    var utils=weex.requireModule('iwx_utils');
     var modal=weex.requireModule('modal');
     export default {
         name: "map-demo",

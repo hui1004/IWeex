@@ -6,8 +6,8 @@ import com.weixin.pay.WXPay;
 
 import org.json.JSONObject;
 
-public class payModule extends WXModule{
-    public payModule(){
+public class PayModule extends WXModule{
+    public PayModule(){
     }
     @JSMethod
     public void wxPay(JSONObject jsonObject){

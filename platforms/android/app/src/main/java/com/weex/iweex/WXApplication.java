@@ -13,6 +13,7 @@ import com.alibaba.android.bindingx.plugin.weex.BindingX;
 import com.weex.iweex.extend.ImageAdapter;
 import com.weex.iweex.extend.WXEventModule;
 import com.weex.iweex.modle.ParamsModule;
+import com.weex.iweex.modle.PayModule;
 import com.weex.iweex.modle.UtilsModule;
 import com.weex.iweex.modle.WXLocationModule;
 import com.weex.iweex.util.AppConfig;
@@ -49,10 +50,12 @@ public class WXApplication extends Application {
       WXSDKEngine.registerComponent("mapInfoWindows",IWXInfoWindow.class);
       WXSDKEngine.registerComponent("mapCircle",IWXMapCircle.class);
       WXSDKEngine.registerComponent("map",IWXMap.class);
+
       WXSDKEngine.registerModule("event", WXEventModule.class);
+      WXSDKEngine.registerModule("wxPay", PayModule.class);
       WXSDKEngine.registerModule("params", ParamsModule.class);
       WXSDKEngine.registerModule("location", WXLocationModule.class);
-      WXSDKEngine.registerModule("util", UtilsModule.class);
+      WXSDKEngine.registerModule("iwx_utils", UtilsModule.class);
     } catch (WXException e) {
       e.printStackTrace();
     }
