@@ -31,6 +31,9 @@
       <div class="cell" @click="map">
         <text style="font-weight: bold;font-size: 29px;color: #ffffff">地图组件</text>
       </div>
+      <div class="cell" @click="lottie">
+        <text style="font-weight: bold;font-size: 29px;color: #ffffff">lottie动画</text>
+      </div>
     </div>
   </div>
 </template>
@@ -115,6 +118,13 @@ export default {
         hostPage1(){
             navigator.push({
                 url: './demo/SuperHostDemo.js',
+                animated: "true"
+            }, event => {
+            })
+        },
+        lottie(){
+            navigator.push({
+                url: './demo/lottie.js',
                 animated: "true"
             }, event => {
             })

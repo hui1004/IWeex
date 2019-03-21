@@ -2,6 +2,9 @@ package com.weex.iweex;
 
 import android.app.Application;
 
+import com.taobao.gcanvas.bridges.weex.GCanvasWeexModule;
+import com.taobao.gcanvas.bridges.weex.WXGCanvasWeexComponent;
+import com.weex.iweex.component.IWXLottie;
 import com.weex.iweex.component.map.IWXInfoWindow;
 import com.weex.iweex.component.map.IWXMap;
 import com.weex.iweex.component.map.IWXMapCircle;
@@ -51,6 +54,10 @@ public class WXApplication extends Application {
       WXSDKEngine.registerComponent("mapCircle",IWXMapCircle.class);
       WXSDKEngine.registerComponent("map",IWXMap.class);
 
+      WXSDKEngine.registerComponent("lottie",IWXLottie.class);
+      WXSDKEngine.registerComponent("gcanvas",WXGCanvasWeexComponent.class);
+//
+      WXSDKEngine.registerModule("gcanvas",GCanvasWeexModule.class);
       WXSDKEngine.registerModule("event", WXEventModule.class);
       WXSDKEngine.registerModule("wxPay", PayModule.class);
       WXSDKEngine.registerModule("params", ParamsModule.class);
