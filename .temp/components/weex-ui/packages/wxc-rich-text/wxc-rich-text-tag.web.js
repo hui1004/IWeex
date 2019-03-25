@@ -5,5 +5,5 @@ import weex from 'weex-vue-render'
 
 weex.init(Vue)
 
-const App = require('..\\..\\..\\..\\..\\src\\components\\weex-ui\\packages\\wxc-rich-text\\wxc-rich-text-tag.vue');
+const App = require('../../../../../src/components/weex-ui/packages/wxc-rich-text/wxc-rich-text-tag.vue');
 new Vue(Vue.util.extend({el: '#root'}, App));
