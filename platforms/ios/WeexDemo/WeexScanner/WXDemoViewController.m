@@ -53,7 +53,7 @@
     if ([self.navigationController isKindOfClass:[WXDemoViewController class]]) {
         self.navigationController.navigationBarHidden = YES;
     }
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
 
 //    [[UIApplication sharedApplication] setStatusBarOrientation:<#(UIInterfaceOrientation)#>];
     _weexHeight = self.view.frame.size.height - 64;

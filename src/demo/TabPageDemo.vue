@@ -1,6 +1,6 @@
 <template>
     <div>
-        <head title="TabPage"></head>
+        <!--<head title="TabPage"></head>-->
         <wxc-tab-page ref="wxc-tab-page"
                       :tab-titles="tabTitles"
                       :tab-styles="tabStyles"

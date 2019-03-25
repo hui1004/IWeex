@@ -12,7 +12,7 @@
 #import "WXDemoViewController.h"
 #import "WXImgLoaderDefaultImpl.h"
 #import "IWXNavigatorImpl.h"
-
+#import "IWXHost.h"
 @implementation WeexSDKManager
 
 + (void)setup;
@@ -50,6 +50,7 @@
     
     [WXSDKEngine initSDKEnvironment];
 //    [WXSDKEngine setNa]
+    [WXSDKEngine registerComponent:@"hostPage" withClass:[IWXHost class]];
     [WXSDKEngine registerHandler:[IWXNavigatorImpl new] withProtocol:@protocol(WXNavigationProtocol)];
     [WXSDKEngine registerHandler:[WXImgLoaderDefaultImpl new] withProtocol:@protocol(WXImgLoaderProtocol)];
     

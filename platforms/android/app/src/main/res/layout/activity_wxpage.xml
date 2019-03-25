@@ -1,4 +1,4 @@
-<FrameLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,8 +7,17 @@
     android:focusable="true"
     android:focusableInTouchMode="true"
     tools:context="com.weex.iweex.WXPageActivity">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:textAlignment="center"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:layout_width="match_parent" >
+
+    </android.support.v7.widget.Toolbar>
     <FrameLayout
         android:id="@+id/container"
+        android:layout_below="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#ffffff">
@@ -19,27 +28,26 @@
         android:visibility="gone"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:layout_gravity="center_vertical">
+        android:layout_centerVertical="true">
     </include>
     <ProgressBar
         android:id="@+id/progress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:visibility="gone"/>
-
     <TextView
         android:id="@+id/index_tip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignWithParentIfMissing="true"
-        android:layout_below="@+id/index_progressBar"
+        android:layout_below="@+id/toolbar"
         android:layout_centerHorizontal="true"
         android:layout_margin="10dp"
         android:text="loading...."
         android:visibility="gone"/>
-
-</FrameLayout>
+</RelativeLayout>
 
 
 

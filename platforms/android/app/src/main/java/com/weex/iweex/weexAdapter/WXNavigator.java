@@ -31,6 +31,7 @@ public class WXNavigator implements INavigator{
         url= AppConfig.isDebug()?UrlParse.getDebugUrl(activity,url):UrlParse.getReleaseUrl(activity,url);
         //传递要渲染的url路径
         intent.putExtra(Constants.URL,url);
+        intent.putExtra(Constants.TITLE,jsonObject.getString(Constants.TITLE));
         //启动界面
         activity.startActivity(intent);
         //返回true，返回false会走weex默认路由方式

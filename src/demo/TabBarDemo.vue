@@ -6,21 +6,21 @@
                      @wxcTabBarCurrentTabSelected="wxcTabBarCurrentTabSelected">
             <!-- 第一个页面内容-->
             <div class="item-container" :style="contentStyle">
-                <head  title="首页"></head>
+                <!--<head  title="首页"></head>-->
             </div>
             <!-- 第二个页面内容-->
             <div class="item-container" :style="contentStyle">
-                <head title="特别推荐"></head>
+                <!--<head title="特别推荐"></head>-->
             </div>
 
             <!-- 第三个页面内容-->
             <div class="item-container" :style="contentStyle">
-                <head title="消息中心"></head>
+                <!--<head title="消息中心"></head>-->
             </div>
 
             <!-- 第四个页面内容-->
             <div class="item-container" :style="contentStyle">
-                <head title="我的主页"></head>
+                <!--<head title="我的主页"></head>-->
             </div>
         </wxc-tab-bar>
     </div>

@@ -1,6 +1,6 @@
 <template>
     <div style="width: 750px;align-items: center">
-        <head title="lottie_demo"></head>
+        <!--<head title="lottie_demo"></head>-->
         <scroller style="width: 750px;align-items: center">
             <text style="font-size: 30px;margin-top: 20px;height: 80px;" @click="stop">点击暂停2s...</text>
             <lottie :ref="item" v-for="(item,index) in animalNames" :key="index" style="height:400px;width:750px;"
