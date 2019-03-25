@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <head title="首页" :canBack="false"></head>
+    <!--<head title="首页" :canBack="false"></head>-->
     <text class="greeting">The environment is ready!!!!</text>
     <div class="content">
       <div class="cell" @click="turn">
@@ -50,7 +50,8 @@ export default {
   },
   data () {
     return {
-      logo: 'https://gw.alicdn.com/tfs/TB1yopEdgoQMeJjy1XaXXcSsFXa-640-302.png'
+        tilte:"首页",
+        logo: 'https://gw.alicdn.com/tfs/TB1yopEdgoQMeJjy1XaXXcSsFXa-640-302.png'
     }
   },
     methods:{
@@ -58,6 +59,7 @@ export default {
             navigator.push({
                 url: './twoPage.js',
                 param:{a:11111},
+                title:"pop_demo",
                 animated: "true"
             }, event => {
                 // modal.toast({ message: 'callback: ' + event })
@@ -67,6 +69,7 @@ export default {
             navigator.push({
                 url: './demo/MapDemo.js',
                 param:{a:11111},
+                title:"MapDemo",
                 animated: "true"
             }, event => {
                 // modal.toast({ message: 'callback: ' + event })
@@ -76,6 +79,7 @@ export default {
             navigator.push({
                 url: './demo/video.js',
                 param:{b:22222},
+                title:"video",
                 animated: "true"
             }, event => {
             })
@@ -83,6 +87,7 @@ export default {
         toImage(){
             navigator.push({
                 url: './demo/Image.js',
+                title:"Image",
                 animated: "true"
             }, event => {
             })
@@ -90,6 +95,7 @@ export default {
         toWeeUi(){
             navigator.push({
                 url: './demo/weex-ui.js',
+                title:"weex-ui",
                 animated: "true"
             }, event => {
             })
@@ -97,6 +103,7 @@ export default {
         TabBar(){
             navigator.push({
                 url: './demo/TabBarDemo.js',
+                title:"TabBarDemo",
                 animated: "true"
             }, event => {
             })
@@ -104,6 +111,7 @@ export default {
         TabPage(){
             navigator.push({
                 url: './demo/TabPageDemo.js',
+                title:"TabPageDemo",
                 animated: "true"
             }, event => {
             })
@@ -111,6 +119,7 @@ export default {
         hostPage(){
             navigator.push({
                 url: './demo/HostPageDemo.js',
+                title:"HostPageDemo",
                 animated: "true"
             }, event => {
             })
@@ -118,6 +127,7 @@ export default {
         hostPage1(){
             navigator.push({
                 url: './demo/SuperHostDemo.js',
+                title:"SuperHostDemo",
                 animated: "true"
             }, event => {
             })
@@ -125,6 +135,7 @@ export default {
         lottie(){
             navigator.push({
                 url: './demo/lottie.js',
+                title:"lottie",
                 animated: "true"
             }, event => {
             })
@@ -132,7 +143,9 @@ export default {
     },
     created(){
         var modal=weex.requireModule('modal');
-        // modal.alert({message: weex.config.env});
+        var navgator=weex.requireModule('navgator');
+        navgator.setNavBarTitle(this.title);
+        modal.alert({message: weex.config.env});
 
     }
 }

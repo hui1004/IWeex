@@ -1,6 +1,6 @@
 <template>
     <div style="background-color: #eeeeee">
-        <head title="weex-ui"></head>
+        <!--<head title="weex-ui"></head>-->
         <scroller>
             <div class="cell">
                 <div class="head">

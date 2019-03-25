@@ -1,10 +1,10 @@
 <template>
     <div >
-        <head title="界面跳转" showRight="true" @rightItemClick="clickRight">
-            <div slot="rightItem">
-                <text>自定义右边</text>
-            </div>
-        </head>
+        <!--<head title="界面跳转" showRight="true" @rightItemClick="clickRight">-->
+            <!--<div slot="rightItem">-->
+                <!--<text>自定义右边</text>-->
+            <!--</div>-->
+        <!--</head>-->
         <div style="width: 750px;height: 700px;align-items: center;justify-content: center;">
             <div class="button" @click="popPage">
                 <text style="font-size: 35px;font-weight: bold">返回上一页</text>
@@ -14,14 +14,17 @@
 </template>
 
 <script>
-    import head from './components/head.vue'
+    // import head from './components/head.vue'
     let modal=weex.requireModule('modal');
     var nav=weex.requireModule('navigator');
     var params=weex.requireModule('params');
     export default {
         name: "two-page",
+        data:{
+          title:"pop Demo"
+        },
         components:{
-            head
+            // head
         },
         methods:{
           popPage(){
@@ -39,6 +42,8 @@
             params.getParam(function (res) {
                 modal.toast({message:res});
             });
+            // nav.setNavBarTitle(this.title);
+            // nav.setNavBarRightItem(this.title);
             console.log("aaa");
         }
     }

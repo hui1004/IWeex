@@ -7,6 +7,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.content.LocalBroadcastManager;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
@@ -51,6 +52,7 @@ public class WXPageActivity extends AbsWeexActivity implements
   private HotReloadManager mHotReloadManager;
   private LinearLayout debug_tool;
   private ImageView scanner,refresh;
+  private Toolbar toolbar;
   @Override
   public void onCreateNestInstance(WXSDKInstance instance, NestedContainer container) {
     Log.d(TAG, "Nested Instance created.");
@@ -60,13 +62,14 @@ public class WXPageActivity extends AbsWeexActivity implements
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_wxpage);
-    setStatusBar();
+//    setStatusBar();
     mContainer = (ViewGroup) findViewById(R.id.container);
     mProgressBar = (ProgressBar) findViewById(R.id.progress);
     mTipView = (TextView) findViewById(R.id.index_tip);
     scanner=(ImageView)findViewById(R.id.scanner);
     refresh=(ImageView)findViewById(R.id.refresh);
     debug_tool=findViewById(R.id.debug_tool);
+    toolbar=findViewById(R.id.toolbar);
     mTipView.setBackgroundColor(Color.parseColor("#FF6600"));
     scanner.setOnClickListener(this);
     refresh.setOnClickListener(this);
@@ -74,6 +77,9 @@ public class WXPageActivity extends AbsWeexActivity implements
     Intent intent = getIntent();
     String url= intent.getStringExtra(Constants.URL);
     String from = intent.getStringExtra("from");
+    String title = intent.getStringExtra(Constants.TITLE);
+    toolbar.setTitle(title);
+    toolbar.setTitleTextColor(Color.WHITE);
     mFromSplash = "splash".equals(from);
     /*是否是启动页过来的，决定要赋值的uri*/
     if(mFromSplash){
@@ -98,7 +104,10 @@ public class WXPageActivity extends AbsWeexActivity implements
     }
     loadUrl(url);
   }
-  private void initHotReloadManager(){
+    public Toolbar getToolbar() {
+        return toolbar;
+    }
+    private void initHotReloadManager(){
       /*调试模式*/
       mHotReloadManager = new HotReloadManager(AppConfig.getDebugId(), new HotReloadManager.ActionListener() {
           @Override

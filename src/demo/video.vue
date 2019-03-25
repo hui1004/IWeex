@@ -1,6 +1,6 @@
 <template>
     <div>
-        <head title="videoDemo" ></head>
+        <!--<head title="videoDemo" ></head>-->
         <video class="video" :src="src" autoplay controls
                @start="onstart" @pause="onpause" @finish="onfinish" @fail="onfail"></video>
         <text class="info">state: {{state}}</text>
