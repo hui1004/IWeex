@@ -50,7 +50,7 @@ export default {
   },
   data () {
     return {
-        tilte:"首页",
+        title:"首页",
         logo: 'https://gw.alicdn.com/tfs/TB1yopEdgoQMeJjy1XaXXcSsFXa-640-302.png'
     }
   },
@@ -143,9 +143,11 @@ export default {
     },
     created(){
         var modal=weex.requireModule('modal');
-        var navgator=weex.requireModule('navgator');
-        navgator.setNavBarTitle(this.title);
-        modal.alert({message: weex.config.env});
+        // var navgator=weex.requireModule('navgator');
+        navigator.setNavBarTitle(this.title,function (res) {
+            // modal.alert({message:res});
+        });
+        // modal.alert({message: weex.config.env});
 
     }
 }

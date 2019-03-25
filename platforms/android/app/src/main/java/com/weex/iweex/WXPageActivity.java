@@ -10,6 +10,7 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,6 +20,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,6 +43,8 @@ import com.weex.iweex.util.UrlParse;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Objects;
+
 
 public class WXPageActivity extends AbsWeexActivity implements
     WXSDKInstance.NestedInstanceInterceptor,OnClickListener{
@@ -52,7 +56,10 @@ public class WXPageActivity extends AbsWeexActivity implements
   private HotReloadManager mHotReloadManager;
   private LinearLayout debug_tool;
   private ImageView scanner,refresh;
-  private Toolbar toolbar;
+  private TextView title;
+  private LinearLayout rightItem;
+  private TextView rightItemText;
+  private ImageView back;
   @Override
   public void onCreateNestInstance(WXSDKInstance instance, NestedContainer container) {
     Log.d(TAG, "Nested Instance created.");
@@ -69,17 +76,21 @@ public class WXPageActivity extends AbsWeexActivity implements
     scanner=(ImageView)findViewById(R.id.scanner);
     refresh=(ImageView)findViewById(R.id.refresh);
     debug_tool=findViewById(R.id.debug_tool);
-    toolbar=findViewById(R.id.toolbar);
+    rightItem=findViewById(R.id.right_item);
+    title=findViewById(R.id.title_text);
+    rightItemText=findViewById(R.id.right_item_text);
+    back=findViewById(R.id.back_image);
+
     mTipView.setBackgroundColor(Color.parseColor("#FF6600"));
     scanner.setOnClickListener(this);
     refresh.setOnClickListener(this);
     mTipView.setOnClickListener(this);
+    back.setOnClickListener(this);
+    rightItem.setOnClickListener(this);
     Intent intent = getIntent();
     String url= intent.getStringExtra(Constants.URL);
     String from = intent.getStringExtra("from");
     String title = intent.getStringExtra(Constants.TITLE);
-    toolbar.setTitle(title);
-    toolbar.setTitleTextColor(Color.WHITE);
     mFromSplash = "splash".equals(from);
     /*是否是启动页过来的，决定要赋值的uri*/
     if(mFromSplash){
@@ -91,9 +102,6 @@ public class WXPageActivity extends AbsWeexActivity implements
       return;
     }
 
-    if (getSupportActionBar() != null) {
-      getSupportActionBar().hide();
-    }
     if(AppConfig.isDebug()){
         if(mFromSplash){
             /*显示扫码悬浮窗*/
@@ -102,10 +110,21 @@ public class WXPageActivity extends AbsWeexActivity implements
       /*调试模式*/
       initHotReloadManager();
     }
+    setTitle(title);
     loadUrl(url);
   }
-    public Toolbar getToolbar() {
-        return toolbar;
+    public void setTitle(String title){
+         this.title.setText(title);
+        if(mFromSplash){
+            back.setVisibility(View.GONE);
+        }
+        //  toolbar.setNavigationIcon();
+    }
+    public TextView getToolbarTitle() {
+        return title;
+    }
+    public TextView getToolbarRightItem() {
+        return title;
     }
     private void initHotReloadManager(){
       /*调试模式*/
@@ -250,6 +269,13 @@ public class WXPageActivity extends AbsWeexActivity implements
               createWeexInstance();
               mTipView.setVisibility(View.GONE);
               refreshPage();
+              break;
+          case R.id.back_image:
+              destoryWeexInstance();
+              finish();
+              break;
+          case R.id.right_item:
+
               break;
           default:
               break;
