@@ -41,7 +41,7 @@
 
 <script>
     import Head from "../components/head";
-
+    var nav=weex.requireModule('navigator');
     var modal=weex.requireModule('modal');
     export default {
         components: {Head},
@@ -67,6 +67,12 @@
                 this.position=index;
                 // this.$refs.host.setIndex(index);
             }
+        },
+        created(){
+            var modal=weex.requireModule('modal');
+            nav.setNavBarHidden("1",function (res) {
+            });
+            // modal.alert({message:'11'})
         }
     }
 </script>

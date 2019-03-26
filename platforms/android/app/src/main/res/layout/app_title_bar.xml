@@ -5,14 +5,23 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimary">
 
-    <ImageView
-        android:id="@+id/back_image"
+    <LinearLayout
+        android:id="@+id/back_item"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="9dp"
-        android:background="@mipmap/back"
-        />
+        android:orientation="horizontal"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:layout_marginLeft="9dp">
+        <ImageView
+            android:id="@+id/back_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@mipmap/back"
+            />
+    </LinearLayout>
     <TextView
         android:id="@+id/title_text"
         android:layout_width="wrap_content"

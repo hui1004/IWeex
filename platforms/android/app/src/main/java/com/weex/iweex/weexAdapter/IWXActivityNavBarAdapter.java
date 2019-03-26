@@ -8,6 +8,9 @@ import android.graphics.Color;
 import android.support.v7.app.ActionBar;
 import android.support.v7.view.menu.MenuBuilder;
 import android.view.Gravity;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toolbar;
 
@@ -74,12 +77,22 @@ public class IWXActivityNavBarAdapter implements IActivityNavBarSetter{
 
     @Override
     public boolean setNavBarLeftItem(String param) {
-        return false;
+        LinearLayout left=getActivity().getToolbarLeftItem();
+        if (left==null){
+            return false;
+        }
+        left.setVisibility(View.VISIBLE);
+        return true;
     }
 
     @Override
     public boolean clearNavBarLeftItem(String param) {
-        return false;
+        LinearLayout left=getActivity().getToolbarLeftItem();
+        if (left==null){
+            return false;
+        }
+        left.setVisibility(View.GONE);
+        return true;
     }
 
     @Override
@@ -99,6 +112,24 @@ public class IWXActivityNavBarAdapter implements IActivityNavBarSetter{
             return false;
         }
         title.setText(param);
+        return true;
+    }
+
+    @Override
+    public boolean setNavBarHidden(String param) {
+        RelativeLayout tooBar=getActivity().getToolbar();
+        if (tooBar==null){
+            return false;
+        }
+        if (param.equals("1")){
+            tooBar.setVisibility(View.GONE);
+            getActivity().setStatusBar();
+        }else {
+            getActivity().setStatusBarShow();
+            tooBar.setVisibility(View.VISIBLE);
+
+        }
+
         return true;
     }
     public WXPageActivity getActivity(){
