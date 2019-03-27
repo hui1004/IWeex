@@ -1,11 +1,13 @@
 package com.weex.iweex;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
@@ -45,6 +47,8 @@ import org.json.JSONObject;
 
 import java.util.Objects;
 
+import static android.view.View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
+
 
 public class WXPageActivity extends AbsWeexActivity implements
     WXSDKInstance.NestedInstanceInterceptor,OnClickListener{
@@ -59,7 +63,7 @@ public class WXPageActivity extends AbsWeexActivity implements
   private TextView title;
   private LinearLayout rightItem;
   private TextView rightItemText;
-  private ImageView back;
+  private LinearLayout back;
   @Override
   public void onCreateNestInstance(WXSDKInstance instance, NestedContainer container) {
     Log.d(TAG, "Nested Instance created.");
@@ -79,7 +83,7 @@ public class WXPageActivity extends AbsWeexActivity implements
     rightItem=findViewById(R.id.right_item);
     title=findViewById(R.id.title_text);
     rightItemText=findViewById(R.id.right_item_text);
-    back=findViewById(R.id.back_image);
+    back=findViewById(R.id.back_item);
 
     mTipView.setBackgroundColor(Color.parseColor("#FF6600"));
     scanner.setOnClickListener(this);
@@ -115,9 +119,6 @@ public class WXPageActivity extends AbsWeexActivity implements
   }
     public void setTitle(String title){
          this.title.setText(title);
-        if(mFromSplash){
-            back.setVisibility(View.GONE);
-        }
         //  toolbar.setNavigationIcon();
     }
     public TextView getToolbarTitle() {
@@ -125,6 +126,12 @@ public class WXPageActivity extends AbsWeexActivity implements
     }
     public TextView getToolbarRightItem() {
         return title;
+    }
+    public LinearLayout getToolbarLeftItem() {
+        return back;
+    }
+    public RelativeLayout getToolbar() {
+        return findViewById(R.id.toolbar);
     }
     private void initHotReloadManager(){
       /*调试模式*/
@@ -155,7 +162,7 @@ public class WXPageActivity extends AbsWeexActivity implements
       });
     }
   /*设置状态栏*/
- private void setStatusBar(){
+ public void setStatusBar(){
      if(OSVersion()>=19)
      {
          getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -168,6 +175,28 @@ public class WXPageActivity extends AbsWeexActivity implements
          getWindow().setStatusBarColor(Color.TRANSPARENT);
      }
  }
+    /*设置状态栏*/
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    @SuppressLint("ResourceAsColor")
+    public void setStatusBarShow(){
+        if(OSVersion()>=19)
+        {
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            //取消设置透明状态栏,使 ContentView 内容不再覆盖状态栏
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            //需要设置这个 flag 才能调用 setStatusBarColor 来设置状态栏颜色
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            getWindow().getDecorView().setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+            //设置状态栏颜色
+            getWindow().setStatusBarColor(Color.parseColor("#3eb4ff"));
+        }
+
+
+    }
   private  int OSVersion() {
         int sdkVersion;
         try {
@@ -268,7 +297,7 @@ public class WXPageActivity extends AbsWeexActivity implements
               mTipView.setVisibility(View.GONE);
               refreshPage();
               break;
-          case R.id.back_image:
+          case R.id.back_item:
               destoryWeexInstance();
               finish();
               break;

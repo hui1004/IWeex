@@ -307,19 +307,44 @@ public class WXNavigatorModule extends WXModule {
     }
 
     @JSMethod
-    public void setNavBarHidden(String param, final String callback) {
-        String message = MSG_FAILED;
-        try {
-            JSONObject jsObj = JSON.parseObject(param);
-            int visibility = jsObj.getInteger(Constants.Name.NAV_BAR_VISIBILITY);
-            boolean success = changeVisibilityOfActionBar(mWXSDKInstance.getContext(), visibility);
-            if (success) {
-                message = MSG_SUCCESS;
+    public void setNavBarHidden(String param, JSCallback callback) {
+        //IWeex add
+        if (!TextUtils.isEmpty(param)) {
+            if (WXSDKEngine.getActivityNavBarSetter() != null) {
+                if (param.equals("1")){
+                    if (WXSDKEngine.getActivityNavBarSetter().setNavBarHidden(param)) {
+                        if (callback != null) {
+                            callback.invoke(MSG_SUCCESS);
+                        }
+                        return;
+                    }
+                }else{
+                    if (WXSDKEngine.getActivityNavBarSetter().setNavBarHidden(param)) {
+                        if (callback != null) {
+                            callback.invoke(MSG_SUCCESS);
+                        }
+                        return;
+                    }
+                }
+
             }
-        } catch (JSONException e) {
-            WXLogUtils.e(TAG, WXLogUtils.getStackTrace(e));
         }
-        WXBridgeManager.getInstance().callback(mWXSDKInstance.getInstanceId(), callback, message);
+        if (callback != null) {
+            callback.invoke(MSG_FAILED);
+        }
+
+//        String message = MSG_FAILED;
+//        try {
+//            JSONObject jsObj = JSON.parseObject(param);
+//            int visibility = jsObj.getInteger(Constants.Name.NAV_BAR_VISIBILITY);
+//            boolean success = changeVisibilityOfActionBar(mWXSDKInstance.getContext(), visibility);
+//            if (success) {
+//                message = MSG_SUCCESS;
+//            }
+//        } catch (JSONException e) {
+//            WXLogUtils.e(TAG, WXLogUtils.getStackTrace(e));
+//        }
+//        WXBridgeManager.getInstance().callback(mWXSDKInstance.getInstanceId(), callback, message);
     }
 
     private boolean changeVisibilityOfActionBar(Context context, int visibility) {

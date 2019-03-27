@@ -6,6 +6,9 @@
       <div class="cell" @click="turn">
         <text style="font-weight: bold;font-size: 29px;color: #ffffff">PopDemo</text>
       </div>
+      <div class="cell" @click="head">
+        <text style="font-weight: bold;font-size: 29px;color: #ffffff">headNavDemo</text>
+      </div>
       <div class="cell" @click="toVideo">
         <text style="font-weight: bold;font-size: 29px;color: #ffffff">videoDemo</text>
       </div>
@@ -60,6 +63,16 @@ export default {
                 url: './twoPage.js',
                 param:{a:11111},
                 title:"pop_demo",
+                animated: "true"
+            }, event => {
+                // modal.toast({ message: 'callback: ' + event })
+            })
+        },
+        head(){
+            navigator.push({
+                url: './demo/headNavDemo.js',
+                param:{a:11111},
+                title:"headNavDemo",
                 animated: "true"
             }, event => {
                 // modal.toast({ message: 'callback: ' + event })
@@ -143,9 +156,8 @@ export default {
     },
     created(){
         var modal=weex.requireModule('modal');
-        // var navgator=weex.requireModule('navgator');
+        navigator.clearNavBarLeftItem('1');
         navigator.setNavBarTitle(this.title,function (res) {
-            // modal.alert({message:res});
         });
         // modal.alert({message: weex.config.env});
 

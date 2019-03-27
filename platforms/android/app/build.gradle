@@ -7,7 +7,7 @@ android {
         minSdkVersion project.appMinSdkVersion
         targetSdkVersion project.targetSdkVersion
         versionCode 1
-        versionName "1.0.1"
+        versionName "1.0.2"
         ndk{
             abiFilters "x86"
             abiFilters "armeabi"
@@ -17,6 +17,7 @@ android {
                 JPUSH_APPKEY : "819b130a27af5e56253240c3", //JPush上注册的包名对应的appkey.
                 JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
         ]
+        multiDexEnabled true
     }
 //    applicationVariants.all { variant ->
 //        variant.outputs.each { output ->
@@ -67,6 +68,7 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(':sdk')
     implementation 'com.android.support:design:27.1.0'
+    implementation 'com.android.support:multidex:1.0.3'
     implementation 'com.google.code.findbugs:jsr305:2.0.1'
     implementation 'com.squareup.okhttp:okhttp:2.3.0'
     implementation 'com.squareup.okhttp:okhttp-ws:2.3.0'

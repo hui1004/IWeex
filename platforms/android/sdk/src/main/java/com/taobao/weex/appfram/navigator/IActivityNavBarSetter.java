@@ -40,5 +40,8 @@ public interface IActivityNavBarSetter {
   boolean clearNavBarMoreItem(String param);
 
   boolean setNavBarTitle(String param);
+  //IWeex add
+  boolean setNavBarHidden(String param);
+
 
 }
