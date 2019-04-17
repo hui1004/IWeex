@@ -97,9 +97,7 @@
 <script>
     /*使用此方式引入项目中的vue组件，而不是 import { WxcTabPage, WxcPanItem, Utils, BindEnv } from 'weex-ui';这样引入，
     * 后者会导致js文件体积过大*/
-    import  WxcGridSelect  from '../components/weex-ui/packages/wxc-grid-select';
-    import  WxcEpSlider  from '../components/weex-ui/packages/wxc-ep-slider';
-    import  WxcSimpleFlow  from '../components/weex-ui/packages/wxc-simple-flow';
+    import { WxcGridSelect, WxcEpSlider,WxcSimpleFlow} from 'weex-ui';
     import Head from "../components/head";
     export default {
         components: {

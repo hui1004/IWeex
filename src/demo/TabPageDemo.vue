@@ -61,12 +61,12 @@
     import Head from "../components/head";
     const dom = weex.requireModule('dom');
     /*不要使用这种方式引入，会导致js文件体积很大，要引入项目中的vue组件，参考 weex-ui.vue demo*/
-    // import { WxcTabPage, WxcPanItem, Utils, BindEnv } from 'weex-ui';
-    import Config from '../components/weex-ui/config'
-    import  WxcTabPage  from '../components/weex-ui/packages/wxc-tab-page';
-    import  WxcPanItem  from '../components/weex-ui/packages/wxc-pan-item';
-    import  BindEnv  from '../components/weex-ui/packages/bind-env';
-    import  Utils  from '../components/weex-ui/packages/utils';
+    import { WxcTabPage, WxcPanItem, Utils, BindEnv } from 'weex-ui';
+    // import Config from '../components/weex-ui/config'
+    // import  WxcTabPage  from '../components/weex-ui/packages/wxc-tab-page';
+    // import  WxcPanItem  from '../components/weex-ui/packages/wxc-pan-item';
+    // import  BindEnv  from '../components/weex-ui/packages/bind-env';
+    // import  Utils  from '../components/weex-ui/packages/utils';
 
     export default {
         components: {

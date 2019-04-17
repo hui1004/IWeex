@@ -36,10 +36,8 @@
     }
 </style>
 <script>
-    import  WxcTabBar  from '../components/weex-ui/packages/wxc-tab-bar';
-    import  Utils  from '../components/weex-ui/packages/utils';
     // https://github.com/alibaba/weex-ui/blob/master/example/tab-bar/config.js
-    import Config from '../components/weex-ui/config'
+    import {WxcTabBar, Utils } from 'weex-ui';
     import Head from "../components/head";
 
     export default {
