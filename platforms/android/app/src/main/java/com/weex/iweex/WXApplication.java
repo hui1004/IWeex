@@ -5,6 +5,7 @@ import android.app.Application;
 import android.os.Bundle;
 
 import com.weex.iweex.component.IWXLottie;
+import com.weex.iweex.component.IWXSwipeView;
 import com.weex.iweex.component.map.IWXInfoWindow;
 import com.weex.iweex.component.map.IWXMap;
 import com.weex.iweex.component.map.IWXMapCircle;
@@ -51,6 +52,7 @@ public class WXApplication extends Application {
     try {
       BindingX.register();
       WXSDKEngine.registerComponent("hostPage",IWXHost.class);
+      WXSDKEngine.registerComponent("swipe",IWXSwipeView.class);
       WXSDKEngine.registerComponent("superHostPage",IWXSuperHost.class);
       WXSDKEngine.registerComponent("webView",IWXWebView.class);
       WXSDKEngine.registerComponent("mapMarker",IWXMapMarker.class);

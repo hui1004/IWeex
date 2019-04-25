@@ -87,6 +87,7 @@ dependencies {
     implementation 'com.alibaba.android:bindingx_weex_plugin:1.0.1'
     implementation 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar'
     implementation 'com.airbnb.android:lottie:2.0.0'
+    implementation 'com.github.mcxtzhang:SwipeDelMenuLayout:V1.3.0'
     // 最基础的架构，仅提供了系统默认的图片选择和拍照功能
     implementation 'com.github.qingmei2:rximagepicker:2.2.0'
 // 提供了自定义UI图片选择器的基本组件，自定义UI的需求需要添加该依赖

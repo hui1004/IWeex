@@ -39,7 +39,7 @@
     // https://github.com/alibaba/weex-ui/blob/master/example/tab-bar/config.js
     import {WxcTabBar, Utils } from 'weex-ui';
     import Head from "../components/head";
-
+    import Config from '../components/config'
     export default {
         components: {
             Head,
