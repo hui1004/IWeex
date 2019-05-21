@@ -1,6 +1,8 @@
+<!--列表侧滑操作组件-->
 <template>
     <div class="cell" :style="cell_style" ref="cell" @swipe="handleSwipe">
-        <slot  name="cell_content" ></slot>
+        <slot  name="cell_content" >
+        </slot>
         <div class="rightItems" @click="itemClick(item)" v-for="item in rightItems"
              :style="{height:rightItems_height,backgroundColor:item.backgroundColor,width:item.width}">
             <text :style="item.textStyle">{{item.text}}</text>
@@ -15,6 +17,7 @@
     export default {
         name: "swip-cell",
         props:{
+            //操作项配置
             rightItems:{
                default:[
                    {
@@ -30,6 +33,7 @@
                ],
                type:Array
             },
+            //整体宽度
             width:{
                 default:750,
                 type:Number,

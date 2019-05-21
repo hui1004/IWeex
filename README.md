@@ -3,6 +3,7 @@ IWeex
 # Introduction
 
 这是一个基于weex框架搭建的APP快速开发的模板项目，目前比较全面的支持android端，ios端部分原生组件不支持。
+本项目参考 [weexplus脚手架](https://weexplus.github.io/doc/)，做了一些借鉴，表示感谢。
 
 # 使用说明  
 
