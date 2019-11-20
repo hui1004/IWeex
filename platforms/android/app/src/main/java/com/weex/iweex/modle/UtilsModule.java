@@ -1,4 +1,4 @@
-package com.xindi.salesplatform.modules;
+package com.weex.iweex.modle;
 
 import android.Manifest;
 import android.app.Activity;
@@ -19,16 +19,10 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.baidu.speech.asr.SpeechConstant;
-import com.farwolf.perssion.Perssion;
-import com.farwolf.perssion.PerssionCallback;
-import com.farwolf.weex.activity.WeexActivity;
 import com.taobao.weex.annotation.JSMethod;
 import com.taobao.weex.bridge.JSCallback;
 import com.taobao.weex.common.WXModule;
-import com.xindi.salesplatform.baidu_voice.MessageStatusRecogListener;
-import com.xindi.salesplatform.baidu_voice.MyRecognizer;
-import com.xindi.salesplatform.baidu_voice.StatusRecogListener;
-import com.xindi.salesplatform.utils.MIUIUtils;
+import com.weex.iweex.WXPageActivity;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -38,11 +32,11 @@ import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import baidu.speech.baidu_voice.MessageStatusRecogListener;
+import baidu.speech.baidu_voice.MyRecognizer;
 import cn.jpush.android.api.JPushInterface;
 import me.leolin.shortcutbadger.ShortcutBadger;
 
-import static com.umeng.commonsdk.stateless.UMSLEnvelopeBuild.mContext;
-import static com.xindi.salesplatform.receiver.MyReceiver.badgeCount;
 
 
 public class UtilsModule extends WXModule {
@@ -61,13 +55,13 @@ public class UtilsModule extends WXModule {
     /*设置界面旋转方向*/
     @JSMethod
     public void setOrientation(int type){
-        WeexActivity activity= (WeexActivity) mWXSDKInstance.getContext();
+        WXPageActivity activity= (WXPageActivity) mWXSDKInstance.getContext();
         activity.setRequestedOrientation(type);
     }
     /*获取当前界面的方向*/
     @JSMethod(uiThread = false)
     public Map getRequestedOrientation(){
-        WeexActivity activity= (WeexActivity) mWXSDKInstance.getContext();
+        WXPageActivity activity= (WXPageActivity) mWXSDKInstance.getContext();
         int ort=activity.getRequestedOrientation();
         HashMap map=new HashMap();
         if(ort== ActivityInfo.SCREEN_ORIENTATION_PORTRAIT){
@@ -90,7 +84,7 @@ public class UtilsModule extends WXModule {
 
         //屏幕
         DisplayMetrics dm = new DisplayMetrics();
-        WeexActivity activity= (WeexActivity) mWXSDKInstance.getContext();
+        WXPageActivity activity= (WXPageActivity) mWXSDKInstance.getContext();
         activity.getWindowManager().getDefaultDisplay().getMetrics(dm);
         int screenHeight=dm.heightPixels;
         int screenWidth=dm.widthPixels;
@@ -107,12 +101,12 @@ public class UtilsModule extends WXModule {
     public void turnToContact(int code) {
         Intent intentPhone = new Intent(Intent.ACTION_PICK);
         intentPhone.setData(ContactsContract.Contacts.CONTENT_URI);
-        WeexActivity weexActivity = (WeexActivity) mWXSDKInstance.getContext();
+        WXPageActivity weexActivity = (WXPageActivity) mWXSDKInstance.getContext();
         weexActivity.startActivityForResult(intentPhone, code);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (ContextCompat.checkSelfPermission(mWXSDKInstance.getContext(), Manifest.permission.READ_CONTACTS)
                     != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions((WeexActivity) mWXSDKInstance.getContext(), new String[]{Manifest.permission.READ_CONTACTS},
+                ActivityCompat.requestPermissions((WXPageActivity) mWXSDKInstance.getContext(), new String[]{Manifest.permission.READ_CONTACTS},
                         0);//申请权限
             } else {//拥有当前权限
             }
@@ -122,18 +116,18 @@ public class UtilsModule extends WXModule {
     }
 
     /*清空应用角标数字*/
-    @JSMethod
-    public void setNotification(int number) {
-        if (!MIUIUtils.isMIUI()) {
-            if(number>=100){
-                number=99;
-            }
-            badgeCount = number;
-            ShortcutBadger.applyCount(mWXSDKInstance.getContext(), badgeCount); //for 1.1.4+
-        }else{
-//            ShortcutBadger.applyNotification(mWXSDKInstance.getContext().getApplicationContext(), notification, badgeCount);
-        }
-    }
+//    @JSMethod
+//    public void setNotification(int number) {
+//        if (!MIUIUtils.isMIUI()) {
+//            if(number>=100){
+//                number=99;
+//            }
+//            badgeCount = number;
+//            ShortcutBadger.applyCount(mWXSDKInstance.getContext(), badgeCount); //for 1.1.4+
+//        }else{
+////            ShortcutBadger.applyNotification(mWXSDKInstance.getContext().getApplicationContext(), notification, badgeCount);
+//        }
+//    }
 
     @JSMethod
     public boolean checkPermissions(Activity context, String[] permissions) {
@@ -278,56 +272,46 @@ public class UtilsModule extends WXModule {
     }
 
     /*申请权限*/
-    @JSMethod
-    public void requestPermissions(String code, final JSCallback callback) {
-        boolean granted = true;
-        final HashMap map = new HashMap();
-        if (code.equals("定位")) {
-            Perssion.check((Activity) mWXSDKInstance.getContext(), Manifest.permission.ACCESS_FINE_LOCATION, new PerssionCallback() {
-                @Override
-                public void onGranted() {
-                    Perssion.check((Activity) mWXSDKInstance.getContext(), Manifest.permission.ACCESS_LOCATION_EXTRA_COMMANDS, new PerssionCallback() {
-                        @Override
-                        public void onGranted() {
-                            map.put("result", "100");
-                            callback.invoke(map);
-                        }
-                    });
-                }
-            });
-        } else if (code.equals("语音")) {
-            map.put("result", "100");
-            callback.invoke(map);
-        }
-    }
+//    @JSMethod
+//    public void requestPermissions(String code, final JSCallback callback) {
+//        boolean granted = true;
+//        final HashMap map = new HashMap();
+//        if (code.equals("定位")) {
+//            Perssion.check((Activity) mWXSDKInstance.getContext(), Manifest.permission.ACCESS_FINE_LOCATION, new PerssionCallback() {
+//                @Override
+//                public void onGranted() {
+//                    Perssion.check((Activity) mWXSDKInstance.getContext(), Manifest.permission.ACCESS_LOCATION_EXTRA_COMMANDS, new PerssionCallback() {
+//                        @Override
+//                        public void onGranted() {
+//                            map.put("result", "100");
+//                            callback.invoke(map);
+//                        }
+//                    });
+//                }
+//            });
+//        } else if (code.equals("语音")) {
+//            map.put("result", "100");
+//            callback.invoke(map);
+//        }
+//    }
 
     @JSMethod
     public void call(final String phoneNumber) {
-        Perssion.check((Activity) mWXSDKInstance.getContext(), Manifest.permission.CALL_PHONE, new PerssionCallback() {
-            @Override
-            public void onGranted() {
-                Perssion.check((Activity) mWXSDKInstance.getContext(), Manifest.permission.CALL_PHONE, new PerssionCallback() {
-                    @Override
-                    public void onGranted() {
-                        Intent intent = new Intent(Intent.ACTION_DIAL);
-                        Uri data = Uri.parse("tel:" + phoneNumber);
-                        intent.setData(data);
-                        if (ActivityCompat.checkSelfPermission(mWXSDKInstance.getContext(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                            // TODO: Consider calling
-                            //    ActivityCompat#requestPermissions
-                            // here to request the missing permissions, and then overriding
-                            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                            //                                          int[] grantResults)
-                            // to handle the case where the user grants the permission. See the documentation
-                            // for ActivityCompat#requestPermissions for more details.
-                            return;
-                        }
-                        mWXSDKInstance.getContext().startActivity(intent);
-                    }
-                });
-            }
-        });
 
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+        Uri data = Uri.parse("tel:" + phoneNumber);
+        intent.setData(data);
+        if (ActivityCompat.checkSelfPermission(mWXSDKInstance.getContext(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        mWXSDKInstance.getContext().startActivity(intent);
     }
     @JSMethod
     public void getPhoneInfo(JSCallback callback) {
