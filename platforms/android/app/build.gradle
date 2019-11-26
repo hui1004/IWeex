@@ -101,11 +101,11 @@ dependencies {
     compile 'com.github.qingmei2:rximagepicker_support_zhihu:2.2.0'     // 知乎图片选择器
     compile 'com.github.qingmei2:rximagepicker_support_wechat:2.2.0'    // 微信图片选择器
     //此版本weexsdk暂不支持GCanvas
-//    compile "com.taobao.gcanvas:corelib:1.0.4"
-//    compile "com.taobao.gcanvas.adapters:img_picasso:1.0.1"
-//    compile "com.taobao.gcanvas.adapters:img_fresco:1.0.1"
-//    compile "com.taobao.gcanvas.bridges:spec:1.0.1"
-//    compile "com.taobao.gcanvas.bridges:weex:1.0.2"
+//    implementation "com.taobao.gcanvas:corelib:1.0.4"
+////  implementation "com.taobao.gcanvas.adapters:img_picasso:1.0.1"
+//    implementation "com.taobao.gcanvas.adapters:img_fresco:1.0.1"
+//    implementation "com.taobao.gcanvas.bridges:spec:1.0.1"
+//    implementation "com.taobao.gcanvas.bridges:weex:1.0.2"
     //app角标
     compile 'me.leolin:ShortcutBadger:1.1.15@aar'
     compile 'cn.jiguang.sdk:jpush:3.1.1'
