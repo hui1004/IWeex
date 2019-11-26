@@ -11,7 +11,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.2.0'
+        classpath 'com.android.tools.build:gradle:3.4.2'
         classpath 'com.taobao.android:weexplugin-gradle-plugin:1.3'
     }
 }
